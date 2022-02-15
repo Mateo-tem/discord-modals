@@ -1,5 +1,5 @@
 const { Client, Interaction } = require("discord.js")
-const { InteractionResponseTypes } = require('../Constants');
+const { InteractionResponseTypes } = require('../util/Constants');
 const Modal = require("./Modal")
 
 async function showModal(modal, options){

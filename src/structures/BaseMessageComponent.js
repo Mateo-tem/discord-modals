@@ -1,4 +1,4 @@
-const { MessageComponentTypes } = require('../Constants');
+const { MessageComponentTypes } = require('../util/Constants');
 
 class BaseMessageComponent {
   constructor(data) {

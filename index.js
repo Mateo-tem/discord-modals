@@ -28,4 +28,5 @@ module.exports.ModalSubmitInteraction = require("./src/structures/ModalSubmitInt
 module.exports.showModal = require("./src/structures/ShowModal")
 module.exports.Interaction = require("./src/structures/Interaction")
 module.exports.InteractionResponses = require("./src/structures/interfaces/InteractionResponses")
-module.exports.Constants = require("./src/Constants")
+module.exports.Constants = require("./src/util/Constants")
+module.exports.SnowflakeUtil = require("./src/util/SnowflakeUtil")

@@ -1,5 +1,5 @@
 const BaseMessageComponent = require("./BaseMessageComponent")
-const { TextInputStyles, MessageComponentTypes } = require('../Constants');
+const { TextInputStyles, MessageComponentTypes } = require('../util/Constants');
 const { Util } = require("discord.js")
 
 class TextInputComponent extends BaseMessageComponent {
