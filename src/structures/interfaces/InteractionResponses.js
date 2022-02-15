@@ -1,4 +1,4 @@
-const { InteractionResponseTypes } = require('../../Constants');
+const { InteractionResponseTypes } = require('../../util/Constants');
 const { MessageFlags } = require("discord.js")
 const { MessagePayload } = require("discord.js")
 const Modal = require('../Modal');
