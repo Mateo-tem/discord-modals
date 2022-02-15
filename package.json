@@ -1,0 +1,19 @@
+{
+  "name": "discord-modals",
+  "version": "1.0.8",
+  "description": "discord-modals is a package that allows your bot of discord.js v12-v13 to create the new Discord Modals and interact with them.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "discord.js",
+    "modals",
+    "interaction modals",
+    "modal interactions",
+    "forms",
+    "modal form"
+  ],
+  "author": "『𝑴𝒂𝒕𝒆𝒐ᵗᵉᵐ』#9999",
+  "license": "ISC"
+}
