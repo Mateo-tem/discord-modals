@@ -12,7 +12,7 @@
 
 </div>
 
-> **A package that allows your bot of discord.js v13 to create the new Discord Modals and interact with them.**
+> **A package that allows your bot of discord.js v13-v14 to create the new Discord Modals and interact with them.**
 
 # 🔎 Installation
 
@@ -83,11 +83,11 @@ const modal = new Modal() // We create a Modal
   new TextInputComponent() // We create an Text Input Component
   .setCustomId('customid')
   .setLabel('Some text Here')
-  .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'.
+  .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
   .setMinLength(4)
   .setMaxLength(10)
   .setPlaceholder('Write a text here')
-  .setRequired(true) // If it's required or not.
+  .setRequired(true) // If it's required or not
   .setValue('value')  
 );
 ```
@@ -97,7 +97,7 @@ const modal = new Modal() // We create a Modal
 - We are going to use the `showModal()` method to send the modal in an interaction.
 
 ```js
-const { Modal, TextInputComponent, showModal } = require('discord-modals') // Modal & TextInputComponent class
+const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 
 const modal = new Modal() // We create a Modal
 .setCustomId('customid')
@@ -106,11 +106,11 @@ const modal = new Modal() // We create a Modal
   new TextInputComponent() // We create an Text Input Component
   .setCustomId('customid')
   .setLabel('Some text Here')
-  .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'.
+  .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
   .setMinLength(4)
   .setMaxLength(10)
   .setPlaceholder('Write a text here')
-  .setRequired(true) // If it's required or not.
+  .setRequired(true) // If it's required or not
   .setValue('value')  
 );
 
@@ -130,16 +130,23 @@ client.on('interactionCreate', (interaction) => {
 > **Congrats! You show the Modal to the Interaction User. Now, how can i receive the modal interaction?**
 
 - discord-modals integrates a new event to your Client called `modalSubmit`. We are going to use it.
+- To have access to the responses, just use the `.components` property (Array) and then, use the `.value` property.
 
 ```js
 client.on('modalSubmit', (modal) => {
-  modal.reply('Congrats! Powered by discord-modals.')
+  if(modal.customId === 'customid'){
+    const firstResponse = modal.components[0].value
+    modal.reply('Congrats! Powered by discord-modals.' + `\`\`\`${firstResponse}\`\`\``)
+  }  
 })
 ```
 
 > **And you made it! I hope this examples help you :)**
 
-- [Final Result](https://media.discordapp.net/attachments/910547379617402960/942881133379612682/Modals_Test.png?width=881&height=559)
+![Final Result](https://cdn.discordapp.com/attachments/910547379617402960/943208236478247032/Discord-Modals-Test.gif)
+
+# 📚 Documentation
+- Check our documentation [here](https://github.com/Mateo-tem/discord-modals/blob/master/DOCS.md).
 
 # 🔨 Developers
 - 『𝑴𝒂𝒕𝒆𝒐ᵗᵉᵐ』#9999

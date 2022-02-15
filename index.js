@@ -8,10 +8,10 @@ module.exports = (client) => {
 
     client.ws.on("INTERACTION_CREATE", (data) => {
       
-      if (!data.data.components) return;
+      if (!data.type) return;
 
-      switch (data.data.components[0].components[0].type) {
-        case 4:
+      switch (data.type) {
+        case 5:
           client.emit("modalSubmit", new ModalSubmitInteraction(client, data));
           break;
 
@@ -26,5 +26,6 @@ module.exports.Modal = require("./src/structures/Modal")
 module.exports.TextInputComponent = require("./src/structures/TextInputComponent")
 module.exports.ModalSubmitInteraction = require("./src/structures/ModalSubmitInteraction")
 module.exports.showModal = require("./src/structures/ShowModal")
+module.exports.Interaction = require("./src/structures/Interaction")
 module.exports.InteractionResponses = require("./src/structures/interfaces/InteractionResponses")
 module.exports.Constants = require("./src/Constants")

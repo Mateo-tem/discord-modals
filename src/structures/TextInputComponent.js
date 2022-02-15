@@ -74,14 +74,14 @@ class TextInputComponent extends BaseMessageComponent {
       type: 1,
       components: [
         {
+          type: MessageComponentTypes[this.type],
           custom_id: this.customId,
           label: this.label,
-          max_length: this.maxLength,
+          style: TextInputStyles[this.style],          
           min_length: this.minLength,
+          max_length: this.maxLength,
           placeholder: this.placeholder,
-          required: this.required,
-          style: TextInputStyles[this.style],
-          type: MessageComponentTypes[this.type],
+          required: this.required,          
         }
       ]
       

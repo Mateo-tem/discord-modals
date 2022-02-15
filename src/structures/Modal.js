@@ -38,10 +38,10 @@ class Modal {
   }
 
   toJSON() {
-    return {
-      components: this.components.map(c => c.toJSON()),
-      custom_id: this.customId,
+    return {      
       title: this.title,
+      custom_id: this.customId,
+      components: this.components.map(c => c.toJSON()),
     };
   }
 }
