@@ -1,10 +1,13 @@
-const { Client } = require('discord.js');
+const { Client, version } = require('discord.js');
 const ModalSubmitInteraction = require("./src/structures/ModalSubmitInteraction");
-const showModal = require('./src/structures/ShowModal');
 
 module.exports = (client) => {
-    if (!client) throw new Error('[discord-modals] NO_CLIENT_PROVIDED: No client was provided. Please provide a client')
+    if (!client) throw new Error('[discord-modals] NO_CLIENT_PROVIDED: No client was provided. Please provide a client.')
     if (!(client instanceof Client)) throw new Error('[discord-modals] INVALID_CLIENT: The provided client is invalid.');
+
+    const discordjsVersion = new String("v" + version)
+
+    if(!discordjsVersion.includes("v13")) throw new Error('[discord-modals] INVALID_VERSION: This package is only compatible with discord.js v13.')
 
     client.ws.on("INTERACTION_CREATE", (data) => {
       

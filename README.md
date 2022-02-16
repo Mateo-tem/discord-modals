@@ -12,7 +12,7 @@
 
 </div>
 
-> **A package that allows your bot of discord.js v13 to create the new Discord Modals and interact with them.**
+> **A package that allows your bot of discord.js v13 to create the new awesome Discord Modals and interact with them.**
 
 # 🔎 Installation
 
@@ -77,11 +77,11 @@ const modal = new Modal() // We create a Modal
 const { Modal, TextInputComponent } = require('discord-modals') // Modal & TextInputComponent class
 
 const modal = new Modal() // We create a Modal
-.setCustomId('customid')
+.setCustomId('modal-customid')
 .setTitle('Test of Discord-Modals!')
 .addComponents(
   new TextInputComponent() // We create an Text Input Component
-  .setCustomId('customid')
+  .setCustomId('textinput-customid')
   .setLabel('Some text Here')
   .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
   .setMinLength(4)
@@ -100,11 +100,11 @@ const modal = new Modal() // We create a Modal
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 
 const modal = new Modal() // We create a Modal
-.setCustomId('customid')
+.setCustomId('modal-customid')
 .setTitle('Test of Discord-Modals!')
 .addComponents(
   new TextInputComponent() // We create an Text Input Component
-  .setCustomId('customid')
+  .setCustomId('textinput-customid')
   .setLabel('Some text Here')
   .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
   .setMinLength(4)
@@ -129,15 +129,17 @@ client.on('interactionCreate', (interaction) => {
 
 > **Congrats! You show the Modal to the Interaction User. Now, how can i receive the modal interaction?**
 
-- discord-modals integrates a new event to your Client called `modalSubmit`. We are going to use it.
-- To have access to the responses, just use the `.components` property (Array) and then, use the `.value` property.
+- discord-modals integrates to your Client a new event called `modalSubmit`. We are going to use it.
+- To have access to the responses, just use the `.getTextInputValue()` method with the Custom Id of the Text Input Component.
+
+### Reply Examples
 
 - Usual Reply:
 
 ```js
 client.on('modalSubmit', (modal) => {
-  if(modal.customId === 'customid'){
-    const firstResponse = modal.components[0].value
+  if(modal.customId === 'modal-customid'){
+    const firstResponse = modal.getTextInputValue('textinput-customid')
     modal.reply('Congrats! Powered by discord-modals.' + `\`\`\`${firstResponse}\`\`\``)
   }  
 })
@@ -147,8 +149,8 @@ client.on('modalSubmit', (modal) => {
 
 ```js
 client.on('modalSubmit', (modal) => {
-  if(modal.customId === 'customid'){
-    const firstResponse = modal.components[0].value
+  if(modal.customId === 'modal-customid'){
+    const firstResponse = modal.getTextInputValue('textinput-customid')
     await modal.deferReply({ ephemeral: true })
     modal.followUp({ content: 'Congrats! Powered by discord-modals.' + `\`\`\`${firstResponse}\`\`\``, ephemeral: true })
   }  
