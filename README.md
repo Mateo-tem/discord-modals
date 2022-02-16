@@ -132,11 +132,25 @@ client.on('interactionCreate', (interaction) => {
 - discord-modals integrates a new event to your Client called `modalSubmit`. We are going to use it.
 - To have access to the responses, just use the `.components` property (Array) and then, use the `.value` property.
 
+- Usual Reply:
+
 ```js
 client.on('modalSubmit', (modal) => {
   if(modal.customId === 'customid'){
     const firstResponse = modal.components[0].value
     modal.reply('Congrats! Powered by discord-modals.' + `\`\`\`${firstResponse}\`\`\``)
+  }  
+})
+```
+
+- Ephemeral Reply:
+
+```js
+client.on('modalSubmit', (modal) => {
+  if(modal.customId === 'customid'){
+    const firstResponse = modal.components[0].value
+    await modal.deferReply({ ephemeral: true })
+    modal.followUp({ content: 'Congrats! Powered by discord-modals.' + `\`\`\`${firstResponse}\`\`\``, ephemeral: true })
   }  
 })
 ```

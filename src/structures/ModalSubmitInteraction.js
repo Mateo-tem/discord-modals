@@ -1,3 +1,4 @@
+const { InteractionWebhook } = require("discord.js")
 const BaseMessageComponent = require("./BaseMessageComponent")
 const Interaction = require("./Interaction");
 const InteractionResponses = require('./interfaces/InteractionResponses');
@@ -16,6 +17,8 @@ class ModalSubmitInteraction extends Interaction {
     });
 
     this.components = modalComponents ?? data.data.components?.map(c => BaseMessageComponent.create(c, this.client)) ?? [];
+
+    this.webhook = new InteractionWebhook(this.client, this.applicationId, this.token);
   }
   
   deferReply() {}
