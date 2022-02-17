@@ -2,6 +2,7 @@ const { Client, version } = require('discord.js');
 const ModalSubmitInteraction = require("./src/structures/ModalSubmitInteraction");
 
 module.exports = (client) => {
+
     if (!client) throw new Error('[discord-modals] NO_CLIENT_PROVIDED: No client was provided. Please provide a client.')
     if (!(client instanceof Client)) throw new Error('[discord-modals] INVALID_CLIENT: The provided client is invalid.');
 
@@ -22,14 +23,17 @@ module.exports = (client) => {
           client.emit("debug", `Unknown interaction component type received: ${data.data.component_type}`);
           break;
       }
+
     });
+
 }
 
-module.exports.Modal = require("./src/structures/Modal")
-module.exports.TextInputComponent = require("./src/structures/TextInputComponent")
-module.exports.ModalSubmitInteraction = require("./src/structures/ModalSubmitInteraction")
-module.exports.showModal = require("./src/structures/ShowModal")
-module.exports.Interaction = require("./src/structures/Interaction")
-module.exports.InteractionResponses = require("./src/structures/interfaces/InteractionResponses")
-module.exports.Constants = require("./src/util/Constants")
-module.exports.SnowflakeUtil = require("./src/util/SnowflakeUtil")
+module.exports.Modal = require("./src/structures/Modal");
+module.exports.TextInputComponent = require("./src/structures/TextInputComponent");
+module.exports.ModalSubmitInteraction = require("./src/structures/ModalSubmitInteraction");
+module.exports.ModalSubmitField = require("./src/structures/ModalSubmitField");
+module.exports.showModal = require("./src/structures/ShowModal");
+module.exports.Interaction = require("./src/structures/Interaction");
+module.exports.InteractionResponses = require("./src/structures/interfaces/InteractionResponses");
+module.exports.Constants = require("./src/util/Constants");
+module.exports.SnowflakeUtil = require("./src/util/SnowflakeUtil");

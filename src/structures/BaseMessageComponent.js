@@ -1,4 +1,5 @@
 const { MessageComponentTypes } = require('../util/Constants');
+const { TypeError } = require('./errors');
 
 class BaseMessageComponent {
   constructor(data) {

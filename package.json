@@ -19,6 +19,9 @@
     "discord.js-modals",
     "discord.js-forms"    
   ],
+  "dependencies": {
+    "discord.js": "^13.6.0"
+  },
   "author": "『𝑴𝒂𝒕𝒆𝒐ᵗᵉᵐ』#9999",
   "license": "MIT",
   "bugs": {

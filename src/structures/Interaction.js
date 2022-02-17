@@ -1,14 +1,15 @@
-'use strict';
+"use strict";
 
 const { Base, Permissions } = require('discord.js');
-const SnowflakeUtil = require("../util/SnowflakeUtil")
+const SnowflakeUtil = require('../util/SnowflakeUtil');
+
 class Interaction extends Base {
   constructor(client, data) {
     super(client);
 
     this.id = data.id;
 
-    Object.defineProperty(this, 'token', { value: data.token });
+    Object.defineProperty(this, "token", { value: data.token });
 
     this.applicationId = data.application_id;
 
@@ -18,16 +19,19 @@ class Interaction extends Base {
 
     this.user = this.client.users._add(data.user ?? data.member.user);
 
-    this.member = data.member ? this.guild?.members._add(data.member) ?? data.member : null;
+    this.member = data.member
+      ? this.guild?.members._add(data.member) ?? data.member
+      : null;
 
     this.version = data.version;
 
-    this.memberPermissions = data.member?.permissions ? new Permissions(data.member.permissions).freeze() : null;
+    this.memberPermissions = data.member?.permissions
+      ? new Permissions(data.member.permissions).freeze()
+      : null;
 
     this.locale = data.locale;
 
     this.guildLocale = data.guild_locale ?? null;
-
   }
 
   get createdTimestamp() {
@@ -53,7 +57,7 @@ class Interaction extends Base {
   inCachedGuild() {
     return Boolean(this.guild && this.member);
   }
-  
+
   inRawGuild() {
     return Boolean(this.guildId && !this.guild && this.member);
   }

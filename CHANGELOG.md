@@ -1,8 +1,16 @@
-# 🎈 Discord-Modals Changelog
+# 🎈 Discord-Modals Change log
 
-Hello! This is the Changelog Section of Discord-Modals. Here can you see what things were changed in different versions just to be informed. I hope you like this package :) 
+Hello! This is the Change log section of Discord-Modals. Here you can see what things have been changed in the different versions to be informed. This will be updated every time there are new versions. I hope you like this package :)
 
-## v1.1.5 (Stable)
+## v1.1.6 (Stable)
+
+- Add Errors directory and files.
+- Fix `ModalSubmitInteraction#type` bug. Before returns 5, now returns 'MODAL_SUBMIT' type.
+- Fix `.toJSON()` method of `TextInputComponent` class. Previously did not return the value.
+- Fix `.getTextInputValue()` method of `ModalSubmitInteraction` class. Now if the customId is incorrect throws null.
+- A little bit of code cleanup & maintenance. 
+
+## v1.1.5
 
 - Add Changelog file.
 - Finish docs file.
@@ -27,3 +35,5 @@ Hello! This is the Changelog Section of Discord-Modals. Here can you see what th
 - Fix `ModalSubmitInteraction#components` bug.
 - Update readme with new examples.
 - Add Docs file.
+
+> **Powered by Discord-Modals**

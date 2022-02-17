@@ -1,4 +1,4 @@
-# Documentation of Discord-Modals (Dev)
+# Documentation of Discord-Modals
 
 <div align="center">
   <img src="https://cdn.discordapp.com/attachments/910547379617402960/942871547268436088/Discord-Modals.png" alt="Discord Modals" />
@@ -22,7 +22,15 @@
 npm install discord-modals
 ```
 
-# 📌 Classes
+# 📌 General
+
+### Methods
+
+| Name |Returns|Description|
+| ------------ | ------------ |------------ |
+|  `.showModal(modal, { client: Client, interaction: Interaction })`  |[Modal](#modal)| Shows the Modal to the Interaction User. |
+
+# 🧩 Classes
 
 ## Modal
 
@@ -69,7 +77,7 @@ npm install discord-modals
 
 | Name |Returns|Description|
 | ------------ | ------------ |------------ |
-|  `.spliceComponents()`  |[Modal](#modal)| Splice the Components of the Modal. |
+|  `.spliceComponents()`  |[Modal](#modal)| Removes, replaces, and inserts components in the modal. |
 
 | Name |Returns|Description|
 | ------------ | ------------ |------------ |
@@ -119,6 +127,10 @@ npm install discord-modals
 | Name |Returns|Description|
 | ------------ | ------------ |------------ |
 |  `.setCustomId('textinput-customid')`  |[TextInputComponent](#textinputcomponent-extends-basemessagecomponenthttpsdiscordjsorgdocsdiscordjsstableclassbasemessagecomponent)| Sets the Custom Id of a Text Input Component. |
+
+| Name |Returns|Description|
+| ------------ | ------------ |------------ |
+|  `.setLabel('label')`  |[TextInputComponent](#textinputcomponent-extends-basemessagecomponenthttpsdiscordjsorgdocsdiscordjsstableclassbasemessagecomponent)| Sets the Label of a Text Input Component. |
 
 | Name |Returns|Description|
 | ------------ | ------------ |------------ |
@@ -199,3 +211,9 @@ npm install discord-modals
 | Name |Returns|Description|
 | ------------ | ------------ |------------ |
 |  `.getField('textinput-customid')`  |[ModalSubmitField](#modalsubmitfield)| Gets a Modal Submit Field. |
+
+# 🔨 Do you want to contribute to Discord-Modals?
+
+- Check our [GitHub Repository](https://github.com/Mateo-tem/discord-modals) and Report Issues or make a Pull Request to contribute to this awesome project. We are waiting for you!
+
+> **Powered by Discord-Modals**

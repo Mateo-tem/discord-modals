@@ -88,7 +88,6 @@ const modal = new Modal() // We create a Modal
   .setMaxLength(10)
   .setPlaceholder('Write a text here')
   .setRequired(true) // If it's required or not
-  .setValue('value')  
 );
 ```
 
@@ -111,7 +110,6 @@ const modal = new Modal() // We create a Modal
   .setMaxLength(10)
   .setPlaceholder('Write a text here')
   .setRequired(true) // If it's required or not
-  .setValue('value')  
 );
 
 client.on('interactionCreate', (interaction) => {
