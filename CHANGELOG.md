@@ -2,7 +2,11 @@
 
 Hello! This is the Change log section of Discord-Modals. Here you can see what things have been changed in the different versions to be informed. This will be updated every time there are new versions. I hope you like this package :)
 
-## v1.1.6 (Stable)
+## v1.1.7 (Stable)
+
+- Fix `.getTextInputValue()` & `.getField()` method of `ModalSubmitInteraction` class. Now if the customId is incorrect throws null.
+
+## v1.1.6
 
 - Add Errors directory and files.
 - Fix `ModalSubmitInteraction#type` bug. Before returns 5, now returns 'MODAL_SUBMIT' type.

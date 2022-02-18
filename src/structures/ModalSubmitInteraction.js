@@ -38,13 +38,10 @@ class ModalSubmitInteraction extends Interaction {
   getTextInputValue(customId) {
     const field = this.fields.find((field) => field.customId === customId);
 
-    switch(field) {
-      case field !== undefined: {
-        return field.value;
-      }
-      default: {
-        return null;
-      }
+    if(field === undefined){
+      return null;
+    } else {
+      return field.value;
     }
 
   }
@@ -58,13 +55,10 @@ class ModalSubmitInteraction extends Interaction {
   getField(customId) {
     const field = this.fields.find((field) => field.customId === customId);
 
-    switch(field) {
-      case field !== undefined: {
-        return field;
-      }
-      default: {
-        return null;
-      }
+    if(field === undefined){
+      return null;
+    } else {
+      return field;
     }
 
   }
