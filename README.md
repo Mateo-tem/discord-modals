@@ -126,6 +126,7 @@ client.on('interactionCreate', (interaction) => {
 ```
 
 > **Congrats! You show the Modal to the Interaction User. Now, how can i receive the Modal Interaction?**
+
 - discord-modals integrates to your Client a new event called `modalSubmit`. We are going to use it.
 - To have access to the responses, just use the `.getTextInputValue()` method with the Custom Id of the Text Input Component.
 
