@@ -1,0 +1,35 @@
+{
+  "name": "discord-modals",
+  "version": "1.1.8",
+  "description": "discord-modals is a package that allows your bot of discord.js v13 to create the new awesome Discord Modals and interact with them.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "discord.js",
+    "modals",
+    "interaction modals",
+    "modal interactions",
+    "forms",
+    "modal form",
+    "discord-forms",
+    "discord-modals",
+    "discord",
+    "discord.js-modals",
+    "discord.js-forms"    
+  ],
+  "dependencies": {
+    "discord.js": "^13.6.0"
+  },
+  "author": "『𝑴𝒂𝒕𝒆𝒐ᵗᵉᵐ』#9999",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mateo-tem/discord-modals/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mateo-tem/discord-modals.git"
+  },
+  "homepage": "https://github.com/Mateo-tem/discord-modals#readme"
+}
