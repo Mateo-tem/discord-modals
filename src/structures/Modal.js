@@ -3,6 +3,15 @@ const TextInputComponent = require("./TextInputComponent");
 const { Util } = require("discord.js");
 const { RangeError } = require("./errors");
 
+/**
+ * Represents a Modal.
+ * @example
+ * const modal = new Modal() // Modal constructor
+ * .setCustomId('modal-customid')
+ * .setTitle('Test of Discord-Modals!')
+ * .addComponents(new TextInputComponent()); // Add a Text Input Component.
+*/
+
 class Modal {
   constructor(data = {}, client = null) {
 

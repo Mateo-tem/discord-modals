@@ -5,6 +5,11 @@ const Interaction = require('./Interaction');
 const InteractionResponses = require('./interfaces/InteractionResponses');
 const { InteractionTypes } = require('../util/Constants');
 
+/**
+ * Represents a Modal Submit Interaction.
+ * @extends Interaction
+*/
+
 class ModalSubmitInteraction extends Interaction {
   constructor(client, data) {
     super(client, data);

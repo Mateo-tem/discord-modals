@@ -1,32 +1,38 @@
 const { Client, version } = require('discord.js');
 const ModalSubmitInteraction = require("./src/structures/ModalSubmitInteraction");
+const { Error } = require('./errors');
 
 module.exports = (client) => {
 
-    const discordjsVersion = new String("v" + version);
-    if(!discordjsVersion.includes("v13")) throw new Error('[discord-modals] INVALID_VERSION: This package is only compatible with discord.js v13.');
+  // Compatibility with discord.js version.
 
-    if (!client) throw new Error('[discord-modals] NO_CLIENT_PROVIDED: No client was provided. Please provide a client.');
-    if (!(client instanceof Client)) throw new Error('[discord-modals] INVALID_CLIENT: The provided client is invalid.');    
+  const discordjsVersion = new String("v" + version); // Expected: v13...
+  if (!discordjsVersion.includes("v13")) throw new Error('INVALID_VERSION');
 
-    client.ws.on("INTERACTION_CREATE", (data) => {
-      
-      if (!data.type) return;
+  if (!client) throw new Error('NO_CLIENT_PROVIDED');
+  if (!(client instanceof Client)) throw new Error('INVALID_CLIENT');
 
-      switch (data.type) {
-        case 5:
-          client.emit("modalSubmit", new ModalSubmitInteraction(client, data));
-          break;
+  // We receive the 'INTERACTION_CREATE' event from WebSocket.
+  
+  client.ws.on('INTERACTION_CREATE', (data) => {
 
-        default:
-          client.emit("debug", `Unknown interaction component type received: ${data.data.component_type}`);
-          break;
-      }
+    if (!data.type) return;    
 
-    });
+    switch (data.type) {      
+      case 5:
+        client.emit('modalSubmit', new ModalSubmitInteraction(client, data));
+        break;
+
+      default:
+        client.emit('debug', `Unknown interaction component type received: ${data.data.component_type}`);
+        break;
+    }
+
+  });
 
 }
 
+// Exports the classes.
 module.exports.Modal = require("./src/structures/Modal");
 module.exports.TextInputComponent = require("./src/structures/TextInputComponent");
 module.exports.ModalSubmitInteraction = require("./src/structures/ModalSubmitInteraction");
@@ -36,3 +42,14 @@ module.exports.Interaction = require("./src/structures/Interaction");
 module.exports.InteractionResponses = require("./src/structures/interfaces/InteractionResponses");
 module.exports.Constants = require("./src/util/Constants");
 module.exports.SnowflakeUtil = require("./src/util/SnowflakeUtil");
+
+/* Powered by:
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃       D i s c o r d - M o d a l s        ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+------ Developed by 『𝑴𝒂𝒕𝒆𝒐ᵗᵉᵐ』#9999 ------
+
+https://www.npmjs.com/package/discord-modals
+
+*/

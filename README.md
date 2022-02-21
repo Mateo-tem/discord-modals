@@ -22,7 +22,7 @@ npm install discord-modals
 
 # 🔮 What is this package for?
 
-Recently, Discord announced Modal Interactions. What is that? Modal is a popup of Text Input Components [[Example]](https://media.discordapp.net/attachments/910547379617402960/942881133379612682/Modals_Test.png?width=881&height=559). It's so cool. However, discord.js hasn't added it yet. discord-modals can be a solution if you want to test or use modals right now in v13. Try it!
+Recently, Discord announced [Modal Interactions](https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-modal). What is that? Modal is a popup of Text Input Components [[Example]](https://media.discordapp.net/attachments/910547379617402960/942881133379612682/Modals_Test.png?width=881&height=559). It's so cool and useful for many commands that needs arguments. However, discord.js hasn't added it yet. discord-modals can be a solution if you want to test or use modals right now in v13. Try it!
 
 # ✨ Setup
 
@@ -116,8 +116,8 @@ client.on('interactionCreate', (interaction) => {
   // Let's say the interaction will be a Slash Command called 'ping'.
   if(interaction.commandName === 'ping'){
     showModal(modal, {
-      client: client, // The showModal() method needs the client to send the modal through the API.
-      interaction: interaction // The showModal() method needs the interaction to send the modal with the Interaction ID & Token.
+      client: client, // This method needs the Client to show the Modal through the Discord API.
+      interaction: interaction // This method needs the Interaction to show the Modal with the Interaction ID & Token.
     })
   }
   
@@ -126,6 +126,8 @@ client.on('interactionCreate', (interaction) => {
 ```
 
 > **Congrats! You show the Modal to the Interaction User. Now, how can i receive the Modal Interaction?**
+
+## 📢 Events: Receiving Modal Submit Interaction
 
 - discord-modals integrates to your Client a new event called `modalSubmit`. We are going to use it.
 - To have access to the responses, just use the `.getTextInputValue()` method with the Custom Id of the Text Input Component.

@@ -3,6 +3,11 @@
 const { Base, Permissions } = require('discord.js');
 const SnowflakeUtil = require('../util/SnowflakeUtil');
 
+/**
+ * Represents an Interaction.
+ * @extends Base
+*/
+
 class Interaction extends Base {
   constructor(client, data) {
     super(client);

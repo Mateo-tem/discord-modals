@@ -3,6 +3,20 @@ const { TextInputStyles, MessageComponentTypes } = require('../util/Constants');
 const { Util } = require('discord.js');
 const { RangeError } = require('./errors');
 
+/**
+ * Represents a Text Input Component.
+ * @extends BaseMessageComponent
+ * @example
+ * new TextInputComponent()
+ * .setCustomId('textinput-customid')
+ * .setLabel('Some text Here')
+ * .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
+ * .setMinLength(4)
+ * .setMaxLength(10)
+ * .setPlaceholder('Write a text here')
+ * .setRequired(true) // If it's required or not
+*/
+
 class TextInputComponent extends BaseMessageComponent {
   constructor(data = {}) {
     super({ type: 'TEXT_INPUT' });

@@ -1,6 +1,10 @@
 const { MessageComponentTypes } = require('../util/Constants');
 const { TypeError } = require('./errors');
 
+/**
+ * Represents an interactive component of a Message.
+*/
+
 class BaseMessageComponent {
   constructor(data) {
     this.type = 'type' in data ? BaseMessageComponent.resolveType(data.type) : null;

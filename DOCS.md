@@ -1,7 +1,5 @@
-# Documentation of Discord-Modals
-
 <div align="center">
-  <img src="https://cdn.discordapp.com/attachments/910547379617402960/942871547268436088/Discord-Modals.png" alt="Discord Modals" />
+  <img src="https://cdn.discordapp.com/attachments/910547379617402960/945169823648866414/Discord-Modals-Docs.png" alt="Discord Modals" />
   <p align="center">
   <a href="https://www.npmjs.com/package/discord-modals">
     <img src="https://img.shields.io/npm/dt/discord-modals?style=for-the-badge" alt="npm" />
@@ -14,7 +12,7 @@
 
 </div>
 
-> **A package that allows your bot of discord.js v13 to create the new Discord Modals and interact with them.**
+> **Discord-Modals is a package that allows your bot of discord.js v13 to create the new awesome Discord Modals and interact with them.**
 
 # 🔎 Installation
 
@@ -22,17 +20,27 @@
 npm install discord-modals
 ```
 
-# 📌 General
+# 🔮 General
 
 ### Methods
 
-| Name |Returns|Description|
+```js
+.showModal(modal, { client: Client, interaction: Interaction })
+```
+Shows the Modal to the Interaction User.
+
+| Parameter |Type|Description|
 | ------------ | ------------ |------------ |
-|  `.showModal(modal, { client: Client, interaction: Interaction })`  |[Modal](#modal)| Shows the Modal to the Interaction User. |
+|  *Modal*  |[Modal](#modal)| The Modal to show. |
+|  *Options#client*  |[Client](https://discord.js.org/#/docs/discord.js/stable/class/Client)| The Client to manipulate the Interaction for show the Modal. |
+|  *Options#interaction*  |[Interaction](https://discord.js.org/#/docs/discord.js/stable/class/Interaction)| The Interaction to show the Modal. |
+
+> Returns: [Modal](#modal)
 
 # 🧩 Classes
 
 ## Modal
+Represents a Modal.
 
 | Properties |Methods|
 | ------------ | ------------ |
@@ -45,45 +53,82 @@ npm install discord-modals
 
 ### Properties
 
-| Name |Type|Description|
-| ------------ | ------------ |------------ |
-|  `.title`  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Title of the Modal. |
+#### .title
+The Title of the Modal.
+> Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
-| Name |Type|Description|
-| ------------ | ------------ |------------ |
-|  `.customId`  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Custom Id of the Modal. |
+#### .customId
+The Custom Id of the Modal.
+> Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
-| Name |Type|Description|
-| ------------ | ------------ |------------ |
-|  `.components`  |[Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)| The Text Input Components of the Modal. |
+#### .components
+The Text Input Components of the Modal.
+> Returns: [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
 
 ### Methods
 
-| Name |Returns|Description|
-| ------------ | ------------ |------------ |
-|  `.setTitle('modalTitle')`  |[Modal](#modal)| Sets the Title of the Modal. |
+```js
+.setTitle('modalTitle')
+```
+Sets the Title of the Modal.
 
-| Name |Returns|Description|
+| Parameter |Type|Description|
 | ------------ | ------------ |------------ |
-|  `.setCustomId('modalCustomId')`  |[Modal](#modal)| Sets the Custom Id of the Modal. |
+|  *ModalTitle*  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Title of the Modal. |
 
-| Name |Returns|Description|
+> Returns: [Modal](#modal)
+
+```js
+.setCustomId('modalCustomId')
+```
+Sets the Custom Id of the Modal.
+
+| Parameter |Type|Description|
 | ------------ | ------------ |------------ |
-|  `.addComponents(TextInputComponent)`  |[Modal](#modal)| Adds the Components of the Modal. |
+|  *ModalCustomId*  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Custom Id of the Modal. |
 
-| Name |Returns|Description|
+> Returns: [Modal](#modal)
+
+```js
+.addComponents(TextInputComponent)
+```
+Adds the Components of the Modal.
+
+| Parameter |Type|Description|
 | ------------ | ------------ |------------ |
-|  `.setComponents(TextInputComponent)`  |[Modal](#modal)| Sets the Components of the Modal. |
+|  *TextInputComponent*  |[TextInputComponent](#textinputcomponent)| The Text Input Component to add in the Modal. |
 
-| Name |Returns|Description|
+> Returns: [Modal](#modal)
+
+```js
+.setComponents(TextInputComponent)
+```
+Sets the Components of the Modal.
+
+| Parameter |Type|Description|
 | ------------ | ------------ |------------ |
-|  `.spliceComponents()`  |[Modal](#modal)| Removes, replaces, and inserts components in the modal. |
+|  *TextInputComponent*  |[TextInputComponent](#textinputcomponent)| The Text Input Component to set in the Modal. |
 
-| Name |Returns|Description|
-| ------------ | ------------ |------------ |
-|  `.toJSON()`  |[APIModal](https://discord.com/developers/docs/interactions/message-components#text-inputs)| Splice the Components of the Modal. |
+> Returns: [Modal](#modal)
 
-## TextInputComponent (extends [BaseMessageComponent](https://discord.js.org/#/docs/discord.js/stable/class/BaseMessageComponent))
+```js
+.spliceComponents()
+```
+Removes, replaces, and inserts components in the Modal.
+
+> Returns: [Modal](#modal)
+
+```js
+.toJSON()
+```
+Transforms the Modal to a plain object.
+
+> Returns: [APIModal](https://discord.com/developers/docs/interactions/message-components#text-inputs)
+
+## TextInputComponent 
+> extends [BaseMessageComponent](https://discord.js.org/#/docs/discord.js/stable/class/BaseMessageComponent)
+
+Represents a Text Input Component.
 
 | Properties |Methods|
 | ------------ | ------------ |
@@ -98,65 +143,137 @@ npm install discord-modals
 
 ### Properties
 
-| Name |Type|Description|
-| ------------ | ------------ |------------ |
-|  `.customId`  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Custom Id of the Text Input Component. |
+#### .customId
+The Custom Id of the Text Input Component.
+> Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
-| Name |Type|Description|
-| ------------ | ------------ |------------ |
-|  `.label`  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The label of a Text Input Component. |
+#### .label
+The Label of the Text Input Component.
+> Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
-| Name |Type|Description|
-| ------------ | ------------ |------------ |
-|  `.minLength`  |[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)| The minimum length of characters of a Text Input Component. |
+#### .minLength
+The Minimum Length of the Text Input Component.
+> Returns: [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
 
-| Name |Type|Description|
-| ------------ | ------------ |------------ |
-|  `.maxLength`  |[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)| The maximum length of characters of a Text Input Component. |
+#### .maxLength
+The Maximum Length of the Text Input Component.
+> Returns: [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
 
-| Name |Type|Description|
-| ------------ | ------------ |------------ |
-|  `.placeholder`  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Placeholder of a Text Input Component. |
+#### .placeholder
+The Placeholder of the Text Input Component.
+> Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
-| Name |Type|Description|
-| ------------ | ------------ |------------ |
-|  `.required`  |[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)| If a Text Input Component is required. |
+#### .required
+If the Text Input Component is required.
+> Returns: [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)
+
+#### .style
+The Style of the Text Input Component.
+> Returns: [TextInputComponentStyle](#textinputcomponentstyle)
+
+#### .value
+The Prefilled Value of the Text Input Component.
+> Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
 ### Methods
 
-| Name |Returns|Description|
-| ------------ | ------------ |------------ |
-|  `.setCustomId('textinput-customid')`  |[TextInputComponent](#textinputcomponent-extends-basemessagecomponenthttpsdiscordjsorgdocsdiscordjsstableclassbasemessagecomponent)| Sets the Custom Id of a Text Input Component. |
+```js
+.setCustomId('textinput-customid')
+```
+Sets the Custom Id of the Text Input Component.
 
-| Name |Returns|Description|
+| Parameter |Type|Description|
 | ------------ | ------------ |------------ |
-|  `.setLabel('label')`  |[TextInputComponent](#textinputcomponent-extends-basemessagecomponenthttpsdiscordjsorgdocsdiscordjsstableclassbasemessagecomponent)| Sets the Label of a Text Input Component. |
+|  *TextInputCustomId*  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Custom Id of the Text Input Component. |
 
-| Name |Returns|Description|
-| ------------ | ------------ |------------ |
-|  `.setMinLength(Number)`  |[TextInputComponent](#textinputcomponent-extends-basemessagecomponenthttpsdiscordjsorgdocsdiscordjsstableclassbasemessagecomponent)| Sets the Minimum Length of a Text Input Component. |
+> Returns: [TextInputComponent](#textinputcomponent)
 
-| Name |Returns|Description|
-| ------------ | ------------ |------------ |
-|  `.setMaxLength(Number)`  |[TextInputComponent](#textinputcomponent-extends-basemessagecomponenthttpsdiscordjsorgdocsdiscordjsstableclassbasemessagecomponent)| Sets the Maximum Length of a Text Input Component. |
+```js
+.setLabel('textinput-label')
+```
+Sets the Label of the Text Input Component.
 
-| Name |Returns|Description|
+| Parameter |Type|Description|
 | ------------ | ------------ |------------ |
-|  `.setPlaceholder('textinput-placeholder')`  |[TextInputComponent](#textinputcomponent-extends-basemessagecomponenthttpsdiscordjsorgdocsdiscordjsstableclassbasemessagecomponent)| Sets the Placeholder of a Text Input Component. |
+|  *TextInputLabel*  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Label of the Text Input Component. |
 
-| Name |Returns|Description|
-| ------------ | ------------ |------------ |
-|  `.setRequired(Boolean)`  |[TextInputComponent](#textinputcomponent-extends-basemessagecomponenthttpsdiscordjsorgdocsdiscordjsstableclassbasemessagecomponent)| Sets a Boolean if a Text Input Component is required. Default: false |
+> Returns: [TextInputComponent](#textinputcomponent)
 
-| Name |Returns|Description|
-| ------------ | ------------ |------------ |
-|  `.setStyle('SHORT or LONG')`  |[TextInputComponent](##textinputcomponent-extends-basemessagecomponenthttpsdiscordjsorgdocsdiscordjsstableclassbasemessagecomponent)| Sets the style of a Text Input Component. |
+```js
+.setMinLength(Number)
+```
+Sets the Minimum Length of the Text Input Component.
 
-| Name |Returns|Description|
+| Parameter |Type|Description|
 | ------------ | ------------ |------------ |
-|  `.setValue('textinput-prefilledvalue')`  |[TextInputComponent](#textinputcomponent-extends-basemessagecomponenthttpsdiscordjsorgdocsdiscordjsstableclassbasemessagecomponent)| Sets a prefilled value of a Text Input Component. |
+|  *Number*  |[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) (Between 1 - 4000)| The Number of the Minimum Length of the Text Input Component. |
+
+> Returns: [TextInputComponent](#textinputcomponent)
+
+```js
+.setMaxLength(Number)
+```
+Sets the Maximum Length of the Text Input Component.
+
+| Parameter |Type|Description|
+| ------------ | ------------ |------------ |
+|  *Number*  |[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) (Between 1 - 4000)| The Number of the Maximum Length of the Text Input Component. |
+
+> Returns: [TextInputComponent](#textinputcomponent)
+
+```js
+.setPlaceholder('Text Input Placeholder')
+```
+Sets the Placeholder of the Text Input Component.
+
+| Parameter |Type|Description|
+| ------------ | ------------ |------------ |
+|  *TextInputPlaceholder*  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Placeholder of the Text Input Component. |
+
+> Returns: [TextInputComponent](#textinputcomponent)
+
+```js
+.setRequired(Boolean)
+```
+Sets a Boolean if the Text Input Component is required. Default: false.
+
+| Parameter |Type|Description|
+| ------------ | ------------ |------------ |
+|  *Boolean*  |[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)| The Boolean if the Text Input Component is required. |
+
+> Returns: [TextInputComponent](#textinputcomponent)
+
+```js
+.setStyle(TextInputStyle)
+```
+Sets the Style of the Text Input Component.
+
+| Parameter |Type|Description|
+| ------------ | ------------ |------------ |
+|  *TextInputStyle*  |[TextInputComponentStyle](#textinputcomponentstyle)| The Style of the Text Input Component. |
+
+> Returns: [TextInputComponent](#textinputcomponent)
+
+```js
+.setValue('Value')
+```
+Sets the Value of the Text Input Component.
+
+| Parameter |Type|Description|
+| ------------ | ------------ |------------ |
+|  *Value*  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Prefilled Value of the Text Input Component. |
+
+> Returns: [TextInputComponent](#textinputcomponent)
+
+### TextInputComponentStyle
+
+| Text |Value|Description|
+| ------------ | ------------ |------------ |
+|  SHORT  |1 [[Short]](https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-styles)| A single-line input |
+|  LONG  |2 [[Paragraph]](https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-styles)| A multi-line input |
 
 ## ModalSubmitField
+Represents a Field of a Modal Submit Interaction.
 
 | Properties |Methods|
 | ------------ | ------------ |
@@ -166,20 +283,22 @@ npm install discord-modals
 
 ### Properties
 
-| Name |Type|Description|
-| ------------ | ------------ |------------ |
-|  `.type`  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The type of the Modal Submit Field ('TEXT_INPUT'). |
+#### .type
+The type of the Modal Submit Field ('TEXT_INPUT').
+> Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
-| Name |Type|Description|
-| ------------ | ------------ |------------ |
-|  `.customId`  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Custom Id of the Modal Submit Field. |
+#### .customId
+The Custom Id of the Modal Submit Field.
+> Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
-| Name |Type|Description|
-| ------------ | ------------ |------------ |
-|  `.value`  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The value of the Modal Submit Field. |
+#### .value
+The Value of the Modal Submit Field.
+> Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
+## ModalSubmitInteraction
+> extends [Interaction](https://discord.js.org/#/docs/discord.js/stable/class/Interaction)
 
-## ModalSubmitInteraction (extends [Interaction](https://discord.js.org/#/docs/discord.js/stable/class/Interaction))
+Represents a Modal Submit Interaction.
 
 | Properties |Methods|
 | ------------ | ------------ |
@@ -194,23 +313,37 @@ npm install discord-modals
 
 ### Properties
 
-| Name |Type|Description|
-| ------------ | ------------ |------------ |
-|  `.customId`  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Custom Id of the Modal. |
+#### .customId
+The Custom Id of the Modal.
+> Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
-| Name |Type|Description|
-| ------------ | ------------ |------------ |
-|  `.fields`  |[Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)| The (Fields) Text Input Components of the Modal. |
+#### .fields
+The (Fields) Text Input Components of the Modal.
+> Returns: [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
 
 ### Methods
 
-| Name |Returns|Description|
-| ------------ | ------------ |------------ |
-|  `.getTextInputValue('textinput-customid')`  |Number([TextInputComponent#customId](#textinputcomponent-extends-basemessagecomponenthttpsdiscordjsorgdocsdiscordjsstableclassbasemessagecomponent))| Gets a Text Input Component value. |
+```js
+.getTextInputValue('textinput-customid')
+```
+Gets a Text Input Component value.
 
-| Name |Returns|Description|
+| Parameter |Type|Description|
 | ------------ | ------------ |------------ |
-|  `.getField('textinput-customid')`  |[ModalSubmitField](#modalsubmitfield)| Gets a Modal Submit Field. |
+|  *TextInputCustomId*  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Custom Id of the Text Input Component. |
+
+> Returns: [TextInputComponent#value](#textinputcomponent)
+
+```js
+.getField('textinput-customid')
+```
+Gets a Modal Submit Field.
+
+| Parameter |Type|Description|
+| ------------ | ------------ |------------ |
+|  *TextInputCustomId*  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Custom Id of the Text Input Component. |
+
+> Returns: [ModalSubmitField](#modalsubmitfield)
 
 # 🔨 Do you want to contribute to Discord-Modals?
 
