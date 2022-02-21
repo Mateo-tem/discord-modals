@@ -1,6 +1,6 @@
 const { Client, version } = require('discord.js');
 const ModalSubmitInteraction = require("./src/structures/ModalSubmitInteraction");
-const { Error } = require('./errors');
+const { Error } = require('./src/structures/errors');
 
 module.exports = (client) => {
 
