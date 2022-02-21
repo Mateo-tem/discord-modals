@@ -2,7 +2,11 @@
 
 Hello! This is the Change log section of Discord-Modals. Here you can see what things have been changed in the different versions to be informed. This will be updated every time there are new versions. I hope you like this package :)
 
-## v1.1.9 (Stable)
+## v1.2.0 (Stable)
+
+- Fix issue of errors.
+
+## v1.1.9
 
 - Add examples to classes. More comprehension.
 - Improvements to documentation and fix errors.

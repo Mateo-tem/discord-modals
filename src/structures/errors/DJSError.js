@@ -42,8 +42,8 @@ function message(key, args) {
   if (!args?.length) return msg;
   args.unshift(msg);
 
-  const msg = String(...args);
-  return String('[discord-modals]' + msg)
+  const string = String(...args);
+  return String('[discord-modals]' + string)
 }
 
 /**
