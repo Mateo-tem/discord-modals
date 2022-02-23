@@ -15,9 +15,24 @@ const { RangeError } = require("./errors");
 class Modal {
   constructor(data = {}, client = null) {
 
+    /**
+     * The Text Input Components of the Modal.
+     * @type {BaseMessageComponent}
+    */
+
     this.components = data.components?.map(c => BaseMessageComponent.create(c, client)) ?? [];
 
+    /**
+     * The Custom Id of the Modal.
+     * @type {String}
+    */
+
     this.customId = data.custom_id ?? data.customId ?? null;
+
+    /**
+     * The Title of the Modal.
+     * @type {String}
+    */
 
     this.title = data.title ?? null;
 

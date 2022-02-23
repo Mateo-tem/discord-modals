@@ -26,19 +26,59 @@ class TextInputComponent extends BaseMessageComponent {
 
   setup(data) {
 
+    /**
+     * The Custom Id of the Text Input Component.
+     * @type {String}
+    */
+
     this.customId = data.custom_id ?? data.customId ?? null;
+
+    /**
+     * The Label of the Text Input Component.
+     * @type {String}
+    */
 
     this.label = data.label ?? null;
 
+    /**
+     * The Maximum Length of the Text Input Component.
+     * @type {Number}
+    */
+
     this.maxLength = data.max_length ?? data.maxLength ?? null;
+
+    /**
+     * The Minimum Length of the Text Input Component.
+     * @type {Number}
+    */
 
     this.minLength = data.min_length ?? data.minLength ?? null;
 
+    /**
+     * The Placeholder of the Text Input Component.
+     * @type {String}
+    */
+
     this.placeholder = data.placeholder ?? null;
+
+    /**
+     * If the Text Input Component is required.
+     * @type {Boolean}
+    */
 
     this.required = data.required ?? false;
 
+    /**
+     * The Style of the Text Input Component.
+     * @type {String}
+    */
+
     this.style = data.style ? TextInputComponent.resolveStyle(data.style) : null;
+
+    /**
+     * The Value of the Text Input Component.
+     * @type {String}
+    */
 
     this.value = data.value ?? null;
 

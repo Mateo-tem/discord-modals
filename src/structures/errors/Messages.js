@@ -12,16 +12,16 @@ const Messages = {
   MODAL_REQUIRED: 'No Modal was provided to show.',
   OPTIONS_REQUIRED: 'No Options were provided.',
   CLIENT_REQUIRED: 'No Client was provided on the showModal method options.',
-  INTERACTION_REQUIRED: 'No Client was provided on the showModal method options.',
+  INTERACTION_REQUIRED: 'No Interaction was provided on the showModal method options.',
   INVALID_MODAL: 'The provided Modal is invalid in this context.',
   INVALID_INTERACTION: 'The provided Interaction is invalid in this context.',
 
   // Text Input Components
 
-  TEXT_INPUT_CUSTOM_ID: 'TextInputComponent customId must be a string',
-  TEXT_INPUT_LABEL: 'TextInputComponent label must be a string',
-  TEXT_INPUT_PLACEHOLDER: 'TextInputComponent placeholder must be a string',
-  TEXT_INPUT_VALUE: 'TextInputComponent value must be a string',
+  TEXT_INPUT_CUSTOM_ID: 'TextInputComponent customId must be a string.',
+  TEXT_INPUT_LABEL: 'TextInputComponent label must be a string.',
+  TEXT_INPUT_PLACEHOLDER: 'TextInputComponent placeholder must be a string.',
+  TEXT_INPUT_VALUE: 'TextInputComponent value must be a string.',
 
   // Message Components
 

@@ -4,6 +4,7 @@ const BaseMessageComponent = require('./BaseMessageComponent');
 const Interaction = require('./Interaction');
 const InteractionResponses = require('./interfaces/InteractionResponses');
 const { InteractionTypes } = require('../util/Constants');
+const { Message } = require("discord.js");
 
 /**
  * Represents a Modal Submit Interaction.
@@ -14,15 +15,26 @@ class ModalSubmitInteraction extends Interaction {
   constructor(client, data) {
     super(client, data);
 
-    this.type = InteractionTypes[data.type] ?? null;
+    /**
+     * The type of the Interaction.
+     * @type {String}
+    */
 
-    this.webhook = new InteractionWebhook(
-      this.client,
-      this.applicationId,
-      this.token
-    );
+    this.type = InteractionTypes[data.type] ?? null;   
+    
+    /**
+     * The Custom Id of the Modal.
+     * @type {String}
+    */
 
     this.customId = data.data.custom_id;
+
+    /**
+     * The Message of the Modal Submit Interaction.
+     * @type {Message}
+    */
+
+    this.message = data.message ? this.channel?.messages._add(data.message) ?? data.message : null;
 
     let modalFields = [];
     for (let i = 0; i < data.data.components.length; i++) {
@@ -30,7 +42,23 @@ class ModalSubmitInteraction extends Interaction {
       modalFields.push(field);
     }
 
+    /**
+     * The (Fields) Text Input Components of the Modal.
+     * @type {ModalSubmitField}
+    */
+
     this.fields = modalFields.map((f) => new ModalSubmitField(f)) ?? data.data.components?.map((c) => BaseMessageComponent.create(c, this.client)) ?? [];
+
+    /**
+     * An associated interaction webhook, can be used to further interact with this interaction
+     * @type {InteractionWebhook}
+    */
+
+    this.webhook = new InteractionWebhook(
+      this.client,
+      this.applicationId,
+      this.token
+    );
   }
 
   
@@ -42,13 +70,8 @@ class ModalSubmitInteraction extends Interaction {
 
   getTextInputValue(customId) {
     const field = this.fields.find((field) => field.customId === customId);
-
-    if(field === undefined){
-      return null;
-    } else {
-      return field.value;
-    }
-
+    
+    return field ? field.value : null;
   }
 
   /**
@@ -60,12 +83,7 @@ class ModalSubmitInteraction extends Interaction {
   getField(customId) {
     const field = this.fields.find((field) => field.customId === customId);
 
-    if(field === undefined){
-      return null;
-    } else {
-      return field;
-    }
-
+    return field ? field : null;
   }
 
   deferReply() {}

@@ -13,9 +13,21 @@ class ModalSubmitField extends BaseMessageComponent {
   }
 
   setup(data) {
+
+    /**
+     * The Custom Id of the Modal Submit Field.
+     * @type {String}
+    */
+
     this.customId = data.custom_id ?? null;
 
+    /**
+     * The Value of the Modal Submit Field.
+     * @type {String}
+    */
+
     this.value = data.value ?? null;
+
   }
 }
 

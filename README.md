@@ -22,9 +22,14 @@ npm install discord-modals
 
 # 🔮 What is this package for?
 
-Recently, Discord announced [Modal Interactions](https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-modal). What is that? Modal is a popup of Text Input Components [[Example]](https://media.discordapp.net/attachments/910547379617402960/942881133379612682/Modals_Test.png?width=881&height=559). It's so cool and useful for many commands that needs arguments. However, discord.js hasn't added it yet. discord-modals can be a solution if you want to test or use modals right now in v13. Try it!
+Recently, Discord API officialy announced **[Modal Interactions](https://discord.com/developers/docs/change-log#interaction-modals-and-application-command-attachment-option-type)**.
+
+**What is that?** Modal is a popup of Text Input Components [[Example]](https://media.discordapp.net/attachments/910547379617402960/942881133379612682/Modals_Test.png?width=881&height=559). It's so cool and useful for many commands that needs arguments. However, discord.js hasn't added it yet. Discord-Modals can be a solution if you want to test or use Modals right now in v13. **Try it!**
 
 # ✨ Setup
+The most recommended is to put this on your main file.
+
+> **Important:** Don't forget to put `discordModals(client)`, will be essential to receive the Modal Submit Interaction.
 
 ```js
 const { Client } = require('discord.js') // Extract the Client class
@@ -131,6 +136,8 @@ client.on('interactionCreate', (interaction) => {
 
 - discord-modals integrates to your Client a new event called `modalSubmit`. We are going to use it.
 - To have access to the responses, just use the `.getTextInputValue()` method with the Custom Id of the Text Input Component.
+
+> **Recommendation:** Put your `modalSubmit` event on your main file or in an Event Handler.
 
 ### Reply Examples
 

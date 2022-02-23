@@ -2,7 +2,15 @@
 
 Hello! This is the Change log section of Discord-Modals. Here you can see what things have been changed in the different versions to be informed. This will be updated every time there are new versions. I hope you like this package :)
 
-## v1.2.0 & v1.2.1 (Stable)
+## v1.2.2 (Stable)
+
+- Add recomendations on readme.
+- Add `.message` property to `ModalSubmitInteraction` class. Some code cleanup there.
+- Add types to Classes properties.
+- Documentation: Add `ModalSubmitInteraction` class properties and add Errors codes & messages.
+- Fix the `'INTERACTION_REQUIRED'` error message.
+
+## v1.2.0 & v1.2.1
 
 - Fix issue of errors.
 

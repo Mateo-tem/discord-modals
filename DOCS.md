@@ -304,12 +304,19 @@ Represents a Modal Submit Interaction.
 | ------------ | ------------ |
 |  `.customId`  | `.getTextInputValue()` |
 |  `.fields`  | `.getField()` |
-|    | `.deferReply()` |
-|    | `.reply()` |
-|    | `.fetchReply()` |
-|    | `.editReply()` |
-|    | `.deleteReply()` |
-|    | `.followUp()` |
+|  `.id`  | `.deferReply()` |
+|  `.applicationId`  | `.reply()` |
+|  `.channelId`  | `.fetchReply()` |
+|  `.guildId`  | `.editReply()` |
+|  `.user`  | `.deleteReply()` |
+|  `.member`  | `.followUp()` |
+|  `.memberPermissions`  |  |
+|  `.locale`  |  |
+|  `.guildLocale`  |  |
+|  `.message`  |  |
+|  `.version`  |  |  
+|  `.webhook`  |  | 
+|  `.type`  |  | 
 
 ### Properties
 
@@ -320,6 +327,54 @@ The Custom Id of the Modal.
 #### .fields
 The (Fields) Text Input Components of the Modal.
 > Returns: [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
+
+#### .id
+The Id of the Modal Submit Interaction.
+> Returns: [Snowflake](https://discord.js.org/#/docs/discord.js/stable/typedef/Snowflake)
+
+#### .applicationId
+The application's id.
+> Returns: [Snowflake](https://discord.js.org/#/docs/discord.js/stable/typedef/Snowflake)
+
+#### .channelId
+The Id of the Channel this Modal Submit Interaction was sent in.
+> Returns: [Snowflake](https://discord.js.org/#/docs/discord.js/stable/typedef/Snowflake)
+
+#### .guildId
+The Id of the Guild this Modal Submit Interaction was sent in.
+> Returns: [Snowflake](https://discord.js.org/#/docs/discord.js/stable/typedef/Snowflake)
+
+#### .user
+The User which sent this Modal Submit Interaction.
+> Returns: [User](https://discord.js.org/#/docs/discord.js/stable/class/User)
+
+#### .member
+If this Modal Submit Interaction was sent in a Guild, the Member which sent it.
+> Returns: [GuildMember](https://discord.js.org/#/docs/discord.js/stable/class/GuildMember)
+
+#### .memberPermissions
+If this Modal Submit Interaction was sent in a Guild, the Member which sent it.
+> Returns: ?Readonly<[Permissions](https://discord.js.org/#/docs/discord.js/stable/class/Permissions)>
+
+#### .locale
+The Locale of the User who invoked this Modal Submit Interaction.
+> Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) [(Locale)](https://discord.com/developers/docs/reference#locales)
+
+#### .guildLocale
+The preferred Locale from the Guild this Modal Submit Interaction was sent in.
+> Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) [(Locale)](https://discord.com/developers/docs/reference#locales)
+
+#### .message
+The Message where the Modal Submit Interaction was invoked, if the Modal was invoked on a Message Component.
+> Returns: [Message](https://discord.js.org/#/docs/discord.js/stable/class/Message)
+
+#### .version
+The Version.
+> Returns: [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+
+#### .webhook
+An associated Interaction Webhook, can be used to further interact with this Interaction.
+> Returns: [InteractionWebhook](https://discord.js.org/#/docs/discord.js/stable/class/InteractionWebhook)
 
 ### Methods
 
@@ -344,6 +399,29 @@ Gets a Modal Submit Field.
 |  *TextInputCustomId*  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Custom Id of the Text Input Component. |
 
 > Returns: [ModalSubmitField](#modalsubmitfield)
+
+# ❌ Errors
+
+Discord-Modals integrates some errors to avoid issues and respect the structures.
+
+| Code |Message|
+| ------------ | ------------ |
+|  INVALID_VERSION  | This package is only compatible with discord.js v13. |
+|  NO_CLIENT_PROVIDED  | No Client was provided to interact with modals. |
+|  INVALID_CLIENT  | The provided Client is invalid in this context. |
+|  MODAL_REQUIRED  | No Modal was provided to show. |
+|  OPTIONS_REQUIRED  | No Options were provided. |
+|  CLIENT_REQUIRED  | No Client was provided on the showModal method options. |
+|  INTERACTION_REQUIRED  | No Interaction was provided on the showModal method options. |
+|  INVALID_MODAL  | The provided Modal is invalid in this context. |
+|  INVALID_INTERACTION  | The provided Interaction is invalid in this context. |
+|  TEXT_INPUT_CUSTOM_ID  | TextInputComponent customId must be a string. |
+|  TEXT_INPUT_LABEL  | TextInputComponent label must be a string. |
+|  TEXT_INPUT_PLACEHOLDER | TextInputComponent placeholder must be a string. |
+|  TEXT_INPUT_VALUE | TextInputComponent value must be a string. |
+|  MODAL_CUSTOM_ID | Modal customId must be a string. |
+|  MODAL_TITLE | Modal title must be a string. |
+
 
 # 🔨 Do you want to contribute to Discord-Modals?
 
