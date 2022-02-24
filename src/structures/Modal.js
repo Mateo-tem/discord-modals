@@ -4,7 +4,7 @@ const { Util } = require("discord.js");
 const { RangeError } = require("./errors");
 
 /**
- * Represents a Modal.
+ * Represents a Modal Form to be shown in response to an Interaction.
  * @example
  * const modal = new Modal() // Modal constructor
  * .setCustomId('modal-customid')

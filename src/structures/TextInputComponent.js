@@ -4,7 +4,7 @@ const { Util } = require('discord.js');
 const { RangeError } = require('./errors');
 
 /**
- * Represents a Text Input Component.
+ * Represents a Text Input Component of a Modal.
  * @extends BaseMessageComponent
  * @example
  * new TextInputComponent()
@@ -76,7 +76,7 @@ class TextInputComponent extends BaseMessageComponent {
     this.style = data.style ? TextInputComponent.resolveStyle(data.style) : null;
 
     /**
-     * The Value of the Text Input Component.
+     * The Default/Pre-filled value of the Text Input Component.
      * @type {String}
     */
 
@@ -162,12 +162,12 @@ class TextInputComponent extends BaseMessageComponent {
   }
 
   /**
-   * Sets a prefilled value of a Text Input Component.
-   * @param {String} value The value of the Text Input Component.
+   * Sets a Default/Pre-filled Value of the Text Input Component.
+   * @param {String} value The Default/Pre-filled value of the Text Input Component.
    * @returns {TextInputComponent} A Text Input Component.
   */
 
-  setValue(value) {
+  setDefaultValue(value) {
     this.value = Util.verifyString(value, RangeError, 'TEXT_INPUT_VALUE');
     return this;
   }  

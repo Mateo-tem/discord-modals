@@ -29,8 +29,6 @@ Recently, Discord API officialy announced **[Modal Interactions](https://discord
 # ✨ Setup
 The most recommended is to put this on your main file.
 
-> **Important:** Don't forget to put `discordModals(client)`, will be essential to receive the Modal Submit Interaction.
-
 ```js
 const { Client } = require('discord.js') // Extract the Client class
 const client = new Client({ intents: 32767 }) // Create a Client
@@ -39,6 +37,8 @@ discordModals(client); // discord-modals needs your client in order to interact 
 
 client.login('token') // Login with your bot
 ```
+
+> **Important:** Don't forget to put `discordModals(client)`, will be essential to receive the Modal Submit Interaction.
 
 # ❓ How can i use it?
 

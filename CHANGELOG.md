@@ -2,7 +2,12 @@
 
 Hello! This is the Change log section of Discord-Modals. Here you can see what things have been changed in the different versions to be informed. This will be updated every time there are new versions. I hope you like this package :)
 
-## v1.2.2 (Stable)
+# v1.2.3 (Stable)
+
+- Change `TextInputComponent` class method `.setValue()` to `.setDefaultValue()`.
+- Documentation: Add limits and specifications to classes and update `TextInputComponent` class.
+
+## v1.2.2
 
 - Add recomendations on readme.
 - Add `.message` property to `ModalSubmitInteraction` class. Some code cleanup there.

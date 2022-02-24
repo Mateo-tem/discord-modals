@@ -40,7 +40,8 @@ Shows the Modal to the Interaction User.
 # 🧩 Classes
 
 ## Modal
-Represents a Modal.
+Represents a Modal Form to be shown in response to an Interaction.
+- A modal can contain at most **5 Text Input Components**
 
 | Properties |Methods|
 | ------------ | ------------ |
@@ -70,7 +71,7 @@ The Text Input Components of the Modal.
 ```js
 .setTitle('modalTitle')
 ```
-Sets the Title of the Modal.
+Sets the Title of the Modal. (Max. 45 characters)
 
 | Parameter |Type|Description|
 | ------------ | ------------ |------------ |
@@ -81,7 +82,7 @@ Sets the Title of the Modal.
 ```js
 .setCustomId('modalCustomId')
 ```
-Sets the Custom Id of the Modal.
+Sets the Custom Id of the Modal. (Max. 100 characters)
 
 | Parameter |Type|Description|
 | ------------ | ------------ |------------ |
@@ -128,7 +129,7 @@ Transforms the Modal to a plain object.
 ## TextInputComponent 
 > extends [BaseMessageComponent](https://discord.js.org/#/docs/discord.js/stable/class/BaseMessageComponent)
 
-Represents a Text Input Component.
+Represents a Text Input Component of a Modal.
 
 | Properties |Methods|
 | ------------ | ------------ |
@@ -139,7 +140,7 @@ Represents a Text Input Component.
 |  `.placeholder`  | `.setPlaceholder()` |
 |  `.required`  | `.setRequired()` |
 |  `.style`  | `.setStyle()` |
-|  `.value`  | `.setValue()` |
+|  `.value`  | `.setDefaultValue()` |
 
 ### Properties
 
@@ -172,7 +173,7 @@ The Style of the Text Input Component.
 > Returns: [TextInputComponentStyle](#textinputcomponentstyle)
 
 #### .value
-The Prefilled Value of the Text Input Component.
+The Default/Pre-filled value of the Text Input Component.
 > Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
 ### Methods
@@ -180,7 +181,7 @@ The Prefilled Value of the Text Input Component.
 ```js
 .setCustomId('textinput-customid')
 ```
-Sets the Custom Id of the Text Input Component.
+Sets the Custom Id of the Text Input Component. (Max. 100 characters)
 
 | Parameter |Type|Description|
 | ------------ | ------------ |------------ |
@@ -191,7 +192,7 @@ Sets the Custom Id of the Text Input Component.
 ```js
 .setLabel('textinput-label')
 ```
-Sets the Label of the Text Input Component.
+Sets the Label of the Text Input Component. (Max. 45 characters)
 
 | Parameter |Type|Description|
 | ------------ | ------------ |------------ |
@@ -202,7 +203,7 @@ Sets the Label of the Text Input Component.
 ```js
 .setMinLength(Number)
 ```
-Sets the Minimum Length of the Text Input Component.
+Sets the Minimum Length of the Text Input Component. (Between 1 - 4000)
 
 | Parameter |Type|Description|
 | ------------ | ------------ |------------ |
@@ -213,7 +214,7 @@ Sets the Minimum Length of the Text Input Component.
 ```js
 .setMaxLength(Number)
 ```
-Sets the Maximum Length of the Text Input Component.
+Sets the Maximum Length of the Text Input Component. (Between 1 - 4000)
 
 | Parameter |Type|Description|
 | ------------ | ------------ |------------ |
@@ -224,7 +225,7 @@ Sets the Maximum Length of the Text Input Component.
 ```js
 .setPlaceholder('Text Input Placeholder')
 ```
-Sets the Placeholder of the Text Input Component.
+Sets the Placeholder of the Text Input Component. (Max. 100 characters)
 
 | Parameter |Type|Description|
 | ------------ | ------------ |------------ |
@@ -255,13 +256,13 @@ Sets the Style of the Text Input Component.
 > Returns: [TextInputComponent](#textinputcomponent)
 
 ```js
-.setValue('Value')
+.setDefaultValue('Value')
 ```
-Sets the Value of the Text Input Component.
+Sets a Default/Pre-filled Value of the Text Input Component. (Max. 4000 characters)
 
 | Parameter |Type|Description|
 | ------------ | ------------ |------------ |
-|  *Value*  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Prefilled Value of the Text Input Component. |
+|  *Value*  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Default/Pre-filled value of the Text Input Component. |
 
 > Returns: [TextInputComponent](#textinputcomponent)
 
@@ -284,7 +285,7 @@ Represents a Field of a Modal Submit Interaction.
 ### Properties
 
 #### .type
-The type of the Modal Submit Field ('TEXT_INPUT').
+The type of the Modal Submit Field (TEXT_INPUT).
 > Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
 #### .customId
