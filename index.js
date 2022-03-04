@@ -1,17 +1,17 @@
 const { Client, version } = require('discord.js');
-const ModalSubmitInteraction = require("./src/structures/ModalSubmitInteraction");
+let ModalSubmitInteraction = require('./src/structures/ModalSubmitInteraction');
 const { Error } = require('./src/structures/errors');
-const TextInputComponent = require('./src/structures/TextInputComponent');
+const { InteractionTypes } = require('./src/util/Constants');
+const discordjsVersion = new String('v' + version); // Expected: v13 or v14...
+if(discordjsVersion.includes('v14')) ModalSubmitInteraction = require('./src/v14/ModalSubmitInteraction');
 
 module.exports = (client) => {
 
   // Compatibility with discord.js version.
-
-  const discordjsVersion = new String("v" + version); // Expected: v13...
-  if (!discordjsVersion.includes("v13")) throw new Error('INVALID_VERSION');
+  if (!discordjsVersion.includes('v13') && !discordjsVersion.includes('v14')) throw new Error('INVALID_VERSION');
 
   if (!client) throw new Error('NO_CLIENT_PROVIDED');
-  if (!(client instanceof Client)) throw new Error('INVALID_CLIENT');
+  if (!client.ws && !client.api) throw new Error('INVALID_CLIENT');
 
   // We receive the 'INTERACTION_CREATE' event from WebSocket.
   
@@ -20,7 +20,7 @@ module.exports = (client) => {
     if (!data.type) return;    
 
     switch (data.type) {      
-      case 5:
+      case InteractionTypes.MODAL_SUBMIT:
         client.emit('modalSubmit', new ModalSubmitInteraction(client, data));
         break;
 
@@ -33,16 +33,29 @@ module.exports = (client) => {
 
 }
 
-// Exports the classes.
-module.exports.Modal = require("./src/structures/Modal");
-module.exports.TextInputComponent = require("./src/structures/TextInputComponent");
-module.exports.ModalSubmitInteraction = require("./src/structures/ModalSubmitInteraction");
-module.exports.ModalSubmitField = require("./src/structures/ModalSubmitField");
-module.exports.showModal = require("./src/structures/ShowModal");
-module.exports.Interaction = require("./src/structures/Interaction");
-module.exports.InteractionResponses = require("./src/structures/interfaces/InteractionResponses");
-module.exports.Constants = require("./src/util/Constants");
-module.exports.SnowflakeUtil = require("./src/util/SnowflakeUtil");
+// Exports the classes according to the discord.js version.
+
+if (discordjsVersion.includes('v13')) {
+  module.exports.Modal = require('./src/structures/Modal');
+  module.exports.TextInputComponent = require('./src/structures/TextInputComponent');
+  module.exports.ModalSubmitInteraction = require('./src/structures/ModalSubmitInteraction');
+  module.exports.ModalSubmitField = require('./src/structures/ModalSubmitField');
+  module.exports.showModal = require('./src/structures/ShowModal');
+  module.exports.Interaction = require('./src/structures/Interaction');
+  module.exports.InteractionResponses = require('./src/structures/interfaces/InteractionResponses');
+  module.exports.Constants = require('./src/util/Constants');
+  module.exports.SnowflakeUtil = require('./src/util/SnowflakeUtil');
+} else if (discordjsVersion.includes('v14')) {
+  module.exports.Modal = require('./src/structures/Modal');
+  module.exports.TextInputComponent = require('./src/structures/TextInputComponent');
+  module.exports.ModalSubmitInteraction = require('./src/v14/ModalSubmitInteraction');
+  module.exports.ModalSubmitField = require('./src/structures/ModalSubmitField');
+  module.exports.showModal = require('./src/v14/ShowModal');
+  module.exports.Interaction = require('./src/v14/Interaction');
+  module.exports.InteractionResponses = require('./src/v14/interfaces/InteractionResponses');
+  module.exports.Constants = require('./src/util/Constants');
+  module.exports.SnowflakeUtil = require('./src/util/SnowflakeUtil');
+}
 
 /* Powered by:
 

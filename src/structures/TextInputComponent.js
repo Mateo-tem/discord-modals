@@ -6,18 +6,23 @@ const { RangeError } = require('./errors');
 /**
  * Represents a Text Input Component of a Modal.
  * @extends BaseMessageComponent
- * @example
- * new TextInputComponent()
- * .setCustomId('textinput-customid')
- * .setLabel('Some text Here')
- * .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
- * .setMinLength(4)
- * .setMaxLength(10)
- * .setPlaceholder('Write a text here')
- * .setRequired(true) // If it's required or not
 */
 
 class TextInputComponent extends BaseMessageComponent {
+
+  /**
+   * Represents a Text Input Component of a Modal.
+   * @example
+   * new TextInputComponent()
+   * .setCustomId('textinput-customid')
+   * .setLabel('Some text Here')
+   * .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
+   * .setMinLength(4)
+   * .setMaxLength(10)
+   * .setPlaceholder('Write a text here')
+   * .setRequired(true) // If it's required or not
+  */
+ 
   constructor(data = {}) {
     super({ type: 'TEXT_INPUT' });
 
@@ -152,7 +157,7 @@ class TextInputComponent extends BaseMessageComponent {
 
   /**
    * Sets the Style of a Text Input Component.
-   * @param {String} style 'SHORT' or 'LONG'.
+   * @param {String} style The style of the Text Input Component
    * @returns {TextInputComponent} A Text Input Component.
   */
 

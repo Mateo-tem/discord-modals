@@ -12,7 +12,7 @@
 
 </div>
 
-> **Discord-Modals is a package that allows your bot of discord.js v13 to create the new awesome Discord Modals and interact with them.**
+> **Discord-Modals is a package that allows your bot of discord.js v13 & v14 to create the new awesome Discord Modals and interact with them.**
 
 # 🔎 Installation
 
@@ -311,7 +311,7 @@ Represents a Modal Submit Interaction.
 |  `.guildId`  | `.editReply()` |
 |  `.user`  | `.deleteReply()` |
 |  `.member`  | `.followUp()` |
-|  `.memberPermissions`  |  |
+|  `.memberPermissions`  | `.isRepliable()` (Only on djs v14) |
 |  `.locale`  |  |
 |  `.guildLocale`  |  |
 |  `.message`  |  |
@@ -407,7 +407,7 @@ Discord-Modals integrates some errors to avoid issues and respect the structures
 
 | Code |Message|
 | ------------ | ------------ |
-|  INVALID_VERSION  | This package is only compatible with discord.js v13. |
+|  INVALID_VERSION  | This package is only compatible with discord.js v13 and v14. |
 |  NO_CLIENT_PROVIDED  | No Client was provided to interact with modals. |
 |  INVALID_CLIENT  | The provided Client is invalid in this context. |
 |  MODAL_REQUIRED  | No Modal was provided to show. |

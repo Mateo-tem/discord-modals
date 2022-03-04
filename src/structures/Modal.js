@@ -5,14 +5,19 @@ const { RangeError } = require("./errors");
 
 /**
  * Represents a Modal Form to be shown in response to an Interaction.
- * @example
- * const modal = new Modal() // Modal constructor
- * .setCustomId('modal-customid')
- * .setTitle('Test of Discord-Modals!')
- * .addComponents(new TextInputComponent()); // Add a Text Input Component.
 */
 
 class Modal {
+
+  /**
+   * Represents a Modal Form to be shown in response to an Interaction.
+   * @example
+   * const modal = new Modal() // Modal constructor
+   * .setCustomId('modal-customid')
+   * .setTitle('Test of Discord-Modals!')
+   * .addComponents(new TextInputComponent()); // Add a Text Input Component.
+  */
+ 
   constructor(data = {}, client = null) {
 
     /**

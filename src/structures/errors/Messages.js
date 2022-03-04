@@ -6,7 +6,7 @@ const Messages = {
 
   // Discord-Modals package
 
-  INVALID_VERSION: 'This package is only compatible with discord.js v13.',
+  INVALID_VERSION: 'This package is only compatible with discord.js v13 and v14.',
   NO_CLIENT_PROVIDED: 'No Client was provided to interact with modals.',
   INVALID_CLIENT: 'The provided Client is invalid in this context.',
   MODAL_REQUIRED: 'No Modal was provided to show.',

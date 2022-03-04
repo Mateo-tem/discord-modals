@@ -12,7 +12,7 @@
 
 </div>
 
-> **A package that allows your bot of discord.js v13 to create the new awesome Discord Modals and interact with them.**
+> **A package that allows your bot of discord.js v13 & v14 to create the new awesome Discord Modals and interact with them.**
 
 # 🔎 Installation
 
@@ -24,7 +24,7 @@ npm install discord-modals
 
 Recently, Discord API officialy announced **[Modal Interactions](https://discord.com/developers/docs/change-log#interaction-modals-and-application-command-attachment-option-type)**.
 
-**What is that?** Modal is a popup of Text Input Components [[Example]](https://media.discordapp.net/attachments/910547379617402960/942881133379612682/Modals_Test.png?width=881&height=559). It's so cool and useful for many commands that needs arguments. However, discord.js hasn't added it yet. Discord-Modals can be a solution if you want to test or use Modals right now in v13. **Try it!**
+**What is that?** Modal is a popup of Text Input Components [[Example]](https://media.discordapp.net/attachments/910547379617402960/942881133379612682/Modals_Test.png?width=881&height=559). It's so cool and useful for many commands that needs arguments. However, discord.js hasn't added it yet. Discord-Modals can be a solution if you want to test or use Modals right now. **Supports discord.js v13 and v14. Try it!**
 
 # ✨ Setup
 The most recommended is to put this on your main file.

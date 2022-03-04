@@ -26,7 +26,14 @@ class ModalSubmitField extends BaseMessageComponent {
      * @type {String}
     */
 
-    this.value = data.value ?? null;
+    switch(data.value.trim().length) {
+      case 0:
+        this.value = null;
+        break;
+      
+      default: 
+        this.value = data.value ?? null;
+    }
 
   }
 }

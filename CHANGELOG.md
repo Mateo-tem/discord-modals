@@ -2,7 +2,18 @@
 
 Hello! This is the Change log section of Discord-Modals. Here you can see what things have been changed in the different versions to be informed. This will be updated every time there are new versions. I hope you like this package :)
 
-# v1.2.3 (Stable)
+# v1.2.4 (Stable)
+
+> 🎉 **Important Update:**
+
+- Add examples to constructors of the Classes.
+- Fix error of `ModalSubmitField` class, if the field has not a valid value, before returns a empty string, now returns null.
+- **Featured:** Add discord.js v14 (Dev) Support.
+- **Featured:** Add TypeScript Support.
+- Update documentation (djs v14).
+- Update Readme (djs v14).
+
+# v1.2.3
 
 - Change `TextInputComponent` class method `.setValue()` to `.setDefaultValue()`.
 - Documentation: Add limits and specifications to classes and update `TextInputComponent` class.

@@ -1,7 +1,8 @@
 'use strict';
 
-const { Base, Permissions } = require('discord.js');
+const { Base, PermissionsBitField } = require('discord.js');
 const SnowflakeUtil = require('../util/SnowflakeUtil');
+const { InteractionType } = require('discord-api-types/v9');
 
 /**
  * Represents an Interaction.
@@ -31,7 +32,7 @@ class Interaction extends Base {
     this.version = data.version;
 
     this.memberPermissions = data.member?.permissions
-      ? new Permissions(data.member.permissions).freeze()
+      ? new PermissionsBitField(data.member.permissions).freeze()
       : null;
 
     this.locale = data.locale;
@@ -65,6 +66,10 @@ class Interaction extends Base {
 
   inRawGuild() {
     return Boolean(this.guildId && !this.guild && this.member);
+  }
+
+  isRepliable() {
+    return ![InteractionType.Ping, InteractionType.ApplicationCommandAutocomplete].includes(this.type);
   }
 }
 
