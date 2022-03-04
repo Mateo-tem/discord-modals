@@ -144,12 +144,10 @@ client.on('interactionCreate', (interaction) => {
 - Usual Reply:
 
 ```js
-const { Formatters } = require('discord.js');
-
 client.on('modalSubmit', (modal) => {
   if(modal.customId === 'modal-customid'){
     const firstResponse = modal.getTextInputValue('textinput-customid')
-    modal.reply('Congrats! Powered by discord-modals.' + Formatters.codeBlock('markdown', firstResponse))
+    modal.reply('Congrats! Powered by discord-modals.' + `\`\`\`${firstResponse}\`\`\``)
   }  
 })
 ```
@@ -157,13 +155,11 @@ client.on('modalSubmit', (modal) => {
 - Ephemeral Reply:
 
 ```js
-const { Formatters } = require('discord.js');
-
 client.on('modalSubmit', (modal) => {
   if(modal.customId === 'modal-customid'){
     const firstResponse = modal.getTextInputValue('textinput-customid')
     await modal.deferReply({ ephemeral: true })
-    modal.followUp({ content: 'Congrats! Powered by discord-modals.' + Formatters.codeBlock('markdown', firstResponse), ephemeral: true })
+    modal.followUp({ content: 'Congrats! Powered by discord-modals.' + `\`\`\`${firstResponse}\`\`\``, ephemeral: true })
   }  
 })
 ```
