@@ -22,7 +22,7 @@
   "dependencies": {
     "discord.js": "^13.6.0"
   },
-  "types": "index.d.ts",
+  "types": "dts/index.d.ts",
   "author": "『𝑴𝒂𝒕𝒆𝒐ᵗᵉᵐ』#9999",
   "license": "MIT",
   "bugs": {
