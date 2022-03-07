@@ -5,7 +5,7 @@
   "main": "index.js",
   "files": [
     "src",
-    "index.d.ts",
+    "dts",
     "index.js"
   ],
   "scripts": {
@@ -24,11 +24,7 @@
     "discord.js-modals",
     "discord.js-forms"
   ],
-<<<<<<< HEAD
   "types": "dts/index.d.ts",
-=======
-  "types": "index.d.ts",
->>>>>>> 77f6b26ccc2a5285c063f5f332f3745a338cf0be
   "author": "『𝑴𝒂𝒕𝒆𝒐ᵗᵉᵐ』#9999",
   "license": "MIT",
   "bugs": {
