@@ -76,7 +76,7 @@ export interface ModalOptions {
 }
 
 export class TextInputComponent extends BaseMessageComponent {
-  constructor(options: TextInputComponentOptions);
+  constructor(options?: TextInputComponentOptions);
 
   customId: string;
   label: string;
@@ -99,7 +99,7 @@ export class TextInputComponent extends BaseMessageComponent {
 export type TextInputStyle = 'SHORT' | 'LONG';
 
 export class Modal {
-  constructor(options: ModalOptions);
+  constructor(options?: ModalOptions);
 
   title: string;
   customId: string;
@@ -113,7 +113,7 @@ export class Modal {
 }
 
 export class ModalSubmitField extends BaseMessageComponent {
-  constructor(options: ModalSubmitFieldOptions);
+  constructor(options?: ModalSubmitFieldOptions);
 
   customId: string;
   value: string;
