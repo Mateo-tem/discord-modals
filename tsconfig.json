@@ -1,0 +1,10 @@
+{
+	"include": [ "src", "index.js" ],
+	"compilerOptions": {
+		"allowJs": true,
+		"declaration": true,
+		"declarationDir": "dts",
+		"declarationMap": true,
+		"emitDeclarationOnly": true
+	}
+}

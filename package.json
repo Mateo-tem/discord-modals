@@ -4,7 +4,7 @@
   "description": "discord-modals is a package that allows your bot of discord.js v13 & v14 to create the new awesome Discord Modals and interact with them.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "tsc"
   },
   "keywords": [
     "discord.js",
@@ -17,7 +17,7 @@
     "discord-modals",
     "discord",
     "discord.js-modals",
-    "discord.js-forms"    
+    "discord.js-forms"
   ],
   "dependencies": {
     "discord.js": "^13.6.0"
@@ -32,5 +32,8 @@
     "type": "git",
     "url": "https://github.com/Mateo-tem/discord-modals.git"
   },
-  "homepage": "https://github.com/Mateo-tem/discord-modals#readme"
+  "homepage": "https://github.com/Mateo-tem/discord-modals#readme",
+  "devDependencies": {
+    "typescript": "^4.6.2"
+  }
 }
