@@ -1,5 +1,6 @@
 import { Snowflake } from 'discord-api-types/v9';
 import {
+  Client,
   User,
   GuildMember,
   Permissions,
@@ -8,6 +9,8 @@ import {
   Interaction,
   BaseMessageComponent
 } from 'discord.js';
+
+export default function ( client: Client ): void;
 
 export enum TextInputStyles {
   SHORT = 1,
