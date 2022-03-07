@@ -1,5 +1,6 @@
 import { Snowflake } from 'discord-api-types/v9';
 import {
+  Client,
   User,
   GuildMember,
   Permissions,
@@ -8,6 +9,8 @@ import {
   Interaction,
   BaseMessageComponent
 } from 'discord.js';
+
+export default function ( client: Client ): void;
 
 export enum TextInputStyles {
   SHORT = 1,
@@ -73,7 +76,7 @@ export interface ModalOptions {
 }
 
 export class TextInputComponent extends BaseMessageComponent {
-  constructor(options: TextInputComponentOptions);
+  constructor(options?: TextInputComponentOptions);
 
   customId: string;
   label: string;
@@ -96,7 +99,7 @@ export class TextInputComponent extends BaseMessageComponent {
 export type TextInputStyle = 'SHORT' | 'LONG';
 
 export class Modal {
-  constructor(options: ModalOptions);
+  constructor(options?: ModalOptions);
 
   title: string;
   customId: string;
@@ -110,7 +113,7 @@ export class Modal {
 }
 
 export class ModalSubmitField extends BaseMessageComponent {
-  constructor(options: ModalSubmitFieldOptions);
+  constructor(options?: ModalSubmitFieldOptions);
 
   customId: string;
   value: string;
@@ -138,6 +141,11 @@ export class ModalSubmitInteraction extends Interaction {
   deleteReply(): void
   followUp(): void
 }
+
+export function showModal( modal: Modal, options: {
+  client: Client,
+  interaction: Interaction
+} )
 
 declare module 'discord.js' {
   interface Client {
