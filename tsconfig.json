@@ -4,7 +4,6 @@
 		"allowJs": true,
 		"declaration": true,
 		"declarationDir": "dts",
-		"declarationMap": true,
 		"emitDeclarationOnly": true
 	}
 }
