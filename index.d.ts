@@ -142,6 +142,11 @@ export class ModalSubmitInteraction extends Interaction {
   followUp(): void
 }
 
+export function showModal( modal: Modal, options: {
+  client: Client,
+  interaction: Interaction
+} )
+
 declare module 'discord.js' {
   interface Client {
       on(event: 'modalSubmit', listener: (modal: ModalSubmitInteraction) => void | Promise<void>): void
