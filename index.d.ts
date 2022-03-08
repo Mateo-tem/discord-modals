@@ -6,7 +6,8 @@ import {
   Message,
   InteractionWebhook,
   Interaction,
-  BaseMessageComponent
+  BaseMessageComponent,
+  Client
 } from 'discord.js';
 
 export enum TextInputStyles {
@@ -69,7 +70,12 @@ export interface ModalSubmitFieldOptions {
 export interface ModalOptions {
   title: string;
   custom_id: string;
-  components: Array;
+  components: Array<TextInputComponent>;
+}
+
+export interface ShowModalOptions {
+  client: Client,
+  interaction: Interaction
 }
 
 export class TextInputComponent extends BaseMessageComponent {
@@ -100,7 +106,7 @@ export class Modal {
 
   title: string;
   customId: string;
-  components: Map;
+  components: Map<TextInputComponent, TextInputComponent>;
 
   setTitle(title: string): Modal;
   setCustomId(id: string): Modal;
@@ -118,13 +124,13 @@ export class ModalSubmitField extends BaseMessageComponent {
 
 export class ModalSubmitInteraction extends Interaction {
   customId: string;
-  fields: Map<ModalSubmitField>;
+  fields: Map<ModalSubmitField, ModalSubmitField>;
   id: Snowflake;
   applicationId: Snowflake;
   channelId: Snowflake;
   user: User;
   member: GuildMember;
-  memberPermissions: readonly Permissions;
+  memberPermissions: Permissions;
   locale: string;
   guildLocale: string;
   message: Message;
@@ -138,6 +144,8 @@ export class ModalSubmitInteraction extends Interaction {
   deleteReply(): void
   followUp(): void
 }
+
+export function showModal(modal: Modal, options: ShowModalOptions): Modal;
 
 declare module 'discord.js' {
   interface Client {
