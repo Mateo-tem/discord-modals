@@ -5,11 +5,11 @@
   "main": "index.js",
   "files": [
     "src",
-    "index.d.ts",
+    "dts",
     "index.js"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublishOnly": "rimraf dts && tsc"
   },
   "keywords": [
     "discord.js",
@@ -24,7 +24,7 @@
     "discord.js-modals",
     "discord.js-forms"
   ],
-  "types": "index.d.ts",
+  "types": "dts/index.d.ts",
   "author": "『𝑴𝒂𝒕𝒆𝒐ᵗᵉᵐ』#9999",
   "license": "MIT",
   "bugs": {
@@ -35,10 +35,12 @@
     "url": "https://github.com/Mateo-tem/discord-modals.git"
   },
   "homepage": "https://github.com/Mateo-tem/discord-modals#readme",
+  "devDependencies": {
+    "discord.js": "^13.6.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.6.2"
+  },
   "peerDependencies": {
     "discord.js": "*"
-  },
-  "devDependencies": {
-    "discord.js": "^13.6.0"
   }
 }

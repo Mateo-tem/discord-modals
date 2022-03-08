@@ -45,7 +45,7 @@ class Modal {
 
   /**
    * Adds the Components of the Modal.
-   * @param {TextInputComponent} components The Text Input Components to add.
+   * @param {TextInputComponent[]} components The Text Input Components to add.
    * @returns {Modal} Modal.
   */
 
@@ -56,7 +56,7 @@ class Modal {
 
   /**
    * Sets the Components of the Modal.
-   * @param {TextInputComponent} components The Text Input Components to set.
+   * @param {TextInputComponent[]} components The Text Input Components to set.
    * @returns {Modal} Modal.
   */
 
@@ -80,7 +80,7 @@ class Modal {
    * Removes, replaces, and inserts components in the modal.
    * @param {Number} index The index to start at.
    * @param {Number} deleteCount The number of components to remove.
-   * @param components The replacing components.
+   * @param {TextInputComponent[]} components The replacing components.
    * @returns {Modal} Modal.
   */
 

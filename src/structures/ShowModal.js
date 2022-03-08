@@ -5,8 +5,8 @@ const { Error } = require('./errors');
 
 /**
  * Shows the Modal to the Interaction User.
- * @param {Modal} Modal Modal.
- * @param {Object} Options Client and Interaction.
+ * @param {Modal} modal Modal.
+ * @param {{ client: Client, interaction: Interaction }} options Client and Interaction.
  * @example
  * showModal(Modal, {
  *   client: Client, // Client to show the Modal through the Discord API.
@@ -14,7 +14,6 @@ const { Error } = require('./errors');
  * });
  * @returns {Modal} Modal.
 */
-
 async function showModal(modal, options){
 
     if (!modal) throw new Error('MODAL_REQUIRED');
