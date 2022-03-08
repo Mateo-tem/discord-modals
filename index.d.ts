@@ -133,32 +133,12 @@ export class ModalSubmitInteraction extends Interaction {
 
   customId: string;
   fields: ModalSubmitField[];
-  deferred: boolean;
-  ephemeral: boolean | null;
-  replied: boolean;
-  id: Snowflake;
-  applicationId: Snowflake;
-  channelId: Snowflake;
-  user: User;
-  member: GuildMember;
-  memberPermissions: Permissions;
-  locale: string;
-  guildLocale: string;
-  message: Message;
   webhook: InteractionWebhook;
 
   getTextInputValue(customId: string): string;
   getField(customId: string): ModalSubmitField;
   isFromMessage(): boolean;
   isRepliable(): boolean;
-  inGuild(): boolean;
-  inCachedGuild(): boolean;
-  inRawGuild(): boolean;
-  deferReply(): Promise<void>;
-  reply(): Promise<void>;
-  fetchReply(): Promise<void>;
-  deleteReply(): Promise<void>;
-  followUp(): Promise<void>;
 }
 
 export function showModal(
