@@ -2,7 +2,14 @@
 
 Hello! This is the Change log section of Discord-Modals. Here you can see what things have been changed in the different versions to be informed. This will be updated every time there are new versions. I hope you like this package :)
 
-# v1.2.5 (Stable)
+# v1.2.6 (Stable)
+
+- Add types of discord-api-types/v9 in the declaration file.
+- Add `.isRepliable()` and `.isFromMessage()` methods to `ModalSubmitInteraction` class.
+- Add discord-modals to yarn.
+- Update Readme and docs (yarn).
+
+# v1.2.5
 
 - Fix and add missing types in declaration file.
 - Update Readme (Aspect: Example Code Block Formatter).

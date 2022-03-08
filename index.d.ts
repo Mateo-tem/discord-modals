@@ -1,4 +1,9 @@
-import { Snowflake } from 'discord-api-types/v9';
+import {
+  Snowflake,
+  APITextInputComponent,
+  APIModalInteractionResponseCallbackData,
+  APIModalSubmitInteraction,
+} from "discord-api-types/v9";
 import {
   Client,
   User,
@@ -7,10 +12,10 @@ import {
   Message,
   InteractionWebhook,
   Interaction,
-  BaseMessageComponent
-} from 'discord.js';
+  BaseMessageComponent,
+} from "discord.js";
 
-export default function ( client: Client ): void;
+export default function (client: Client): void;
 
 export enum TextInputStyles {
   SHORT = 1,
@@ -64,7 +69,8 @@ export interface TextInputComponentOptions {
   value?: string;
 }
 
-export interface ModalSubmitFieldOptions {
+export interface ModalSubmitFieldData {
+  type?: string;
   custom_id?: string;
   value?: string;
 }
@@ -94,9 +100,10 @@ export class TextInputComponent extends BaseMessageComponent {
   setStyle(style: TextInputStyle): TextInputComponent;
   setRequired(required: boolean): TextInputComponent;
   setDefaultValue(value: string): TextInputComponent;
+  toJSON(): APITextInputComponent;
 }
 
-export type TextInputStyle = 'SHORT' | 'LONG';
+export type TextInputStyle = "SHORT" | "LONG";
 
 export class Modal {
   constructor(options?: ModalOptions);
@@ -110,18 +117,25 @@ export class Modal {
   addComponents(component: TextInputComponent): Modal;
   setComponents(component: TextInputComponent): Modal;
   spliceComponents(): Modal;
+  toJSON(): APIModalInteractionResponseCallbackData;
 }
 
 export class ModalSubmitField extends BaseMessageComponent {
-  constructor(options?: ModalSubmitFieldOptions);
+  constructor(data?: ModalSubmitFieldData);
 
+  type: string;
   customId: string;
   value: string;
 }
 
 export class ModalSubmitInteraction extends Interaction {
+  constructor(client?: Client, data?: APIModalSubmitInteraction);
+
   customId: string;
-  fields: Map<ModalSubmitField, ModalSubmitField>;
+  fields: ModalSubmitField[];
+  deferred: boolean;
+  ephemeral: boolean | null;
+  replied: boolean;
   id: Snowflake;
   applicationId: Snowflake;
   channelId: Snowflake;
@@ -135,20 +149,31 @@ export class ModalSubmitInteraction extends Interaction {
 
   getTextInputValue(customId: string): string;
   getField(customId: string): ModalSubmitField;
-  deferReply(): void
-  reply(): void
-  fetchReply(): void
-  deleteReply(): void
-  followUp(): void
+  isFromMessage(): boolean;
+  isRepliable(): boolean;
+  inGuild(): boolean;
+  inCachedGuild(): boolean;
+  inRawGuild(): boolean;
+  deferReply(): Promise<void>;
+  reply(): Promise<void>;
+  fetchReply(): Promise<void>;
+  deleteReply(): Promise<void>;
+  followUp(): Promise<void>;
 }
 
-export function showModal(modal: Modal, options: {
-  client: Client,
-  interaction: Interaction
-} ) : Modal
+export function showModal(
+  modal: Modal,
+  options: {
+    client: Client;
+    interaction: Interaction;
+  }
+): Modal;
 
-declare module 'discord.js' {
+declare module "discord.js" {
   interface Client {
-      on(event: 'modalSubmit', listener: (modal: ModalSubmitInteraction) => void | Promise<void>): void
+    on(
+      event: "modalSubmit",
+      listener: (modal: ModalSubmitInteraction) => void | Promise<void>
+    ): void;
   }
 }

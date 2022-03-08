@@ -18,6 +18,7 @@
 
 ```sh
 npm install discord-modals
+yarn add discord-modals
 ```
 
 # 🔮 What is this package for?
@@ -72,7 +73,7 @@ const { Modal } = require('discord-modals') // Modal class
 const modal = new Modal() // We create a Modal
 .setCustomId('customid')
 .setTitle('Test of Discord-Modals!')
-.addComponents()
+.addComponents([])
 ```
 > **This is a basic structure of a Modal, but something is missing. Yeah! Text Input components.**
 
@@ -84,7 +85,7 @@ const { Modal, TextInputComponent } = require('discord-modals') // Modal and Tex
 const modal = new Modal() // We create a Modal
 .setCustomId('modal-customid')
 .setTitle('Test of Discord-Modals!')
-.addComponents(
+.addComponents([
   new TextInputComponent() // We create a Text Input Component
   .setCustomId('textinput-customid')
   .setLabel('Some text Here')
@@ -93,7 +94,7 @@ const modal = new Modal() // We create a Modal
   .setMaxLength(10)
   .setPlaceholder('Write a text here')
   .setRequired(true) // If it's required or not
-);
+]);
 ```
 
 > **Yay! We have the full Modal & Text Input Component, but... How can i send/show a Modal?**
@@ -106,7 +107,7 @@ const { Modal, TextInputComponent, showModal } = require('discord-modals') // No
 const modal = new Modal() // We create a Modal
 .setCustomId('modal-customid')
 .setTitle('Test of Discord-Modals!')
-.addComponents(
+.addComponents([
   new TextInputComponent() // We create a Text Input Component
   .setCustomId('textinput-customid')
   .setLabel('Some text Here')
@@ -115,14 +116,14 @@ const modal = new Modal() // We create a Modal
   .setMaxLength(10)
   .setPlaceholder('Write a text here')
   .setRequired(true) // If it's required or not
-);
+]);
 
 client.on('interactionCreate', (interaction) => {
   // Let's say the interaction will be a Slash Command called 'ping'.
   if(interaction.commandName === 'ping'){
     showModal(modal, {
-      client: client, // This method needs the Client to show the Modal through the Discord API.
-      interaction: interaction // This method needs the Interaction to show the Modal with the Interaction ID & Token.
+      client: client, // Client to show the Modal through the Discord API.
+      interaction: interaction // Show the modal with interaction data.
     })
   }
   

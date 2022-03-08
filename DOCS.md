@@ -18,6 +18,7 @@
 
 ```sh
 npm install discord-modals
+yarn add discord-modals
 ```
 
 # 🔮 General
@@ -311,8 +312,8 @@ Represents a Modal Submit Interaction.
 |  `.guildId`  | `.editReply()` |
 |  `.user`  | `.deleteReply()` |
 |  `.member`  | `.followUp()` |
-|  `.memberPermissions`  | `.isRepliable()` (Only on djs v14) |
-|  `.locale`  |  |
+|  `.memberPermissions`  | `.isFromMessage()` |
+|  `.locale`  | `.isRepliable()` |
 |  `.guildLocale`  |  |
 |  `.message`  |  |
 |  `.version`  |  |  
@@ -401,6 +402,20 @@ Gets a Modal Submit Field.
 
 > Returns: [ModalSubmitField](#modalsubmitfield)
 
+```js
+.isFromMessage()
+```
+If the Modal Submit Interaction is from a message.
+
+> Returns: [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)
+
+```js
+.isRepliable()
+```
+If the Modal Submit Interaction is repliable.
+
+> Returns: [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)
+
 # ❌ Errors
 
 Discord-Modals integrates some errors to avoid issues and respect the structures.
@@ -427,5 +442,7 @@ Discord-Modals integrates some errors to avoid issues and respect the structures
 # 🔨 Do you want to contribute to Discord-Modals?
 
 - Check our [GitHub Repository](https://github.com/Mateo-tem/discord-modals) and Report Issues or make a Pull Request to contribute to this awesome project. We are waiting for you!
+
+❤️ Special thanks to [Leo Ua#4600](https://github.com/Leoxyzua), [polarsito#8964](https://github.com/polarsito) and [Andleo#1700](https://github.com/andleo17) for helping along the way!
 
 > **Powered by Discord-Modals**

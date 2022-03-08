@@ -86,6 +86,10 @@ class ModalSubmitInteraction extends Interaction {
     return field ? field : null;
   }
 
+  isFromMessage() {
+    return Boolean(this.message)
+  }
+
   deferReply() {}
   reply() {}
   fetchReply() {}

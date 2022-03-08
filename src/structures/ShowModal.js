@@ -10,7 +10,7 @@ const { Error } = require('./errors');
  * @example
  * showModal(Modal, {
  *   client: Client, // Client to show the Modal through the Discord API.
- *   interaction: Interaction // Interaction to show the Modal with the Interaction ID & Token.
+ *   interaction: Interaction // Interaction data.
  * });
  * @returns {Modal} Modal.
 */
@@ -35,7 +35,7 @@ async function showModal(modal, options){
             },
         });
     } catch(error) {
-        console.error('[discord-modals] SHOW_MODAL_ERROR: An error occurred when showing a modal.', error);
+        console.error('SHOW_MODAL_ERROR: An error occurred when showing a modal.', error);
     }
 
     return new Modal(modal, options.client);    

@@ -11,7 +11,7 @@ const { Routes } = require('discord-api-types/v9');
  * @example
  * showModal(Modal, {
  *   client: Client, // Client to show the Modal through the Discord API.
- *   interaction: Interaction // Interaction to show the Modal with the Interaction ID & Token.
+ *   interaction: Interaction // Interaction data.
  * });
  * @returns {Modal} Modal.
 */
