@@ -12,7 +12,7 @@
 
 </div>
 
-> **A package that allows your bot of discord.js v13 & v14 to create the new awesome Discord Modals and interact with them.**
+> **A package that allows your discord.js v13 and v14 bot to create, and interact with Modals, a new Discord feature.**
 
 # 🔎 Installation
 
@@ -31,8 +31,8 @@ Recently, Discord API officialy announced **[Modal Interactions](https://discord
 The most recommended is to put this on your main file.
 
 ```js
-const { Client } = require('discord.js') // Extract the Client class
-const client = new Client({ intents: 32767 }) // Create a Client
+const { Client } = require('discord.js') // Get the Client class
+const client = new Client({ intents: 32767 }) // Create a Discord Client
 const discordModals = require('discord-modals') // Define the discord-modals package!
 discordModals(client); // discord-modals needs your client in order to interact with modals
 
@@ -50,7 +50,7 @@ client.login('token') // Login with your bot
 - A Custom Id.
 - Components (Text Input)
 
-**Text Input have:**
+**Text Inputs have:**
 - A Custom Id
 - A Style (Short or Paragraph)
 - A Label
@@ -127,7 +127,7 @@ client.on('interactionCreate', (interaction) => {
     })
   }
   
-})
+});
 
 ```
 
@@ -147,12 +147,12 @@ client.on('interactionCreate', (interaction) => {
 ```js
 const { Formatters } = require('discord.js');
 
-client.on('modalSubmit', (modal) => {
+client.on('modalSubmit', async (modal) => {
   if(modal.customId === 'modal-customid'){
     const firstResponse = modal.getTextInputValue('textinput-customid')
     modal.reply('Congrats! Powered by discord-modals.' + Formatters.codeBlock('markdown', firstResponse))
   }  
-})
+});
 ```
 
 - Ephemeral Reply:
@@ -160,13 +160,13 @@ client.on('modalSubmit', (modal) => {
 ```js
 const { Formatters } = require('discord.js');
 
-client.on('modalSubmit', (modal) => {
+client.on('modalSubmit', async (modal) => {
   if(modal.customId === 'modal-customid'){
     const firstResponse = modal.getTextInputValue('textinput-customid')
     await modal.deferReply({ ephemeral: true })
     modal.followUp({ content: 'Congrats! Powered by discord-modals.' + Formatters.codeBlock('markdown', firstResponse), ephemeral: true })
   }  
-})
+});
 ```
 
 > **And you made it! I hope this examples help you :)**
@@ -180,4 +180,4 @@ client.on('modalSubmit', (modal) => {
 - 『𝑴𝒂𝒕𝒆𝒐ᵗᵉᵐ』#9999
 
 # ⛔ Issues/Bugs?
-> **Please report it on our GitHub Repository [here](https://github.com/Mateo-tem/discord-modals/issues) to fix it inmmediately.**
+> **Please report it on our GitHub Repository [here](https://github.com/Mateo-tem/discord-modals/issues) to fix it inmmediately. Or contact 『𝑴𝒂𝒕𝒆𝒐ᵗᵉᵐ』#9999 on Discord.**

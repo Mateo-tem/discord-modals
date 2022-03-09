@@ -3,6 +3,7 @@ import {
   APITextInputComponent,
   APIModalInteractionResponseCallbackData,
   APIModalSubmitInteraction,
+  APITextInputComponent
 } from "discord-api-types/v9";
 import {
   Client,
@@ -58,31 +59,20 @@ export interface BaseMessageComponentOptions {
   type?: MessageComponentType | MessageComponentTypes;
 }
 
-export interface TextInputComponentOptions {
-  custom_id: string;
-  label: string;
-  max_length?: number;
-  min_length?: number;
-  placeholder?: string;
-  required?: boolean;
-  style: TextInputStyles;
-  value?: string;
-}
-
 export interface ModalSubmitFieldData {
   type?: string;
   custom_id?: string;
   value?: string;
 }
 
-export interface ModalOptions {
+export interface ModalData {
   title: string;
   custom_id: string;
-  components: Array<TextInputComponent>;
+  components: APITextInputComponent[];
 }
 
 export class TextInputComponent extends BaseMessageComponent {
-  constructor(options?: TextInputComponentOptions);
+  constructor(data?: APITextInputComponent);
 
   customId: string;
   label: string;
@@ -106,11 +96,11 @@ export class TextInputComponent extends BaseMessageComponent {
 export type TextInputStyle = "SHORT" | "LONG";
 
 export class Modal {
-  constructor(options?: ModalOptions);
+  constructor(data?: ModalData);
 
   title: string;
   customId: string;
-  components: Map<TextInputComponent, TextInputComponent>;
+  components: TextInputComponent[];
 
   setTitle(title: string): Modal;
   setCustomId(id: string): Modal;

@@ -12,7 +12,7 @@
 
 </div>
 
-> **Discord-Modals is a package that allows your bot of discord.js v13 & v14 to create the new awesome Discord Modals and interact with them.**
+> **Discord-Modals is a package that allows your discord.js v13 and v14 bot to create, and interact with Modals, a new Discord feature.**
 
 # 🔎 Installation
 
@@ -44,6 +44,10 @@ Shows the Modal to the Interaction User.
 Represents a Modal Form to be shown in response to an Interaction.
 - A modal can contain at most **5 Text Input Components**
 
+```javascript
+new Modal(data)
+```
+
 | Properties |Methods|
 | ------------ | ------------ |
 |  `.title`  | `.setTitle()` |
@@ -65,7 +69,7 @@ The Custom Id of the Modal.
 
 #### .components
 The Text Input Components of the Modal.
-> Returns: [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
+> Returns: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
 ### Methods
 
@@ -125,12 +129,16 @@ Removes, replaces, and inserts components in the Modal.
 ```
 Transforms the Modal to a plain object.
 
-> Returns: [APIModal](https://discord.com/developers/docs/interactions/message-components#text-inputs)
+> Returns: [APIModalInteractionResponseCallbackData](https://discord.com/developers/docs/interactions/message-components#text-inputs)
 
 ## TextInputComponent 
 > extends [BaseMessageComponent](https://discord.js.org/#/docs/discord.js/stable/class/BaseMessageComponent)
 
 Represents a Text Input Component of a Modal.
+
+```javascript
+new TextInputComponent(data)
+```
 
 | Properties |Methods|
 | ------------ | ------------ |
@@ -267,7 +275,7 @@ Sets a Default/Pre-filled Value of the Text Input Component. (Max. 4000 characte
 
 > Returns: [TextInputComponent](#textinputcomponent)
 
-### TextInputComponentStyle
+### TextInputStyle
 
 | Text |Value|Description|
 | ------------ | ------------ |------------ |
@@ -422,27 +430,29 @@ Discord-Modals integrates some errors to avoid issues and respect the structures
 
 | Code |Message|
 | ------------ | ------------ |
-|  INVALID_VERSION  | This package is only compatible with discord.js v13 and v14. |
-|  NO_CLIENT_PROVIDED  | No Client was provided to interact with modals. |
-|  INVALID_CLIENT  | The provided Client is invalid in this context. |
-|  MODAL_REQUIRED  | No Modal was provided to show. |
-|  OPTIONS_REQUIRED  | No Options were provided. |
-|  CLIENT_REQUIRED  | No Client was provided on the showModal method options. |
-|  INTERACTION_REQUIRED  | No Interaction was provided on the showModal method options. |
-|  INVALID_MODAL  | The provided Modal is invalid in this context. |
-|  INVALID_INTERACTION  | The provided Interaction is invalid in this context. |
-|  TEXT_INPUT_CUSTOM_ID  | TextInputComponent customId must be a string. |
-|  TEXT_INPUT_LABEL  | TextInputComponent label must be a string. |
-|  TEXT_INPUT_PLACEHOLDER | TextInputComponent placeholder must be a string. |
-|  TEXT_INPUT_VALUE | TextInputComponent value must be a string. |
-|  MODAL_CUSTOM_ID | Modal customId must be a string. |
-|  MODAL_TITLE | Modal title must be a string. |
+|  `INVALID_VERSION`  | This package is only compatible with discord.js v13 and v14. |
+|  `NO_CLIENT_PROVIDED`  | No Client was provided to interact with modals. |
+|  `INVALID_CLIENT`  | The provided Client is invalid in this context. |
+|  `MODAL_REQUIRED`  | No Modal was provided to show. |
+|  `OPTIONS_REQUIRED`  | No Options were provided. |
+|  `CLIENT_REQUIRED`  | No Client was provided on the showModal method options. |
+|  `INTERACTION_REQUIRED`  | No Interaction was provided on the showModal method options. |
+|  `INVALID_MODAL`  | The provided Modal is invalid in this context. |
+|  `INVALID_INTERACTION`  | The provided Interaction is invalid in this context. |
+|  `TEXT_INPUT_CUSTOM_ID`  | TextInputComponent customId must be a string. |
+|  `TEXT_INPUT_LABEL`  | TextInputComponent label must be a string. |
+|  `TEXT_INPUT_PLACEHOLDER` | TextInputComponent placeholder must be a string. |
+|  `TEXT_INPUT_VALUE` | TextInputComponent value must be a string. |
+|  `MODAL_CUSTOM_ID` | Modal customId must be a string. |
+|  `MODAL_TITLE` | Modal title must be a string. |
 
 
 # 🔨 Do you want to contribute to Discord-Modals?
 
 - Check our [GitHub Repository](https://github.com/Mateo-tem/discord-modals) and Report Issues or make a Pull Request to contribute to this awesome project. We are waiting for you!
 
-❤️ Special thanks to [Leo Ua#4600](https://github.com/Leoxyzua), [polarsito#8964](https://github.com/polarsito) and [Andleo#1700](https://github.com/andleo17) for helping along the way!
+---
 
 > **Powered by Discord-Modals**
+
+- ❤️ Special thanks to [Leo Ua#4600](https://github.com/Leoxyzua), [polarsito#8964](https://github.com/polarsito) and [Andleo#1700](https://github.com/andleo17) for helping along the way!

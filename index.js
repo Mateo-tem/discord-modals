@@ -11,7 +11,7 @@ module.exports = (client) => {
   if (!discordjsVersion.includes('v13') && !discordjsVersion.includes('v14')) throw new Error('INVALID_VERSION');
 
   if (!client) throw new Error('NO_CLIENT_PROVIDED');
-  if (!client.ws && !client.api) throw new Error('INVALID_CLIENT');
+  if (!client.ws) throw new Error('INVALID_CLIENT');
 
   // We receive the 'INTERACTION_CREATE' event from WebSocket.
   
