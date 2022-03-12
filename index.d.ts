@@ -3,6 +3,7 @@ import {
   APITextInputComponent,
   APIModalInteractionResponseCallbackData,
   APIModalSubmitInteraction,
+  APITextInputComponent
 } from "discord-api-types/v9";
 import {
   Client,
@@ -13,6 +14,10 @@ import {
   InteractionWebhook,
   Interaction,
   BaseMessageComponent,
+  MessageEmbed,
+  MessagePayload,
+  InteractionReplyOptions,
+  InteractionDeferReplyOptions
 } from "discord.js";
 
 export default function (client: Client): void;
@@ -87,7 +92,6 @@ export class TextInputComponent extends BaseMessageComponent {
   setMinLength(minLength: number): TextInputComponent;
   setMaxLength(maxLength: number): TextInputComponent;
   setStyle(style: TextInputStyle): TextInputComponent;
-  setPlaceholder(placeholder: string): TextInputComponent;
   setRequired(required: boolean): TextInputComponent;
   setDefaultValue(value: string): TextInputComponent;
   toJSON(): APITextInputComponent;
@@ -144,11 +148,11 @@ export class ModalSubmitInteraction extends Interaction {
   inGuild(): boolean;
   inCachedGuild(): boolean;
   inRawGuild(): boolean;
-  deferReply(): Promise<void>;
-  reply(): Promise<void>;
+  deferReply(options: InteractionDeferReplyOptions): Promise<void>;
+  reply(options: string | MessagePayload | InteractionReplyOptions): Promise<void>;
   fetchReply(): Promise<void>;
   deleteReply(): Promise<void>;
-  followUp(): Promise<void>;
+  followUp(options: string | MessagePayload | InteractionReplyOptions): Promise<void>;
 }
 
 export function showModal(
