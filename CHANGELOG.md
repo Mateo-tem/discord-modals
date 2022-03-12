@@ -8,8 +8,8 @@ Hello! This is the Change log section of Discord-Modals. Here you can see what t
 
 # v1.2.7
 
-- Fix some types in the declaration file.
-- Allign documentation with typings.
+- Fix types in the declaration file.
+- Align documentation with typings.
 - Fix bug (Compatibility with discord.js v14)
 - Fix examples issues (Readme)
 
