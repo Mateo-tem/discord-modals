@@ -92,6 +92,7 @@ export class TextInputComponent extends BaseMessageComponent {
   setMinLength(minLength: number): TextInputComponent;
   setMaxLength(maxLength: number): TextInputComponent;
   setStyle(style: TextInputStyle): TextInputComponent;
+  setPlaceholder(placeholder: string): TextInputComponent;
   setRequired(required: boolean): TextInputComponent;
   setDefaultValue(value: string): TextInputComponent;
   toJSON(): APITextInputComponent;
