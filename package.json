@@ -1,6 +1,6 @@
 {
   "name": "discord-modals",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "Discord-Modals is a package that allows your discord.js v13 and v14 bot to create, and interact with Modals, a new Discord feature.",
   "main": "index.js",
   "files": [

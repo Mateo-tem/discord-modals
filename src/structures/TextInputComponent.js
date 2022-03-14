@@ -9,7 +9,6 @@ const { RangeError } = require('./errors');
 */
 
 class TextInputComponent extends BaseMessageComponent {
-
   /**
    * Represents a Text Input Component of a Modal.
    * @example
@@ -21,82 +20,86 @@ class TextInputComponent extends BaseMessageComponent {
    * .setMaxLength(10)
    * .setPlaceholder('Write a text here')
    * .setRequired(true) // If it's required or not
-  */
- 
+   */
+
   constructor(data = {}) {
-    super({ type: 'TEXT_INPUT' });
+    super({ type: "TEXT_INPUT" });
 
     this.setup(data);
   }
 
   setup(data) {
-
     /**
      * The Custom Id of the Text Input Component.
      * @type {String}
-    */
+     */
 
     this.customId = data.custom_id ?? data.customId ?? null;
 
     /**
      * The Label of the Text Input Component.
      * @type {String}
-    */
+     */
 
     this.label = data.label ?? null;
 
     /**
      * The Maximum Length of the Text Input Component.
      * @type {Number}
-    */
+     */
 
     this.maxLength = data.max_length ?? data.maxLength ?? null;
 
     /**
      * The Minimum Length of the Text Input Component.
      * @type {Number}
-    */
+     */
 
     this.minLength = data.min_length ?? data.minLength ?? null;
 
     /**
      * The Placeholder of the Text Input Component.
      * @type {String}
-    */
+     */
 
     this.placeholder = data.placeholder ?? null;
 
     /**
      * If the Text Input Component is required.
      * @type {Boolean}
-    */
+     */
 
     this.required = data.required ?? false;
 
     /**
      * The Style of the Text Input Component.
      * @type {String}
-    */
+     */
 
-    this.style = data.style ? TextInputComponent.resolveStyle(data.style) : null;
+    this.style = data.style
+      ? TextInputComponent.resolveStyle(data.style)
+      : null;
 
     /**
      * The Default/Pre-filled value of the Text Input Component.
      * @type {String}
-    */
+     */
 
     this.value = data.value ?? null;
-
   }
 
   /**
    * Sets the Custom Id of a Text Input Component.
    * @param {String} customId The Custom Id of a Text Input Component.
    * @returns {TextInputComponent} A Text Input Component.
-  */
+   */
 
   setCustomId(customId) {
-    this.customId = Util.verifyString(customId, RangeError, 'TEXT_INPUT_CUSTOM_ID');
+    this.customId = Util.verifyString(
+      customId,
+      RangeError,
+      "TEXT_INPUT_CUSTOM_ID"
+    );
     return this;
   }
 
@@ -104,10 +107,10 @@ class TextInputComponent extends BaseMessageComponent {
    * Sets the Label of a Text Input Component.
    * @param {String} label The Label of a Text Input Component.
    * @returns {TextInputComponent} A Text Input Component.
-  */
+   */
 
   setLabel(label) {
-    this.label = Util.verifyString(label, RangeError, 'TEXT_INPUT_LABEL');
+    this.label = Util.verifyString(label, RangeError, "TEXT_INPUT_LABEL");
     return this;
   }
 
@@ -115,7 +118,7 @@ class TextInputComponent extends BaseMessageComponent {
    * Sets a Boolean if a Text Input Component is required. Default: false
    * @param {Boolean} required
    * @returns {TextInputComponent} A Text Input Component.
-  */
+   */
 
   setRequired(required = true) {
     this.required = required;
@@ -126,7 +129,7 @@ class TextInputComponent extends BaseMessageComponent {
    * Sets the Maximum Length of a Text Input Component.
    * @param {Number} maxLength The maximum length.
    * @returns {TextInputComponent} A Text Input Component.
-  */
+   */
 
   setMaxLength(maxLength) {
     this.maxLength = maxLength;
@@ -137,7 +140,7 @@ class TextInputComponent extends BaseMessageComponent {
    * Sets the Minimum Length of a Text Input Component.
    * @param {Number} minLength The minimum length.
    * @returns {TextInputComponent} A Text Input Component.
-  */
+   */
 
   setMinLength(minLength) {
     this.minLength = minLength;
@@ -148,10 +151,14 @@ class TextInputComponent extends BaseMessageComponent {
    * Sets the Placeholder of a Text Input Component.
    * @param {String} placeholder The placeholder of the Text Input Component.
    * @returns {TextInputComponent} A Text Input Component.
-  */
+   */
 
   setPlaceholder(placeholder) {
-    this.placeholder = Util.verifyString(placeholder, RangeError, 'TEXT_INPUT_PLACEHOLDER');
+    this.placeholder = Util.verifyString(
+      placeholder,
+      RangeError,
+      "TEXT_INPUT_PLACEHOLDER"
+    );
     return this;
   }
 
@@ -159,7 +166,7 @@ class TextInputComponent extends BaseMessageComponent {
    * Sets the Style of a Text Input Component.
    * @param {String} style The style of the Text Input Component
    * @returns {TextInputComponent} A Text Input Component.
-  */
+   */
 
   setStyle(style) {
     this.style = TextInputComponent.resolveStyle(style);
@@ -170,35 +177,34 @@ class TextInputComponent extends BaseMessageComponent {
    * Sets a Default/Pre-filled Value of the Text Input Component.
    * @param {String} value The Default/Pre-filled value of the Text Input Component.
    * @returns {TextInputComponent} A Text Input Component.
-  */
+   */
 
   setDefaultValue(value) {
-    this.value = Util.verifyString(value, RangeError, 'TEXT_INPUT_VALUE');
+    this.value = Util.verifyString(value, RangeError, "TEXT_INPUT_VALUE");
     return this;
-  }  
+  }
 
   toJSON() {
     return {
-      type: 1,
+      type: MessageComponentTypes.ACTION_ROW,
       components: [
         {
           type: MessageComponentTypes[this.type],
           custom_id: this.customId,
           label: this.label,
-          style: TextInputStyles[this.style],          
+          style: TextInputStyles[this.style],
           min_length: this.minLength,
           max_length: this.maxLength,
-          required: this.required,   
+          required: this.required,
           value: this.value,
-          placeholder: this.placeholder,                 
-        }
-      ]
-      
+          placeholder: this.placeholder,
+        },
+      ],
     };
   }
-  
+
   static resolveStyle(style) {
-    return typeof style === 'string' ? style : TextInputStyles[style];
+    return typeof style === "string" ? style : TextInputStyles[style];
   }
 }
 
