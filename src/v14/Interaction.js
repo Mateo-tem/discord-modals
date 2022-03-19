@@ -2,7 +2,7 @@
 
 const { Base, PermissionsBitField } = require('discord.js');
 const SnowflakeUtil = require('../util/SnowflakeUtil');
-const { InteractionType } = require('discord-api-types/v9');
+const { InteractionType } = require('discord-api-types/v10');
 
 /**
  * Represents an Interaction.

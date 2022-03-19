@@ -2,7 +2,7 @@ const { Client, Interaction } = require('discord.js');
 const { InteractionResponseTypes } = require('../util/Constants');
 const Modal = require('../structures/Modal');
 const { Error } = require('../structures/errors');
-const { Routes } = require('discord-api-types/v9');
+const { Routes } = require('discord-api-types/v10');
 
 /**
  * Shows the Modal to the Interaction User.

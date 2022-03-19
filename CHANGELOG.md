@@ -2,7 +2,10 @@
 
 Hello! This is the Change log section of Discord-Modals. Here you can see what things have been changed in the different versions, to be informed. This will be updated every time there are new versions. I hope you enjoy this package :)
 
-# v1.3.0 (Stable)
+# v1.3.1 (Stable)
+- Fix: change `discord-api-types` enums from `v9` to `v10`.
+
+# v1.3.0
 
 - Fix bug: 'INVALID_CLIENT' error when the Client is valid on `.showModal()` method.
 - **Featured:** Add `ModalActionRow` class.

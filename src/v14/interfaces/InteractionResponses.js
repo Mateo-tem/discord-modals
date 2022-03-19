@@ -1,5 +1,5 @@
 const { MessagePayload } = require('discord.js');
-const { InteractionResponseType, MessageFlags, Routes } = require('discord-api-types/v9');
+const { InteractionResponseType, MessageFlags, Routes } = require('discord-api-types/v10');
 const { Error } = require('../../structures/errors');
 const Modal = require('../../structures/Modal');
 
