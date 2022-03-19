@@ -21,11 +21,11 @@ class Modal {
   constructor(data = {}, client = null) {
 
     /**
-     * The Text Input Components of the Modal.
-     * @type {BaseMessageComponent}
+     * The Title of the Modal.
+     * @type {String}
     */
 
-    this.components = data.components?.map(c => BaseMessageComponent.create(c, client)) ?? [];
+    this.title = data.title ?? null;
 
     /**
      * The Custom Id of the Modal.
@@ -35,11 +35,11 @@ class Modal {
     this.customId = data.custom_id ?? data.customId ?? null;
 
     /**
-     * The Title of the Modal.
-     * @type {String}
+     * The Text Input Components of the Modal.
+     * @type {BaseMessageComponent}
     */
 
-    this.title = data.title ?? null;
+    this.components = data.components?.map(c => BaseMessageComponent.create(c, client)) ?? [];
 
   }
 

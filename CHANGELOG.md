@@ -2,6 +2,17 @@
 
 Hello! This is the Change log section of Discord-Modals. Here you can see what things have been changed in the different versions, to be informed. This will be updated every time there are new versions. I hope you enjoy this package :)
 
+# v1.3.0 (Stable)
+
+- Fix bug: 'INVALID_CLIENT' error when the Client is valid on `.showModal()` method.
+- **Featured:** Add `ModalActionRow` class.
+- Now the `TextInputComponent` returns an **Action Row Component**. Add `ModalActionRow` class and types.
+- **Featured:** Now the `.showModal()` method supports **JSON Modals**.
+- Fix error typings `ModalSubmitField`.
+- **Featured:** Implement `.update()` method to `ModalSubmitInteraction` class.
+- Fix types: `.showModal()` method, `.addComponents()` and `.setComponents()` of `Modal` class.
+- Typings: `discord-api-types` updated to **v10**.
+
 # v1.2.9 (Stable)
 
 - Fix: Add types for reply options on `ModalSubmitInteraction` class.

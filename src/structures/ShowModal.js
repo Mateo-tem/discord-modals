@@ -22,7 +22,7 @@ async function showModal(modal, options){
     if (!options.client) throw new Error('CLIENT_REQUIRED');
     if (!options.interaction) throw new Error('INTERACTION_REQUIRED');
     if (!(modal instanceof Modal)) throw new Error('INVALID_MODAL');
-    if (!(options.client instanceof Client)) throw new Error('INVALID_CLIENT');
+    if (!options.client.api) throw new Error('INVALID_CLIENT');
     if (!(options.interaction instanceof Interaction)) throw new Error('INVALID_INTERACTION');
 
     const _modal = modal instanceof Modal ? modal : new Modal(modal, options.client);

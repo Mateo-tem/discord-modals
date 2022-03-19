@@ -88,17 +88,22 @@ class InteractionResponses {
 
     const { body: data, files } = await messagePayload.resolveBody().resolveFiles();
 
-    await this.client.rest.post(Routes.interactionCallback(this.id, this.token), {
-      body: {
-        type: InteractionResponseType.UpdateMessage,
-        data,
-      },
-      files,
-      auth: false,
-    });
-    this.replied = true;
+    try{
+      await this.client.rest.post(Routes.interactionCallback(this.id, this.token), {
+        body: {
+          type: InteractionResponseType.UpdateMessage,
+          data,
+        },
+        files,
+        auth: false,
+      });
+      this.replied = true;
+  
+      return options.fetchReply ? this.fetchReply() : undefined;
+    } catch(e) {
+      throw new Error('MODAL_INTERACTION_MESSAGE');
+    }
 
-    return options.fetchReply ? this.fetchReply() : undefined;
   }
 
   async showModal(modal) {

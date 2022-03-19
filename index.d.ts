@@ -3,7 +3,8 @@ import {
   APITextInputComponent,
   APIModalInteractionResponseCallbackData,
   APIModalSubmitInteraction,
-} from "discord-api-types/v9";
+  APIModalActionRowComponent,
+} from "discord-api-types/v10";
 import {
   Client,
   User,
@@ -16,6 +17,7 @@ import {
   MessagePayload,
   InteractionReplyOptions,
   InteractionDeferReplyOptions,
+  InteractionUpdateOptions,
 } from "discord.js";
 
 export default function (client: Client): void;
@@ -93,7 +95,7 @@ export class TextInputComponent extends BaseMessageComponent {
   setPlaceholder(placeholder: string): TextInputComponent;
   setRequired(required: boolean): TextInputComponent;
   setDefaultValue(value: string): TextInputComponent;
-  toJSON(): APITextInputComponent;
+  toJSON(): APIModalActionRowComponent<APITextInputComponent>;
 }
 
 export type TextInputStyle = "SHORT" | "LONG";
@@ -116,9 +118,20 @@ export class Modal {
 export class ModalSubmitField extends BaseMessageComponent {
   constructor(data?: ModalSubmitFieldData);
 
-  type: string;
+  type: MessageComponentType;
   customId: string;
   value: string;
+}
+
+export class ModalActionRow {
+  constructor();
+
+  type: number;
+  components: APITextInputComponent[];
+
+  addComponent(component: TextInputComponent): ModalActionRow;
+  componentToJSON(component: TextInputComponent): APITextInputComponent;
+  toJSON(): APIModalActionRowComponent<APITextInputComponent>;
 }
 
 export class ModalSubmitInteraction extends Interaction {
@@ -156,6 +169,9 @@ export class ModalSubmitInteraction extends Interaction {
   followUp(
     options: string | MessagePayload | InteractionReplyOptions
   ): Promise<void>;
+  update(
+    options: string | MessagePayload | InteractionUpdateOptions
+  ): Promise<void>
 }
 
 export function showModal(

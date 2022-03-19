@@ -42,7 +42,7 @@ Shows the Modal to the Interaction User.
 
 ## Modal
 Represents a Modal Form to be shown in response to an Interaction.
-- A modal can contain at most **5 Text Input Components**
+- A modal can contain at most **5 Action Rows**. Each of them can contain **1 Text Input Component**.
 
 ```javascript
 new Modal(data)
@@ -69,7 +69,7 @@ The Custom Id of the Modal.
 
 #### .components
 The Text Input Components of the Modal.
-> Returns: [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+> Returns: [Array<TextInputComponent>](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
 ### Methods
 
@@ -96,7 +96,7 @@ Sets the Custom Id of the Modal. (Max. 100 characters)
 > Returns: [Modal](#modal)
 
 ```js
-.addComponents(TextInputComponent)
+.addComponents(...TextInputComponent)
 ```
 Adds the Components of the Modal.
 
@@ -107,7 +107,7 @@ Adds the Components of the Modal.
 > Returns: [Modal](#modal)
 
 ```js
-.setComponents(TextInputComponent)
+.setComponents(...TextInputComponent)
 ```
 Sets the Components of the Modal.
 
@@ -150,6 +150,7 @@ new TextInputComponent(data)
 |  `.required`  | `.setRequired()` |
 |  `.style`  | `.setStyle()` |
 |  `.value`  | `.setDefaultValue()` |
+|    | `.toJSON()` |
 
 ### Properties
 
@@ -275,12 +276,70 @@ Sets a Default/Pre-filled Value of the Text Input Component. (Max. 4000 characte
 
 > Returns: [TextInputComponent](#textinputcomponent)
 
+```js
+.toJSON()
+```
+Transforms the TextInputComponent to a plain object.
+
+> Returns: [APITextInputComponent](https://discord.com/developers/docs/interactions/message-components#text-inputs)
+
 ### TextInputStyle
 
 | Text |Value|Description|
 | ------------ | ------------ |------------ |
 |  SHORT  |1 [[Short]](https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-styles)| A single-line input |
 |  LONG  |2 [[Paragraph]](https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-styles)| A multi-line input |
+
+## ModalActionRow
+Represents a Modal Action Row, that contains a Text Input Component.
+
+| Properties |Methods|
+| ------------ | ------------ |
+|  `.type`  | `.addComponent()` |
+|  `.components`  | `.componentToJSON()` |
+|    | `.toJSON()` |
+
+### Properties
+
+#### .type
+The type of the Modal Action Row (1).
+> Returns: [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+
+#### .components
+The Text Input Component of this Action Row.
+> Returns: [Array<APITextInputComponent>](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+### Methods
+
+```js
+.addComponent(TextInputComponent)
+```
+Adds a Text Input Component.
+
+| Parameter |Type|Description|
+| ------------ | ------------ |------------ |
+|  *TextInputComponent*  |[TextInputComponent](#textinputcomponent)| The Text Input Component to add in the Action Row. |
+
+> Returns: [ModalActionRow](#modalactionrow)
+
+```js
+.componentToJSON(TextInputComponent)
+```
+Transforms a Text Input Component to a plain object.
+
+| Parameter |Type|Description|
+| ------------ | ------------ |------------ |
+|  *TextInputComponent*  |[TextInputComponent](#textinputcomponent)| The Text Input Component to transform. |
+
+> Returns: [APITextInputComponent](https://discord.com/developers/docs/interactions/message-components#text-inputs)
+
+```js
+.toJSON()
+```
+Transforms the Modal Action Row to a plain object.
+
+> Returns: [APIModalActionRowComponent<APITextInputComponent>](https://discord.com/developers/docs/interactions/message-components#text-inputs)
+
 
 ## ModalSubmitField
 Represents a Field of a Modal Submit Interaction.
@@ -320,9 +379,9 @@ Represents a Modal Submit Interaction.
 |  `.guildId`  | `.editReply()` |
 |  `.user`  | `.deleteReply()` |
 |  `.member`  | `.followUp()` |
-|  `.memberPermissions`  | `.isFromMessage()` |
-|  `.locale`  | `.isRepliable()` |
-|  `.guildLocale`  |  |
+|  `.memberPermissions`  | `.update()` |
+|  `.locale`  | `.isFromMessage()` |
+|  `.guildLocale`  | `.isRepliable()` |
 |  `.message`  |  |
 |  `.version`  |  |  
 |  `.webhook`  |  | 
@@ -445,6 +504,7 @@ Discord-Modals integrates some errors to avoid issues and respect the structures
 |  `TEXT_INPUT_VALUE` | TextInputComponent value must be a string. |
 |  `MODAL_CUSTOM_ID` | Modal customId must be a string. |
 |  `MODAL_TITLE` | Modal title must be a string. |
+|  `MODAL_INTERACTION_MESSAGE` | This Modal Submit Interaction does not have a message to update. |
 
 
 # 🔨 Do you want to contribute to Discord-Modals?

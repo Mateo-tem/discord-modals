@@ -96,11 +96,11 @@ class ModalSubmitInteraction extends Interaction {
   editReply() {}
   deleteReply() {}
   followUp() {}
+  update() {}
 }
 
 InteractionResponses.applyToClass(ModalSubmitInteraction, [
   "deferUpdate",
-  "update",
   "showModal",
 ]);
 

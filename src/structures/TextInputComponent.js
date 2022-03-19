@@ -1,12 +1,13 @@
-const BaseMessageComponent = require('./BaseMessageComponent');
-const { TextInputStyles, MessageComponentTypes } = require('../util/Constants');
-const { Util } = require('discord.js');
-const { RangeError } = require('./errors');
+const BaseMessageComponent = require("./BaseMessageComponent");
+const ModalActionRow = require("./ModalActionRow");
+const { TextInputStyles, MessageComponentTypes } = require("../util/Constants");
+const { Util } = require("discord.js");
+const { RangeError } = require("./errors");
 
 /**
  * Represents a Text Input Component of a Modal.
  * @extends BaseMessageComponent
-*/
+ */
 
 class TextInputComponent extends BaseMessageComponent {
   /**
@@ -185,22 +186,10 @@ class TextInputComponent extends BaseMessageComponent {
   }
 
   toJSON() {
-    return {
-      type: MessageComponentTypes.ACTION_ROW,
-      components: [
-        {
-          type: MessageComponentTypes[this.type],
-          custom_id: this.customId,
-          label: this.label,
-          style: TextInputStyles[this.style],
-          min_length: this.minLength,
-          max_length: this.maxLength,
-          required: this.required,
-          value: this.value,
-          placeholder: this.placeholder,
-        },
-      ],
-    };
+    const actionRow = new ModalActionRow()
+    .addComponent(this);
+
+    return actionRow.toJSON();
   }
 
   static resolveStyle(style) {

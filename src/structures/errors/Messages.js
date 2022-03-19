@@ -32,6 +32,7 @@ const Messages = {
   INTERACTION_ALREADY_REPLIED: 'The reply to this interaction has already been sent or deferred.',
   INTERACTION_NOT_REPLIED: 'The reply to this interaction has not been sent or deferred.',
   INTERACTION_EPHEMERAL_REPLIED: 'Ephemeral responses cannot be deleted.',
+  MODAL_INTERACTION_MESSAGE: 'This Modal Submit Interaction does not have a message to update.',
 
   // Modals
 

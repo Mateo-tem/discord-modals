@@ -1,4 +1,4 @@
-const { Client, version } = require('discord.js');
+const { version } = require('discord.js');
 let ModalSubmitInteraction = require('./src/structures/ModalSubmitInteraction');
 const { Error } = require('./src/structures/errors');
 const { InteractionTypes } = require('./src/util/Constants');
@@ -40,6 +40,7 @@ if (discordjsVersion.includes('v13')) {
   module.exports.TextInputComponent = require('./src/structures/TextInputComponent');
   module.exports.ModalSubmitInteraction = require('./src/structures/ModalSubmitInteraction');
   module.exports.ModalSubmitField = require('./src/structures/ModalSubmitField');
+  module.exports.ModalActionRow = require('./src/structures/ModalActionRow');
   module.exports.showModal = require('./src/structures/ShowModal');
   module.exports.Interaction = require('./src/structures/Interaction');
   module.exports.InteractionResponses = require('./src/structures/interfaces/InteractionResponses');
@@ -50,6 +51,7 @@ if (discordjsVersion.includes('v13')) {
   module.exports.TextInputComponent = require('./src/structures/TextInputComponent');
   module.exports.ModalSubmitInteraction = require('./src/v14/ModalSubmitInteraction');
   module.exports.ModalSubmitField = require('./src/structures/ModalSubmitField');
+  module.exports.ModalActionRow = require('./src/structures/ModalActionRow');
   module.exports.showModal = require('./src/v14/ShowModal');
   module.exports.Interaction = require('./src/v14/Interaction');
   module.exports.InteractionResponses = require('./src/v14/interfaces/InteractionResponses');

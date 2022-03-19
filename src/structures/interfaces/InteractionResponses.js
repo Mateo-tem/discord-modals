@@ -88,17 +88,22 @@ class InteractionResponses {
 
     const { data, files } = await messagePayload.resolveData().resolveFiles();
 
-    await this.client.api.interactions(this.id, this.token).callback.post({
-      data: {
-        type: InteractionResponseTypes.UPDATE_MESSAGE,
-        data,
-      },
-      files,
-      auth: false,
-    });
-    this.replied = true;
-
-    return options.fetchReply ? this.fetchReply() : undefined;
+    try{
+      await this.client.api.interactions(this.id, this.token).callback.post({
+        data: {
+          type: InteractionResponseTypes.UPDATE_MESSAGE,
+          data,
+        },
+        files,
+        auth: false,
+      });
+      this.replied = true;
+  
+      return options.fetchReply ? this.fetchReply() : undefined;
+    } catch(e) {
+      throw new Error('MODAL_INTERACTION_MESSAGE');
+    }
+    
   }
 
   async showModal(modal) {
