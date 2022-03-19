@@ -109,8 +109,8 @@ export class Modal {
 
   setTitle(title: string): Modal;
   setCustomId(id: string): Modal;
-  addComponents(component: TextInputComponent): Modal;
-  setComponents(component: TextInputComponent): Modal;
+  addComponents(...components: TextInputComponent): Modal;
+  setComponents(...components: TextInputComponent): Modal;
   spliceComponents(): Modal;
   toJSON(): APIModalInteractionResponseCallbackData;
 }
@@ -164,7 +164,7 @@ export class ModalSubmitInteraction extends Interaction {
   reply(
     options: string | MessagePayload | InteractionReplyOptions
   ): Promise<void>;
-  fetchReply(): Promise<void>;
+  fetchReply(): Promise<Message>;
   deleteReply(): Promise<void>;
   followUp(
     options: string | MessagePayload | InteractionReplyOptions
@@ -180,7 +180,7 @@ export function showModal(
     client: Client;
     interaction: Interaction;
   }
-): Modal;
+): Promise<Modal>;
 
 declare module "discord.js" {
   interface Client {
