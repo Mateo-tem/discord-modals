@@ -4,7 +4,7 @@ import {
   APIModalInteractionResponseCallbackData,
   APIModalSubmitInteraction,
   APIModalActionRowComponent,
-} from "discord-api-types/v10";
+} from "discord-api-types/v9";
 import {
   Client,
   User,
@@ -95,7 +95,7 @@ export class TextInputComponent extends BaseMessageComponent {
   setPlaceholder(placeholder: string): TextInputComponent;
   setRequired(required: boolean): TextInputComponent;
   setDefaultValue(value: string): TextInputComponent;
-  toJSON(): APIModalActionRowComponent<APITextInputComponent>;
+  toJSON(): APIModalActionRowComponent;
 }
 
 export type TextInputStyle = "SHORT" | "LONG";
@@ -105,20 +105,20 @@ export class Modal {
 
   title: string;
   customId: string;
-  components: TextInputComponent[];
+  components: ModalActionRow[];
 
   setTitle(title: string): Modal;
   setCustomId(id: string): Modal;
-  addComponents(...components: TextInputComponent): Modal;
-  setComponents(...components: TextInputComponent): Modal;
+  addComponents(...components: TextInputComponent[]): Modal;
+  setComponents(...components: TextInputComponent[]): Modal;
   spliceComponents(): Modal;
   toJSON(): APIModalInteractionResponseCallbackData;
 }
 
-export class ModalSubmitField extends BaseMessageComponent {
+export class ModalSubmitField {
   constructor(data?: ModalSubmitFieldData);
 
-  type: MessageComponentType;
+  type: string;
   customId: string;
   value: string;
 }
@@ -126,12 +126,12 @@ export class ModalSubmitField extends BaseMessageComponent {
 export class ModalActionRow {
   constructor();
 
-  type: number;
+  type: 'ACTION_ROW';
   components: APITextInputComponent[];
 
   addComponent(component: TextInputComponent): ModalActionRow;
   componentToJSON(component: TextInputComponent): APITextInputComponent;
-  toJSON(): APIModalActionRowComponent<APITextInputComponent>;
+  toJSON(): APIModalActionRowComponent;
 }
 
 export class ModalSubmitInteraction extends Interaction {

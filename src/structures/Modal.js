@@ -1,11 +1,12 @@
 const BaseMessageComponent = require("./BaseMessageComponent");
 const TextInputComponent = require("./TextInputComponent");
+const ModalActionRow = require("./ModalActionRow")
 const { Util } = require("discord.js");
 const { RangeError } = require("./errors");
 
 /**
  * Represents a Modal Form to be shown in response to an Interaction.
-*/
+ */
 
 class Modal {
 
@@ -16,30 +17,30 @@ class Modal {
    * .setCustomId('modal-customid')
    * .setTitle('Test of Discord-Modals!')
    * .addComponents(new TextInputComponent()); // Add a Text Input Component.
-  */
+   */
  
   constructor(data = {}, client = null) {
 
     /**
      * The Title of the Modal.
      * @type {String}
-    */
+     */
 
     this.title = data.title ?? null;
 
     /**
      * The Custom Id of the Modal.
      * @type {String}
-    */
+     */
 
     this.customId = data.custom_id ?? data.customId ?? null;
 
     /**
      * The Text Input Components of the Modal.
      * @type {BaseMessageComponent}
-    */
+     */
 
-    this.components = data.components?.map(c => BaseMessageComponent.create(c, client)) ?? [];
+    this.components = data.components?.map(c => new ModalActionRow(c).addComponent(c.components[0])) ?? [];
 
   }
 
@@ -47,10 +48,10 @@ class Modal {
    * Adds the Components of the Modal.
    * @param {TextInputComponent} components The Text Input Components to add.
    * @returns {Modal} Modal.
-  */
+   */
 
   addComponents(...components) {
-    this.components.push(...components.flat(Infinity).map(c => BaseMessageComponent.create(c)));
+    this.components.push(...components.flat(Infinity).map(c => new ModalActionRow().addComponent(c)));
     return this;
   }
 
@@ -58,7 +59,7 @@ class Modal {
    * Sets the Components of the Modal.
    * @param {TextInputComponent} components The Text Input Components to set.
    * @returns {Modal} Modal.
-  */
+   */
 
   setComponents(...components) {
     this.spliceComponents(0, this.components.length, components);
@@ -69,7 +70,7 @@ class Modal {
    * Sets the Custom Id of the Modal.
    * @param {String} customId The Custom Id of the modal.
    * @returns {Modal} Modal.
-  */
+   */
 
   setCustomId(customId) {
     this.customId = Util.verifyString(customId, RangeError, 'MODAL_CUSTOM_ID');
@@ -82,7 +83,7 @@ class Modal {
    * @param {Number} deleteCount The number of components to remove.
    * @param components The replacing components.
    * @returns {Modal} Modal.
-  */
+   */
 
   spliceComponents(index, deleteCount, ...components) {
     this.components.splice(index, deleteCount, ...components.flat(Infinity).map(c => BaseMessageComponent.create(c)));
@@ -93,7 +94,7 @@ class Modal {
    * Sets the Title of the Modal.
    * @param {String} title The Title of the modal.
    * @returns {Modal} Modal.
-  */
+   */
   
   setTitle(title) {
     this.title = Util.verifyString(title, RangeError, 'MODAL_TITLE');

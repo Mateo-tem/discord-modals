@@ -372,18 +372,19 @@ Represents a Modal Submit Interaction.
 | Properties |Methods|
 | ------------ | ------------ |
 |  `.customId`  | `.getTextInputValue()` |
-|  `.fields`  | `.getField()` |
-|  `.id`  | `.deferReply()` |
-|  `.applicationId`  | `.reply()` |
-|  `.channelId`  | `.fetchReply()` |
-|  `.guildId`  | `.editReply()` |
-|  `.user`  | `.deleteReply()` |
-|  `.member`  | `.followUp()` |
-|  `.memberPermissions`  | `.update()` |
-|  `.locale`  | `.isFromMessage()` |
-|  `.guildLocale`  | `.isRepliable()` |
-|  `.message`  |  |
-|  `.version`  |  |  
+|  `.components`  | `.getField()` |
+|  `.fields`  | `.deferReply()` |
+|  `.id`  | `.reply()` |
+|  `.applicationId`  | `.fetchReply()` |
+|  `.channelId`  | `.editReply()` |
+|  `.guildId`  | `.deleteReply()` |
+|  `.user`  | `.followUp()` |
+|  `.member`  | `.update()` |
+|  `.memberPermissions`  | `.isFromMessage()` |
+|  `.locale`  | `.isRepliable()` |
+|  `.guildLocale`  |  |
+|  `.message`  |  |  
+|  `.version`  |  | 
 |  `.webhook`  |  | 
 |  `.type`  |  | 
 
@@ -392,6 +393,10 @@ Represents a Modal Submit Interaction.
 #### .customId
 The Custom Id of the Modal.
 > Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+#### .components
+The Action Rows of the modal with the Text Input Components.
+> Returns: [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
 
 #### .fields
 The (Fields) Text Input Components of the Modal.

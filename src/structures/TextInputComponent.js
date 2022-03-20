@@ -1,6 +1,6 @@
 const BaseMessageComponent = require("./BaseMessageComponent");
 const ModalActionRow = require("./ModalActionRow");
-const { TextInputStyles, MessageComponentTypes } = require("../util/Constants");
+const { TextInputStyles } = require("../util/Constants");
 const { Util } = require("discord.js");
 const { RangeError } = require("./errors");
 

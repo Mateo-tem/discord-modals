@@ -3,7 +3,7 @@ const { TypeError } = require('./errors');
 
 /**
  * Represents an interactive component of a Message.
-*/
+ */
 
 class BaseMessageComponent {
   constructor(data) {

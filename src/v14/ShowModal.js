@@ -1,8 +1,8 @@
-const { Client, Interaction } = require('discord.js');
-const { InteractionResponseTypes } = require('../util/Constants');
-const Modal = require('../structures/Modal');
-const { Error } = require('../structures/errors');
-const { Routes } = require('discord-api-types/v10');
+const { Interaction } = require("discord.js");
+const { InteractionResponseTypes } = require("../util/Constants");
+const Modal = require("../structures/Modal");
+const { Error } = require("../structures/errors");
+const { Routes } = require("discord-api-types/v9");
 
 /**
  * Shows the Modal to the Interaction User.
@@ -14,7 +14,7 @@ const { Routes } = require('discord-api-types/v10');
  *   interaction: Interaction // Interaction data.
  * });
  * @returns {Modal} Modal.
-*/
+ */
 
 async function showModal(modal, options){
 
@@ -22,7 +22,7 @@ async function showModal(modal, options){
   if (!options) throw new Error('OPTIONS_REQUIRED');
   if (!options.client) throw new Error('CLIENT_REQUIRED');
   if (!options.interaction) throw new Error('INTERACTION_REQUIRED');
-  if (!(options.client instanceof Client)) throw new Error('INVALID_CLIENT');
+  if (!options.client.rest) throw new Error('INVALID_CLIENT');
   if (!(options.interaction instanceof Interaction)) throw new Error('INVALID_INTERACTION');
 
   let _modal = modal instanceof Modal ? modal : null

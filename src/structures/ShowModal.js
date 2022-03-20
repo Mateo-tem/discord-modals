@@ -1,7 +1,7 @@
-const { Client, Interaction } = require('discord.js');
-const { InteractionResponseTypes } = require('../util/Constants');
-const Modal = require('./Modal');
-const { Error } = require('./errors');
+const { Interaction } = require('discord.js');
+const { InteractionResponseTypes } = require("../util/Constants");
+const Modal = require("./Modal");
+const { Error } = require("./errors");
 
 /**
  * Shows the Modal to the Interaction User.
@@ -13,7 +13,7 @@ const { Error } = require('./errors');
  *   interaction: Interaction // Interaction data.
  * });
  * @returns {Modal} Modal.
-*/
+ */
 
 async function showModal(modal, options){
 
@@ -21,17 +21,35 @@ async function showModal(modal, options){
     if (!options) throw new Error('OPTIONS_REQUIRED');
     if (!options.client) throw new Error('CLIENT_REQUIRED');
     if (!options.interaction) throw new Error('INTERACTION_REQUIRED');
-    if (!(modal instanceof Modal)) throw new Error('INVALID_MODAL');
     if (!options.client.api) throw new Error('INVALID_CLIENT');
     if (!(options.interaction instanceof Interaction)) throw new Error('INVALID_INTERACTION');
 
-    const _modal = modal instanceof Modal ? modal : new Modal(modal, options.client);
+    let _modal = modal instanceof Modal ? modal : null
+
+    function isJSONModal(modal) {
+      if(!_modal && typeof modal === 'object' && modal.title && modal.custom_id && modal.components){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    if(!isJSONModal(modal) && !(modal instanceof Modal)) throw new Error('INVALID_MODAL');
+
+    switch(isJSONModal(modal)) {
+      case true:
+        _modal = _modal
+        break;
+      case false:
+        _modal = _modal.toJSON()
+        break;
+    }
 
     try{
         await options.client.api.interactions(options.interaction.id, options.interaction.token).callback.post({
             data: {
               type: InteractionResponseTypes.MODAL,
-              data: _modal.toJSON(),
+              data: _modal,
             },
         });
     } catch(error) {
