@@ -22,6 +22,8 @@ import {
 
 export default function (client: Client): void;
 
+export function init(client: Client): void;
+
 export enum TextInputStyles {
   SHORT = 1,
   LONG,
