@@ -85,7 +85,7 @@ const { Modal, TextInputComponent } = require('discord-modals') // Modal and Tex
 const modal = new Modal() // We create a Modal
 .setCustomId('modal-customid')
 .setTitle('Test of Discord-Modals!')
-.addComponents([
+.addComponents(
   new TextInputComponent() // We create a Text Input Component
   .setCustomId('textinput-customid')
   .setLabel('Some text Here')
@@ -94,7 +94,7 @@ const modal = new Modal() // We create a Modal
   .setMaxLength(10)
   .setPlaceholder('Write a text here')
   .setRequired(true) // If it's required or not
-]);
+);
 ```
 
 > **Yay! We have the full Modal & Text Input Component, but... How can i send/show a Modal?**
@@ -107,7 +107,7 @@ const { Modal, TextInputComponent, showModal } = require('discord-modals') // No
 const modal = new Modal() // We create a Modal
 .setCustomId('modal-customid')
 .setTitle('Test of Discord-Modals!')
-.addComponents([
+.addComponents(
   new TextInputComponent() // We create a Text Input Component
   .setCustomId('textinput-customid')
   .setLabel('Some text Here')
@@ -116,7 +116,7 @@ const modal = new Modal() // We create a Modal
   .setMaxLength(10)
   .setPlaceholder('Write a text here')
   .setRequired(true) // If it's required or not
-]);
+);
 
 client.on('interactionCreate', (interaction) => {
   // Let's say the interaction will be a Slash Command called 'ping'.
