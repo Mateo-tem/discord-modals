@@ -59,6 +59,9 @@ if (discordjsVersion.includes("v13")) {
   module.exports.SnowflakeUtil = require("./src/util/SnowflakeUtil");
 }
 
+//Easier for typescript
+module.exports.init = this;
+
 /* Powered by:
 
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
