@@ -5,7 +5,7 @@
     <img src="https://img.shields.io/npm/dt/discord-modals?style=for-the-badge" alt="npm" />
   </a>
 
-  <a href="https://discord.gg/dscbots">
+  <a href="https://discord.gg/jD3xDVsqdr">
     <img src="https://img.shields.io/discord/852531635252494346?color=5865F2&label=Discord Server&style=for-the-badge" alt="Discord Server" />
   </a>
 </p>
@@ -46,9 +46,9 @@ client.login('token') // Login with your bot
 > First of all, we need to understand that Modals and Text Input Components are completely different. Modals is a popup that shows the text input components and text input are the components of modals. To understand better, you can explore the Discord API Documentation [here](https://discord.com/developers/docs/interactions/message-components#text-inputs).
 
 **Modals have:**
-- A Title.
-- A Custom Id.
-- Components (Text Input)
+- A Title
+- A Custom Id
+- Components (Action Rows with Text Inputs)
 
 **Text Inputs have:**
 - A Custom Id
@@ -57,7 +57,7 @@ client.login('token') // Login with your bot
 - A minimum length
 - A maximum length
 - A value (A prefilled value if there is not text)
-- And...a place holder
+- And...a placeholder
 
 If you have understood this, you can continue on "Examples" section.
 
@@ -73,7 +73,7 @@ const { Modal } = require('discord-modals') // Modal class
 const modal = new Modal() // We create a Modal
 .setCustomId('customid')
 .setTitle('Test of Discord-Modals!')
-.addComponents([])
+.addComponents()
 ```
 > **This is a basic structure of a Modal, but something is missing. Yeah! Text Input components.**
 
@@ -180,4 +180,6 @@ client.on('modalSubmit', async (modal) => {
 - 『𝑴𝒂𝒕𝒆𝒐ᵗᵉᵐ』#9999
 
 # ⛔ Issues/Bugs?
-> **Please report it on our GitHub Repository [here](https://github.com/Mateo-tem/discord-modals/issues) to fix it inmmediately. Or contact 『𝑴𝒂𝒕𝒆𝒐ᵗᵉᵐ』#9999 on Discord.**
+> **Please report it on our GitHub Repository [here](https://github.com/Mateo-tem/discord-modals/issues) to fix it inmmediately or join to the support server.**
+
+> **Credits:** This package is based on discord.js, code base was extracted for this.

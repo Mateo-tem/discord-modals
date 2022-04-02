@@ -2,7 +2,12 @@
 
 Hello! This is the Change log section of Discord-Modals. Here you can see what things have been changed in the different versions, to be informed. This will be updated every time there are new versions. I hope you enjoy this package :)
 
-# v1.3.2 (Stable)
+# v1.3.3 (Stable)
+
+- TypeScript Compatibility: Add `.init()` method.
+- Fix: Readme example type error `.addComponents()` on `Modal` class.
+
+# v1.3.2
 
 - Compatibility: change `discord-api-types` enums from `v10` to `v9`.
 - `Modal` and `ModalSubmitInteraction` class: Now the `.components` property returns `ModalActionRow`s.

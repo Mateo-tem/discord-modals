@@ -26,6 +26,18 @@ yarn add discord-modals
 ### Methods
 
 ```js
+.init(client)
+```
+Initialize the receivements of Modal Submit Interactions.
+
+| Parameter |Type|Description|
+| ------------ | ------------ |------------ |
+|  *Client*  |[Client](https://discord.js.org/#/docs/discord.js/stable/class/Client)| The Client to receive the Modal Submit Interaction. |
+
+> Returns: [void](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)
+
+
+```js
 .showModal(modal, { client: Client, interaction: Interaction })
 ```
 Shows the Modal to the Interaction User.

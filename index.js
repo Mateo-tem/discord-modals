@@ -23,10 +23,6 @@ module.exports = (client) => {
       case InteractionTypes.MODAL_SUBMIT:
         client.emit('modalSubmit', new ModalSubmitInteraction(client, data));
         break;
-
-      default:
-        client.emit('debug', `Unknown interaction component type received: ${data.data.component_type}`);
-        break;
     }
 
   });
@@ -68,6 +64,8 @@ module.exports.init = this;
 ┃       D i s c o r d - M o d a l s        ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ------ Developed by 『𝑴𝒂𝒕𝒆𝒐ᵗᵉᵐ』#9999 ------
-
 https://www.npmjs.com/package/discord-modals
+
+Credits to discord.js, code base was extracted for this.
+
 */
