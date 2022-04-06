@@ -1,0 +1,40 @@
+{
+	"compilerOptions": {
+		"module": "CommonJS",
+		"target": "ES6",
+		"skipLibCheck": true,
+		"strict": true,
+		"sourceMap": true,
+		"declaration": false,
+
+		/* Paths */
+		"outDir": "./dist",
+		"rootDir": "./src",
+
+		/* The "No" Corner */
+		"noImplicitAny": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noUncheckedIndexedAccess": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+
+		/* Strict */
+		"strictBindCallApply": true,
+		"strictFunctionTypes": true,
+		"strictNullChecks": true,
+		"strictPropertyInitialization": true,
+		"useUnknownInCatchVariables": true,
+
+		/* Other settings */
+		"esModuleInterop": true,
+		"exactOptionalPropertyTypes": true,
+		"experimentalDecorators": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"allowJs": true
+	},
+	"include": ["./src"],
+	"exclude": ["node_modules"]
+}
