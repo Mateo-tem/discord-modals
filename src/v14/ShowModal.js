@@ -39,7 +39,7 @@ async function showModal(modal, options){
 
   switch(isJSONModal(modal)) {
     case true:
-      _modal = _modal
+      _modal = modal
       break;
     case false:
       _modal = _modal.toJSON()

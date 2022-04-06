@@ -2,7 +2,11 @@
 
 Hello! This is the Change log section of Discord-Modals. Here you can see what things have been changed in the different versions, to be informed. This will be updated every time there are new versions. I hope you enjoy this package :)
 
-# v1.3.3 (Stable)
+# v1.3.4 (Stable)
+
+- Fix: JSON Modals on `.showModal()` didn't work.
+
+# v1.3.3
 
 - TypeScript Compatibility: Add `.init()` method.
 - Fix: Readme example type error `.addComponents()` on `Modal` class.

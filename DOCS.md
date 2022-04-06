@@ -44,7 +44,7 @@ Shows the Modal to the Interaction User.
 
 | Parameter |Type|Description|
 | ------------ | ------------ |------------ |
-|  *Modal*  |[Modal](#modal)| The Modal to show. |
+|  *Modal*  |[Modal](#modal) or [JSONModal](https://discord.com/developers/docs/interactions/message-components#text-inputs)| The Modal to show. |
 |  *Options#client*  |[Client](https://discord.js.org/#/docs/discord.js/stable/class/Client)| The Client to manipulate the Interaction for show the Modal. |
 |  *Options#interaction*  |[Interaction](https://discord.js.org/#/docs/discord.js/stable/class/Interaction)| The Interaction to show the Modal. |
 
