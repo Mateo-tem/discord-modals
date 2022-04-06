@@ -1,8 +1,10 @@
-const { Interaction } = require("discord.js");
-const { InteractionResponseTypes } = require("../util/Constants");
-const Modal = require("../structures/Modal");
-const { Error } = require("../structures/errors");
-const { Routes } = require("discord-api-types/v9");
+'use strict';
+
+const { Routes } = require('discord-api-types/v9');
+const { Interaction } = require('discord.js');
+const Modal = require('../structures/Modal');
+const { Error } = require('../structures/errors');
+const { InteractionResponseTypes } = require('../util/Constants');
 
 /**
  * Shows the Modal to the Interaction User.
@@ -16,8 +18,7 @@ const { Routes } = require("discord-api-types/v9");
  * @returns {Modal} Modal.
  */
 
-async function showModal(modal, options){
-
+async function showModal(modal, options) {
   if (!modal) throw new Error('MODAL_REQUIRED');
   if (!options) throw new Error('OPTIONS_REQUIRED');
   if (!options.client) throw new Error('CLIENT_REQUIRED');
@@ -25,40 +26,45 @@ async function showModal(modal, options){
   if (!options.client.rest) throw new Error('INVALID_CLIENT');
   if (!(options.interaction instanceof Interaction)) throw new Error('INVALID_INTERACTION');
 
-  let _modal = modal instanceof Modal ? modal : null
+  let _modal = modal instanceof Modal ? modal : null;
 
-  function isJSONModal(modal) {
-    if(!_modal && typeof modal === 'object' && modal.title && modal.custom_id && modal.components){
+  function isJSONModal(modalToCheck) {
+    if (
+      !_modal &&
+      typeof modalToCheck === 'object' &&
+      modalToCheck.title &&
+      modalToCheck.custom_id &&
+      modalToCheck.components
+    ) {
       return true;
     } else {
       return false;
     }
   }
 
-  if(!isJSONModal(modal) && !(modal instanceof Modal)) throw new Error('INVALID_MODAL');
+  if (!isJSONModal(modal) && !(modal instanceof Modal)) throw new Error('INVALID_MODAL');
 
-  switch(isJSONModal(modal)) {
+  switch (isJSONModal(modal)) {
     case true:
-      _modal = modal
+      _modal = modal;
       break;
     case false:
-      _modal = _modal.toJSON()
+      _modal = _modal.toJSON();
       break;
   }
 
-  try{
+  try {
     await options.client.rest.post(Routes.interactionCallback(options.interaction.id, options.interaction.token), {
       body: {
         type: InteractionResponseTypes.MODAL,
         data: _modal,
       },
     });
-  } catch(error) {
-      console.error('SHOW_MODAL_ERROR: An error occurred when showing a modal.', error);
+  } catch (error) {
+    console.error('SHOW_MODAL_ERROR: An error occurred when showing a modal.', error);
   }
 
-  return new Modal(modal, options.client);    
-    
+  return new Modal(modal, options.client);
 }
 
 module.exports = showModal;

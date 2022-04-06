@@ -3,7 +3,6 @@
 const { register } = require('./DJSError');
 
 const Messages = {
-
   // Discord-Modals package
 
   INVALID_VERSION: 'This package is only compatible with discord.js v13 and v14.',
@@ -38,7 +37,6 @@ const Messages = {
 
   MODAL_CUSTOM_ID: 'Modal customId must be a string.',
   MODAL_TITLE: 'Modal title must be a string.',
-
 };
 
 for (const [name, message] of Object.entries(Messages)) register(name, message);

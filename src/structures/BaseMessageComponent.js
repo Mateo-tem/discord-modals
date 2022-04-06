@@ -1,5 +1,7 @@
-const { MessageComponentTypes } = require('../util/Constants');
+'use strict';
+
 const { TypeError } = require('./errors');
+const { MessageComponentTypes } = require('../util/Constants');
 
 /**
  * Represents an interactive component of a Message.
@@ -12,7 +14,7 @@ class BaseMessageComponent {
 
   static create(data, client) {
     let component;
-    let type = data.type;
+    let { type } = data;
 
     if (typeof type === 'string') type = MessageComponentTypes[type];
 

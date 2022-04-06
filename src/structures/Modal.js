@@ -1,15 +1,15 @@
-const BaseMessageComponent = require("./BaseMessageComponent");
-const TextInputComponent = require("./TextInputComponent");
-const ModalActionRow = require("./ModalActionRow")
-const { Util } = require("discord.js");
-const { RangeError } = require("./errors");
+'use strict';
+
+const { Util } = require('discord.js');
+const BaseMessageComponent = require('./BaseMessageComponent');
+const ModalActionRow = require('./ModalActionRow');
+const { RangeError } = require('./errors');
 
 /**
  * Represents a Modal Form to be shown in response to an Interaction.
  */
 
 class Modal {
-
   /**
    * Represents a Modal Form to be shown in response to an Interaction.
    * @example
@@ -18,9 +18,8 @@ class Modal {
    * .setTitle('Test of Discord-Modals!')
    * .addComponents(new TextInputComponent()); // Add a Text Input Component.
    */
- 
-  constructor(data = {}, client = null) {
 
+  constructor(data = {}) {
     /**
      * The Title of the Modal.
      * @type {String}
@@ -41,7 +40,6 @@ class Modal {
      */
 
     this.components = data.components?.map(c => new ModalActionRow(c).addComponent(c.components[0])) ?? [];
-
   }
 
   /**
@@ -95,14 +93,14 @@ class Modal {
    * @param {String} title The Title of the modal.
    * @returns {Modal} Modal.
    */
-  
+
   setTitle(title) {
     this.title = Util.verifyString(title, RangeError, 'MODAL_TITLE');
     return this;
   }
 
   toJSON() {
-    return {      
+    return {
       title: this.title,
       custom_id: this.customId,
       components: this.components.map(c => c.toJSON()),

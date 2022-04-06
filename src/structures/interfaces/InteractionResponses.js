@@ -1,10 +1,11 @@
-const { InteractionResponseTypes } = require("../../util/Constants");
-const { MessageFlags, MessagePayload } = require("discord.js");
-const { Error } = require("../errors");
-const Modal = require("../Modal");
+'use strict';
+
+const { MessageFlags, MessagePayload } = require('discord.js');
+const { InteractionResponseTypes } = require('../../util/Constants');
+const Modal = require('../Modal');
+const { Error } = require('../errors');
 
 class InteractionResponses {
-    
   async deferReply(options = {}) {
     if (this.deferred || this.replied) throw new Error('INTERACTION_ALREADY_REPLIED');
     this.ephemeral = options.ephemeral ?? false;
@@ -88,7 +89,7 @@ class InteractionResponses {
 
     const { data, files } = await messagePayload.resolveData().resolveFiles();
 
-    try{
+    try {
       await this.client.api.interactions(this.id, this.token).callback.post({
         data: {
           type: InteractionResponseTypes.UPDATE_MESSAGE,
@@ -98,12 +99,11 @@ class InteractionResponses {
         auth: false,
       });
       this.replied = true;
-  
+
       return options.fetchReply ? this.fetchReply() : undefined;
-    } catch(e) {
+    } catch (e) {
       throw new Error('MODAL_INTERACTION_MESSAGE');
     }
-    
   }
 
   async showModal(modal) {
@@ -137,7 +137,6 @@ class InteractionResponses {
         Object.getOwnPropertyDescriptor(InteractionResponses.prototype, prop),
       );
     }
-    
   }
 }
 

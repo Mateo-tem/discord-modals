@@ -1,8 +1,10 @@
-const BaseMessageComponent = require("./BaseMessageComponent");
-const ModalActionRow = require("./ModalActionRow");
-const { TextInputStyles } = require("../util/Constants");
-const { Util } = require("discord.js");
-const { RangeError } = require("./errors");
+'use strict';
+
+const { Util } = require('discord.js');
+const BaseMessageComponent = require('./BaseMessageComponent');
+const ModalActionRow = require('./ModalActionRow');
+const { RangeError } = require('./errors');
+const { TextInputStyles } = require('../util/Constants');
 
 /**
  * Represents a Text Input Component of a Modal.
@@ -24,7 +26,7 @@ class TextInputComponent extends BaseMessageComponent {
    */
 
   constructor(data = {}) {
-    super({ type: "TEXT_INPUT" });
+    super({ type: 'TEXT_INPUT' });
 
     this.setup(data);
   }
@@ -77,9 +79,7 @@ class TextInputComponent extends BaseMessageComponent {
      * @type {String}
      */
 
-    this.style = data.style
-      ? TextInputComponent.resolveStyle(data.style)
-      : null;
+    this.style = data.style ? TextInputComponent.resolveStyle(data.style) : null;
 
     /**
      * The Default/Pre-filled value of the Text Input Component.
@@ -96,11 +96,7 @@ class TextInputComponent extends BaseMessageComponent {
    */
 
   setCustomId(customId) {
-    this.customId = Util.verifyString(
-      customId,
-      RangeError,
-      "TEXT_INPUT_CUSTOM_ID"
-    );
+    this.customId = Util.verifyString(customId, RangeError, 'TEXT_INPUT_CUSTOM_ID');
     return this;
   }
 
@@ -111,7 +107,7 @@ class TextInputComponent extends BaseMessageComponent {
    */
 
   setLabel(label) {
-    this.label = Util.verifyString(label, RangeError, "TEXT_INPUT_LABEL");
+    this.label = Util.verifyString(label, RangeError, 'TEXT_INPUT_LABEL');
     return this;
   }
 
@@ -155,11 +151,7 @@ class TextInputComponent extends BaseMessageComponent {
    */
 
   setPlaceholder(placeholder) {
-    this.placeholder = Util.verifyString(
-      placeholder,
-      RangeError,
-      "TEXT_INPUT_PLACEHOLDER"
-    );
+    this.placeholder = Util.verifyString(placeholder, RangeError, 'TEXT_INPUT_PLACEHOLDER');
     return this;
   }
 
@@ -181,19 +173,18 @@ class TextInputComponent extends BaseMessageComponent {
    */
 
   setDefaultValue(value) {
-    this.value = Util.verifyString(value, RangeError, "TEXT_INPUT_VALUE");
+    this.value = Util.verifyString(value, RangeError, 'TEXT_INPUT_VALUE');
     return this;
   }
 
   toJSON() {
-    const actionRow = new ModalActionRow()
-    .addComponent(this);
+    const actionRow = new ModalActionRow().addComponent(this);
 
     return actionRow.toJSON();
   }
 
   static resolveStyle(style) {
-    return typeof style === "string" ? style : TextInputStyles[style];
+    return typeof style === 'string' ? style : TextInputStyles[style];
   }
 }
 

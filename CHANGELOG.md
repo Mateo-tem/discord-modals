@@ -2,7 +2,12 @@
 
 Hello! This is the Change log section of Discord-Modals. Here you can see what things have been changed in the different versions, to be informed. This will be updated every time there are new versions. I hope you enjoy this package :)
 
-# v1.3.4 (Stable)
+# v1.3.5 (Stable)
+
+- Style and Code Cleanup: All files.
+- Chore: Add eslint.
+
+# v1.3.4
 
 - Fix: JSON Modals on `.showModal()` didn't work.
 

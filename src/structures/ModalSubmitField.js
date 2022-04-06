@@ -1,10 +1,11 @@
+'use strict';
+
 /**
  * Represents a Field of a Modal Submit Interaction.
  */
 
 class ModalSubmitField {
   constructor(data = {}) {
-
     /**
      * The type of the Modal Submit Field.
      * @type {String}
@@ -13,11 +14,9 @@ class ModalSubmitField {
     this.type = 'TEXT_INPUT';
 
     this.setup(data);
-
   }
 
   setup(data) {
-
     /**
      * The Custom Id of the Modal Submit Field.
      * @type {String}
@@ -30,15 +29,14 @@ class ModalSubmitField {
      * @type {String}
      */
 
-    switch(data.value.trim().length) {
+    switch (data.value.trim().length) {
       case 0:
         this.value = null;
         break;
-      
-      default: 
+
+      default:
         this.value = data.value ?? null;
     }
-
   }
 }
 

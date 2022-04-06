@@ -1,13 +1,13 @@
 'use strict';
 
-const { Base, PermissionsBitField } = require("discord.js");
-const SnowflakeUtil = require("../util/SnowflakeUtil");
-const { InteractionType } = require("discord-api-types/v9");
+const { InteractionType } = require('discord-api-types/v9');
+const { Base, PermissionsBitField } = require('discord.js');
+const SnowflakeUtil = require('../util/SnowflakeUtil');
 
 /**
  * Represents an Interaction.
  * @extends Base
-*/
+ */
 
 class Interaction extends Base {
   constructor(client, data) {
@@ -15,7 +15,7 @@ class Interaction extends Base {
 
     this.id = data.id;
 
-    Object.defineProperty(this, "token", { value: data.token });
+    Object.defineProperty(this, 'token', { value: data.token });
 
     this.applicationId = data.application_id;
 
@@ -25,9 +25,7 @@ class Interaction extends Base {
 
     this.user = this.client.users._add(data.user ?? data.member.user);
 
-    this.member = data.member
-      ? this.guild?.members._add(data.member) ?? data.member
-      : null;
+    this.member = data.member ? this.guild?.members._add(data.member) ?? data.member : null;
 
     this.version = data.version;
 

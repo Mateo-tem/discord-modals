@@ -1,11 +1,12 @@
-const { InteractionWebhook } = require("discord.js");
-const ModalSubmitField = require("../structures/ModalSubmitField");
-const ModalActionRow = require("../structures/ModalActionRow");
-const BaseMessageComponent = require("../structures/BaseMessageComponent");
-const Interaction = require("./Interaction");
-const InteractionResponses = require("./interfaces/InteractionResponses");
-const { InteractionTypes } = require("../util/Constants");
-const { Message } = require("discord.js");
+'use strict';
+
+const { InteractionWebhook } = require('discord.js');
+const Interaction = require('./Interaction');
+const InteractionResponses = require('./interfaces/InteractionResponses');
+const BaseMessageComponent = require('../structures/BaseMessageComponent');
+const ModalActionRow = require('../structures/ModalActionRow');
+const ModalSubmitField = require('../structures/ModalSubmitField');
+const { InteractionTypes } = require('../util/Constants');
 
 /**
  * Represents a Modal Submit Interaction.
@@ -35,11 +36,9 @@ class ModalSubmitInteraction extends Interaction {
      * @type {Message}
      */
 
-    this.message = data.message
-      ? this.channel?.messages._add(data.message) ?? data.message
-      : null;
+    this.message = data.message ? this.channel?.messages._add(data.message) ?? data.message : null;
 
-    let modalFields = [];
+    const modalFields = [];
     for (let i = 0; i < data.data.components.length; i++) {
       const field = data.data.components[i].components[0];
       modalFields.push(field);
@@ -51,28 +50,22 @@ class ModalSubmitInteraction extends Interaction {
      */
 
     this.fields =
-      modalFields.map((f) => new ModalSubmitField(f)) ??
-      data.data.components?.map((c) =>
-        BaseMessageComponent.create(c, this.client)
-      ) ??
+      modalFields.map(f => new ModalSubmitField(f)) ??
+      data.data.components?.map(c => BaseMessageComponent.create(c, this.client)) ??
       [];
 
     /**
      * The Action Rows of the modal with the Text Input Components.
      */
 
-    this.components = data.data.components?.map((component) => new ModalActionRow(component))
+    this.components = data.data.components?.map(component => new ModalActionRow(component));
 
     /**
      * An associated interaction webhook, can be used to further interact with this interaction
      * @type {InteractionWebhook}
      */
 
-    this.webhook = new InteractionWebhook(
-      this.client,
-      this.applicationId,
-      this.token
-    );
+    this.webhook = new InteractionWebhook(this.client, this.applicationId, this.token);
   }
 
   /**
@@ -82,9 +75,9 @@ class ModalSubmitInteraction extends Interaction {
    */
 
   getTextInputValue(customId) {
-    const field = this.fields.find((field) => field.customId === customId);
+    const fieldFound = this.fields.find(f => f.customId === customId);
 
-    return field ? field.value : null;
+    return fieldFound ? fieldFound.value : null;
   }
 
   /**
@@ -94,9 +87,9 @@ class ModalSubmitInteraction extends Interaction {
    */
 
   getField(customId) {
-    const field = this.fields.find((field) => field.customId === customId);
+    const fieldToGet = this.fields.find(f => f.customId === customId);
 
-    return field ? field : null;
+    return fieldToGet ? fieldToGet : null;
   }
 
   isFromMessage() {
@@ -112,9 +105,6 @@ class ModalSubmitInteraction extends Interaction {
   update() {}
 }
 
-InteractionResponses.applyToClass(ModalSubmitInteraction, [
-  "deferUpdate",
-  "showModal",
-]);
+InteractionResponses.applyToClass(ModalSubmitInteraction, ['deferUpdate', 'showModal']);
 
 module.exports = ModalSubmitInteraction;

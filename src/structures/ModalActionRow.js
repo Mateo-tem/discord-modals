@@ -1,6 +1,7 @@
-const TextInputComponent = require("./TextInputComponent");
-const BaseMessageComponent = require("./BaseMessageComponent")
-const { MessageComponentTypes, TextInputStyles } = require("../util/Constants");
+'use strict';
+
+const BaseMessageComponent = require('./BaseMessageComponent');
+const { MessageComponentTypes, TextInputStyles } = require('../util/Constants');
 
 /**
  * Represents a Modal Action Row, that contains a Text Input Component.
@@ -8,7 +9,6 @@ const { MessageComponentTypes, TextInputStyles } = require("../util/Constants");
 
 class ModalActionRow {
   constructor(data = {}) {
-
     /**
      * The type of the Modal Action Row.
      */
@@ -18,9 +18,8 @@ class ModalActionRow {
     /**
      * The Text Input Component of this action row
      */
- 
-    this.components = data.components?.map(component => BaseMessageComponent.create(component)) ?? [];
 
+    this.components = data.components?.map(component => BaseMessageComponent.create(component)) ?? [];
   }
 
   /**
