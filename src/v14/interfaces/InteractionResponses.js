@@ -36,6 +36,8 @@ class InteractionResponses {
     else messagePayload = MessagePayload.create(this, options);
 
     const { body: data, files } = await messagePayload.resolveBody().resolveFiles();
+    
+    data.flags = options.ephemeral ? MessageFlags.FLAGS.EPHEMERAL : undefined;
 
     await this.client.rest.post(Routes.interactionCallback(this.id, this.token), {
       body: {
