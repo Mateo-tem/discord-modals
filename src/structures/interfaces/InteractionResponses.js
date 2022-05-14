@@ -33,6 +33,8 @@ class InteractionResponses {
 
     const { data, files } = await messagePayload.resolveData().resolveFiles();
 
+    data.flags = options.ephemeral ? MessageFlags.FLAGS.EPHEMERAL : undefined;
+
     await this.client.api.interactions(this.id, this.token).callback.post({
       data: {
         type: InteractionResponseTypes.CHANNEL_MESSAGE_WITH_SOURCE,
