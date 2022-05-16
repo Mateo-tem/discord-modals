@@ -2,7 +2,16 @@
 
 Hello! This is the Change log section of Discord-Modals. Here you can see what things have been changed in the different versions, to be informed. This will be updated every time there are new versions. I hope you enjoy this package :)
 
-# v1.3.5 (Stable)
+# v1.3.6 (Stable)
+
+**Probably** this will be the final version of Discord-Modals. Thank you so much for all the support!
+
+**Why?** discord.js just released modals on v13.7 and in v14 (dev - unstable). In a very short time, this package will no longer make much sense when it already exists (on all the actual versions).
+
+- Fix: Ephemeral option when replying to the Modal Submit Interaction.
+- Add FAQ to readme.
+
+# v1.3.5
 
 - Style and Code Cleanup: All files.
 - Chore: Add eslint.

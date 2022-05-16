@@ -31,12 +31,12 @@ Recently, Discord API officialy announced **[Modal Interactions](https://discord
 The most recommended is to put this on your main file.
 
 ```js
-const { Client } = require('discord.js') // Get the Client class
-const client = new Client({ intents: 32767 }) // Create a Discord Client
-const discordModals = require('discord-modals') // Define the discord-modals package!
+const { Client } = require('discord.js'); // Get the Client class
+const client = new Client({ intents: 32767 }); // Create a Discord Client
+const discordModals = require('discord-modals'); // Define the discord-modals package!
 discordModals(client); // discord-modals needs your client in order to interact with modals
 
-client.login('token') // Login with your bot
+client.login('token'); // Login with your bot
 ```
 
 > **Important:** Don't forget to put `discordModals(client)`, will be essential to receive the Modal Submit Interaction.
@@ -68,19 +68,19 @@ If you are ready, take this examples.
 - First, we are going to create a Modal.
 
 ```js
-const { Modal } = require('discord-modals') // Modal class
+const { Modal } = require('discord-modals'); // Modal class
 
 const modal = new Modal() // We create a Modal
 .setCustomId('customid')
 .setTitle('Test of Discord-Modals!')
-.addComponents()
+.addComponents();
 ```
 > **This is a basic structure of a Modal, but something is missing. Yeah! Text Input components.**
 
 - We are going to create and add a Text Input Component to the Modal.
 
 ```js
-const { Modal, TextInputComponent } = require('discord-modals') // Modal and TextInputComponent class
+const { Modal, TextInputComponent } = require('discord-modals'); // Modal and TextInputComponent class
 
 const modal = new Modal() // We create a Modal
 .setCustomId('modal-customid')
@@ -102,7 +102,7 @@ const modal = new Modal() // We create a Modal
 - We are going to use the `showModal()` method to send the modal in an interaction.
 
 ```js
-const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
+const { Modal, TextInputComponent, showModal } = require('discord-modals'); // Now we extract the showModal method
 
 const modal = new Modal() // We create a Modal
 .setCustomId('modal-customid')
@@ -124,7 +124,7 @@ client.on('interactionCreate', (interaction) => {
     showModal(modal, {
       client: client, // Client to show the Modal through the Discord API.
       interaction: interaction // Show the modal with interaction data.
-    })
+    });
   }
   
 });
@@ -148,9 +148,9 @@ client.on('interactionCreate', (interaction) => {
 const { Formatters } = require('discord.js');
 
 client.on('modalSubmit', async (modal) => {
-  if(modal.customId === 'modal-customid'){
-    const firstResponse = modal.getTextInputValue('textinput-customid')
-    modal.reply('Congrats! Powered by discord-modals.' + Formatters.codeBlock('markdown', firstResponse))
+  if(modal.customId === 'modal-customid') {
+    const firstResponse = modal.getTextInputValue('textinput-customid');
+    modal.reply('Congrats! Powered by discord-modals.' + Formatters.codeBlock('markdown', firstResponse));
   }  
 });
 ```
@@ -161,10 +161,9 @@ client.on('modalSubmit', async (modal) => {
 const { Formatters } = require('discord.js');
 
 client.on('modalSubmit', async (modal) => {
-  if(modal.customId === 'modal-customid'){
-    const firstResponse = modal.getTextInputValue('textinput-customid')
-    await modal.deferReply({ ephemeral: true })
-    modal.followUp({ content: 'Congrats! Powered by discord-modals.' + Formatters.codeBlock('markdown', firstResponse), ephemeral: true })
+  if(modal.customId === 'modal-customid') {
+    const firstResponse = modal.getTextInputValue('textinput-customid');
+    modal.reply({ content: 'Congrats! Powered by discord-modals.' + Formatters.codeBlock('markdown', firstResponse), ephemeral: true });
   }  
 });
 ```
@@ -175,6 +174,27 @@ client.on('modalSubmit', async (modal) => {
 
 # 📚 Documentation
 - Check our documentation [here](https://github.com/Mateo-tem/discord-modals/blob/master/DOCS.md).
+
+# ❓ FAQ
+
+Can I add buttons/select menus to modals?
+
+- No, this package interacts with Discord API, so Discord API only supports Text Input Components in modals. Actually, only select menus are planned for modals. It is not known when it will be added.
+
+Can I show a modal in a message?
+
+- No, modals are **only for interactions** (Select Menus, Slash Commands, Buttons and Context Menu Commands). They are a response for interactions.
+
+Can I add more than 5 Text Input Components in a modal?
+
+- No, a modal supports **5 Action Rows (containing 1 Text Input Component per row)**. There is no plans on Discord API to increase the amount of rows per modal.
+
+DiscordAPIError: Interaction has already been acknowledged.
+
+- The `showModal()` method is a response of an interaction. also `reply()` or `deferReply()` are responses of an interaction.
+If you give a response, you can't give a response again. So you need to remove `reply()` or `editReply()` on your code.
+
+- If that doesn't work, probably you have the `modalSubmit` event on the same file of your command, please just add it to a event handler or just separate it.
 
 # 🔨 Developers
 - 『𝑴𝒂𝒕𝒆𝒐ᵗᵉᵐ』#9999
