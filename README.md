@@ -25,7 +25,7 @@ yarn add discord-modals
 
 Recently, Discord API officialy announced **[Modal Interactions](https://discord.com/developers/docs/change-log#interaction-modals-and-application-command-attachment-option-type)**.
 
-**What is that?** Modal is a popup of Text Input Components [[Example]](https://media.discordapp.net/attachments/910547379617402960/942881133379612682/Modals_Test.png?width=881&height=559). It's so cool and useful for many commands that needs arguments. However, discord.js hasn't added it yet. Discord-Modals can be a solution if you want to test or use Modals right now. **Supports discord.js v13 and v14. Try it!**
+**What is that?** Modal is a popup of Text Input Components [[Example]](https://discord.com/assets/2087c4210e4723cc26ac1b265940c499.png). It's so cool and useful for many commands that needs arguments. Discord-Modals can be a solution if you want to test or use Modals right now. **Supports discord.js v13 and v14. Try it!**
 
 # ✨ Setup
 The most recommended is to put this on your main file.
@@ -61,6 +61,8 @@ client.login('token'); // Login with your bot
 
 If you have understood this, you can continue on "Examples" section.
 
+> **Important:** Modals also support select menus. So, you need to know the select menu structure.
+
 # 📜 Examples
 
 If you are ready, take this examples.
@@ -71,51 +73,83 @@ If you are ready, take this examples.
 const { Modal } = require('discord-modals'); // Modal class
 
 const modal = new Modal() // We create a Modal
-.setCustomId('customid')
-.setTitle('Test of Discord-Modals!')
+.setCustomId('modal-customid')
+.setTitle('Modal')
 .addComponents();
 ```
-> **This is a basic structure of a Modal, but something is missing. Yeah! Text Input components.**
+> **This is a basic structure of a Modal, but something is missing. Yeah! Components.**
 
-- We are going to create and add a Text Input Component to the Modal.
+- We are going to create and add a Text Input Component and a Select Menu to the Modal.
 
 ```js
-const { Modal, TextInputComponent } = require('discord-modals'); // Modal and TextInputComponent class
+const { Modal, TextInputComponent, SelectMenuComponent } = require('discord-modals'); // Import all
 
 const modal = new Modal() // We create a Modal
 .setCustomId('modal-customid')
-.setTitle('Test of Discord-Modals!')
+.setTitle('Modal')
 .addComponents(
   new TextInputComponent() // We create a Text Input Component
-  .setCustomId('textinput-customid')
-  .setLabel('Some text Here')
+  .setCustomId('name')
+  .setLabel('Name')
   .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
-  .setMinLength(4)
-  .setMaxLength(10)
-  .setPlaceholder('Write a text here')
-  .setRequired(true) // If it's required or not
+  .setPlaceholder('Write your name here')
+  .setRequired(true), // If it's required or not
+
+  new SelectMenuComponent() // We create a Select Menu Component
+  .setCustomId('theme')
+  .setPlaceholder('What theme of Discord do you like?')
+  .addOptions(
+    {
+      label: "Dark",
+      description: "The default theme of Discord.",
+      value: "dark",
+      emoji: "⚫"
+    },
+    {
+      label: "Light",
+      description: "Some people hate it, some people like it.",
+      value: "light",
+      emoji: "⚪"
+    }
+  )
 );
 ```
 
-> **Yay! We have the full Modal & Text Input Component, but... How can i send/show a Modal?**
+> **Yay! We have the full Modal, but... How can i send/show a Modal?**
 
 - We are going to use the `showModal()` method to send the modal in an interaction.
 
 ```js
-const { Modal, TextInputComponent, showModal } = require('discord-modals'); // Now we extract the showModal method
+const { Modal, TextInputComponent, SelectMenuComponent } = require('discord-modals'); // Import all
 
 const modal = new Modal() // We create a Modal
 .setCustomId('modal-customid')
-.setTitle('Test of Discord-Modals!')
+.setTitle('Modal')
 .addComponents(
   new TextInputComponent() // We create a Text Input Component
-  .setCustomId('textinput-customid')
-  .setLabel('Some text Here')
+  .setCustomId('name')
+  .setLabel('Name')
   .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
-  .setMinLength(4)
-  .setMaxLength(10)
-  .setPlaceholder('Write a text here')
-  .setRequired(true) // If it's required or not
+  .setPlaceholder('Write your name here')
+  .setRequired(true), // If it's required or not
+
+  new SelectMenuComponent() // We create a Select Menu Component
+  .setCustomId('theme')
+  .setPlaceholder('What theme of Discord do you like?')
+  .addOptions(
+    {
+      label: "Dark",
+      description: "The default theme of Discord.",
+      value: "dark",
+      emoji: "⚫"
+    },
+    {
+      label: "Light",
+      description: "Some people hate it, some people like it.",
+      value: "light",
+      emoji: "⚪"
+    }
+  )
 );
 
 client.on('interactionCreate', (interaction) => {
@@ -133,61 +167,46 @@ client.on('interactionCreate', (interaction) => {
 
 > **Congrats! You show the Modal to the Interaction User. Now, how can i receive the Modal Interaction?**
 
-## 📢 Events: Receiving Modal Submit Interaction
+## 📢 Events: Receiving Modal Submit Interaction and extracting data
 
 - discord-modals integrates to your Client a new event called `modalSubmit`. We are going to use it.
-- To have access to the responses, just use the `.getTextInputValue()` method with the Custom Id of the Text Input Component.
+- To have access to the responses, just use the `.getTextInputValue()` method with the Custom Id of the Text Input Component, or if you use Select Menus, the same way, use the `.getSelectMenuValues()` method with the Custom Id of the Select Menu Component.
 
 > **Recommendation:** Put your `modalSubmit` event on your main file or in an Event Handler.
 
-### Reply Examples
-
-- Usual Reply:
-
 ```js
-const { Formatters } = require('discord.js');
-
 client.on('modalSubmit', async (modal) => {
   if(modal.customId === 'modal-customid') {
-    const firstResponse = modal.getTextInputValue('textinput-customid');
-    modal.reply('Congrats! Powered by discord-modals.' + Formatters.codeBlock('markdown', firstResponse));
-  }  
-});
-```
-
-- Ephemeral Reply:
-
-```js
-const { Formatters } = require('discord.js');
-
-client.on('modalSubmit', async (modal) => {
-  if(modal.customId === 'modal-customid') {
-    const firstResponse = modal.getTextInputValue('textinput-customid');
-    modal.reply({ content: 'Congrats! Powered by discord-modals.' + Formatters.codeBlock('markdown', firstResponse), ephemeral: true });
+    const nameResponse = modal.getTextInputValue('name');
+    const themeResponse = modal.getSelectMenuValues('theme');
+    modal.reply(`Thank you for answering the form! Powered by discord-modals.\nSo, you are **${nameResponse}** and you like the **${themeResponse}** theme. Awesome!`);
   }  
 });
 ```
 
 > **And you made it! I hope this examples help you :)**
 
-![Final Result](https://cdn.discordapp.com/attachments/910547379617402960/943208236478247032/Discord-Modals-Test.gif)
+<img src="https://user-images.githubusercontent.com/79017590/172033349-816d4b8f-ab1b-4cb4-9d7a-f4919ba9aa70.gif" alt="Modal Test" width=700 />
 
 # 📚 Documentation
 - Check our documentation [here](https://github.com/Mateo-tem/discord-modals/blob/master/DOCS.md).
 
 # ❓ FAQ
 
+Can I show a modal, replying to a modal?
+- No, Discord API don't support that, but there are plans to add that.
+
 Can I add buttons/select menus to modals?
 
-- No, this package interacts with Discord API, so Discord API only supports Text Input Components in modals. Actually, only select menus are planned for modals. It is not known when it will be added.
+- Yes, but only select menus are supported at this moment. Discord API have plans to add other type of components. Be patient :)
 
 Can I show a modal in a message?
 
 - No, modals are **only for interactions** (Select Menus, Slash Commands, Buttons and Context Menu Commands). They are a response for interactions.
 
-Can I add more than 5 Text Input Components in a modal?
+Can I add more than 5 Components in a modal?
 
-- No, a modal supports **5 Action Rows (containing 1 Text Input Component per row)**. There is no plans on Discord API to increase the amount of rows per modal.
+- No, a modal supports **5 Action Rows (containing 1 Text Input Component or Select Menu per row)**. There is no plans in Discord API to increase the amount of rows per modal.
 
 DiscordAPIError: Interaction has already been acknowledged.
 

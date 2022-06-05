@@ -24,6 +24,11 @@ class BaseMessageComponent {
         component = data instanceof TextInputComponent ? data : new TextInputComponent(data);
         break;
       }
+      case MessageComponentTypes.SELECT_MENU: {
+        const SelectMenuComponent = require('./SelectMenuComponent');
+        component = data instanceof SelectMenuComponent ? data : new SelectMenuComponent(data);
+        break;
+      }
       default:
         if (client) {
           client.emit('debug', `[BaseMessageComponent] Received component with unknown type: ${data.type}`);

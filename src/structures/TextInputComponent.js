@@ -1,6 +1,6 @@
 'use strict';
 
-const { Util } = require('discord.js');
+const Util = require('../util/Util');
 const BaseMessageComponent = require('./BaseMessageComponent');
 const ModalActionRow = require('./ModalActionRow');
 const { RangeError } = require('./errors');

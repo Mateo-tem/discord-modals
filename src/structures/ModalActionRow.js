@@ -4,7 +4,7 @@ const BaseMessageComponent = require('./BaseMessageComponent');
 const { MessageComponentTypes, TextInputStyles } = require('../util/Constants');
 
 /**
- * Represents a Modal Action Row, that contains a Text Input Component.
+ * Represents a Modal Action Row, containing a Text Input or a Select Menu Component.
  */
 
 class ModalActionRow {
@@ -16,14 +16,14 @@ class ModalActionRow {
     this.type = 'ACTION_ROW';
 
     /**
-     * The Text Input Component of this action row
+     * The components of this action row
      */
 
     this.components = data.components?.map(component => BaseMessageComponent.create(component)) ?? [];
   }
 
   /**
-   * Adds a Text Input Component.
+   * Adds a Modal Component (Text Input or Select Menu).
    * @param {TextInputComponent} component
    */
 
@@ -33,17 +33,30 @@ class ModalActionRow {
   }
 
   componentToJSON(component) {
-    return {
-      type: MessageComponentTypes[component.type],
-      custom_id: component.customId,
-      label: component.label,
-      style: TextInputStyles[component.style],
-      min_length: component.minLength,
-      max_length: component.maxLength,
-      required: component.required,
-      value: component.value,
-      placeholder: component.placeholder,
-    };
+    if(component.type === 'TEXT_INPUT') {
+      return {
+        type: MessageComponentTypes[component.type],
+        custom_id: component.customId,
+        label: component.label,
+        style: TextInputStyles[component.style],
+        min_length: component.minLength,
+        max_length: component.maxLength,
+        required: component.required,
+        value: component.value,
+        placeholder: component.placeholder,
+      };
+    }
+    if(component.type === 'SELECT_MENU') {
+      return {
+        type: MessageComponentTypes[component.type],
+        custom_id: component.customId,
+        placeholder: component.placeholder,
+        min_values: component.minValues,
+        max_values: component.maxValues,
+        options: component.options,
+        disabled: component.disabled,
+      };
+    }    
   }
 
   toJSON() {

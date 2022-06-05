@@ -2,7 +2,19 @@
 
 Hello! This is the Change log section of Discord-Modals. Here you can see what things have been changed in the different versions, to be informed. This will be updated every time there are new versions. I hope you enjoy this package :)
 
-# v1.3.6 (Stable)
+# v1.3.7 (Stable)
+
+**Surprise!** We are back.
+
+**Featured:** Discord Developers announced Select Menus in modals, they are about to finish to develop it, but you can use it now.
+**So, now Discord-Modals supports Select Menus in modals!** 🎉
+
+- Chore: Support Select Menus in Modals.
+- Chore: Some improvements to FAQ.
+- Chore: [Select Menus] Update readme to new examples.
+- Chore: [Select Menus] Update docs.
+
+# v1.3.6
 
 **Probably** this will be the final version of Discord-Modals. Thank you so much for all the support!
 

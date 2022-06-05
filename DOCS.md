@@ -54,7 +54,7 @@ Shows the Modal to the Interaction User.
 
 ## Modal
 Represents a Modal Form to be shown in response to an Interaction.
-- A modal can contain at most **5 Action Rows**. Each of them can contain **1 Text Input Component**.
+- A modal can contain at most **5 Action Rows**. Each of them can contain **1 Text Input/Select Menu Component**.
 
 ```javascript
 new Modal(data)
@@ -80,8 +80,8 @@ The Custom Id of the Modal.
 > Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
 #### .components
-The Text Input Components of the Modal.
-> Returns: [Array<TextInputComponent>](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+The Components of the Modal.
+> Returns: [Array<TextInputComponent|SelectMenuComponent>](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
 ### Methods
 
@@ -108,24 +108,24 @@ Sets the Custom Id of the Modal. (Max. 100 characters)
 > Returns: [Modal](#modal)
 
 ```js
-.addComponents(...TextInputComponent)
+.addComponents(...components)
 ```
 Adds the Components of the Modal.
 
 | Parameter |Type|Description|
 | ------------ | ------------ |------------ |
-|  *TextInputComponent*  |[TextInputComponent](#textinputcomponent)| The Text Input Component to add in the Modal. |
+|  *Components*  |[TextInputComponent](#textinputcomponent) | [SelectMenuComponent](#selectmenucomponent)| The components to add in the Modal. |
 
 > Returns: [Modal](#modal)
 
 ```js
-.setComponents(...TextInputComponent)
+.setComponents(...components)
 ```
-Sets the Components of the Modal.
+Adds the Components of the Modal.
 
 | Parameter |Type|Description|
 | ------------ | ------------ |------------ |
-|  *TextInputComponent*  |[TextInputComponent](#textinputcomponent)| The Text Input Component to set in the Modal. |
+|  *Components*  |[TextInputComponent](#textinputcomponent) | [SelectMenuComponent](#selectmenucomponent)| The components to set in the Modal. |
 
 > Returns: [Modal](#modal)
 
@@ -302,6 +302,146 @@ Transforms the TextInputComponent to a plain object.
 |  SHORT  |1 [[Short]](https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-styles)| A single-line input |
 |  LONG  |2 [[Paragraph]](https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-styles)| A multi-line input |
 
+## SelectMenuComponent 
+> extends [BaseMessageComponent](https://discord.js.org/#/docs/discord.js/stable/class/BaseMessageComponent)
+
+Represents a Select Menu Component of a Modal.
+
+```javascript
+new SelectMenuComponent(data)
+```
+
+| Properties |Methods|
+| ------------ | ------------ |
+|  `.customId`  | `.setCustomId()` |
+|  `.placeholder`  | `.setPlaceholder()` |
+|  `.minValues`  | `.setMinValues()` |
+|  `.maxValues`  | `.setMaxValues()` |
+|  `.options`  | `.addOptions()` |
+|  `.disabled`  | `.setOptions()` |
+|    | `.spliceOptions()` |
+|    | `.setDisabled()` |
+|    | `.toJSON()` |
+
+### Properties
+
+#### .customId
+The Custom Id of the Select Menu Component.
+> Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+#### .placeholder
+The Placeholder (text when nothing is selected) of the Select Menu Component.
+> Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+#### .minValues
+Minimum number of selections allowed for the Select Menu Component.
+> Returns: [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+
+#### .maxValues
+Maximum number of selections allowed for the Select Menu Component.
+> Returns: [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+
+#### .options
+The Options of the Select Menu Component.
+> Returns: Array<[APISelectMenuOption](https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure)>
+
+#### .disabled
+If the Select Menu Component is disabled.
+> Returns: [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)
+
+### Methods
+
+```js
+.setCustomId('menu-customid')
+```
+Sets the Custom Id of the Select Menu Component. (Max. 100 characters)
+
+| Parameter |Type|Description|
+| ------------ | ------------ |------------ |
+|  *MenuCustomId*  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Custom Id of the Select Menu Component. |
+
+> Returns: [SelectMenuComponent](#selectmenucomponent)
+
+```js
+.setPlaceholder('Menu Placeholder')
+```
+Sets the Placeholder of the Select Menu Component. (Max. 150 characters)
+
+| Parameter |Type|Description|
+| ------------ | ------------ |------------ |
+|  *MenuPlaceholder*  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The placeholder of the Select Menu Component. |
+
+> Returns: [SelectMenuComponent](#selectmenucomponent)
+
+```js
+.setMinValues(Number)
+```
+Sets the minimum number of selections allowed for the Select Menu Component.
+
+| Parameter |Type|Description|
+| ------------ | ------------ |------------ |
+|  *Number*  |[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) (Between 1 - 25)| Number of selections to be required. |
+
+> Returns: [SelectMenuComponent](#selectmenucomponent)
+
+```js
+.setMaxValues(Number)
+```
+Sets the maximum number of selections allowed for the Select Menu Component.
+
+| Parameter |Type|Description|
+| ------------ | ------------ |------------ |
+|  *Number*  |[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) (Between 1 - 25)| Number of selections to be allowed. |
+
+> Returns: [SelectMenuComponent](#selectmenucomponent)
+
+```js
+.addOptions(...options)
+```
+Adds options to the Select Menu Component.
+
+| Parameter |Type|Description|
+| ------------ | ------------ |------------ |
+|  *Options*  |[APISelectMenuOption](https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure)| The options to add. |
+
+> Returns: [SelectMenuComponent](#selectmenucomponent)
+
+```js
+.setOptions(...options)
+```
+Sets the options of the Select Menu Component.
+
+| Parameter |Type|Description|
+| ------------ | ------------ |------------ |
+|  *Options*  |[APISelectMenuOption](https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure)| The options to set. |
+
+> Returns: [SelectMenuComponent](#selectmenucomponent)
+
+```js
+.spliceOptions()
+```
+Removes, replaces, and inserts options in the Select Menu Component.
+
+> Returns: [SelectMenuComponent](#selectmenucomponent)
+
+```js
+.setDisabled(Boolean)
+```
+Sets a Boolean if a Select Menu Component will be disabled.
+
+| Parameter |Type|Description|
+| ------------ | ------------ |------------ |
+|  *Boolean*  |[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)| If the Select Menu Component will be disabled. |
+
+> Returns: [SelectMenuComponent](#selectmenucomponent)
+
+```js
+.toJSON()
+```
+Transforms the Select Menu Component to a plain object.
+
+> Returns: [APISelectMenuComponent](https://discord.com/developers/docs/interactions/message-components#select-menus-select-menu-example)
+
 ## ModalActionRow
 Represents a Modal Action Row, that contains a Text Input Component.
 
@@ -318,40 +458,39 @@ The type of the Modal Action Row (1).
 > Returns: [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
 
 #### .components
-The Text Input Component of this Action Row.
-> Returns: [Array<APITextInputComponent>](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+The Text Input/Select Menu Component of this Action Row.
+> Returns: [Array<APITextInputComponent|APISelectMenuComponent>](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
 ### Methods
 
 ```js
-.addComponent(TextInputComponent)
+.addComponent(component)
 ```
-Adds a Text Input Component.
+Adds a Text Input/Select Menu Component.
 
 | Parameter |Type|Description|
 | ------------ | ------------ |------------ |
-|  *TextInputComponent*  |[TextInputComponent](#textinputcomponent)| The Text Input Component to add in the Action Row. |
+|  *Component*  |[TextInputComponent](#textinputcomponent)|[SelectMenuComponent](#selectmenucomponent)| The component to add in the Action Row. |
 
 > Returns: [ModalActionRow](#modalactionrow)
 
 ```js
-.componentToJSON(TextInputComponent)
+.componentToJSON(component)
 ```
-Transforms a Text Input Component to a plain object.
+Transforms a Text Input/Select Menu Component to a plain object.
 
 | Parameter |Type|Description|
 | ------------ | ------------ |------------ |
-|  *TextInputComponent*  |[TextInputComponent](#textinputcomponent)| The Text Input Component to transform. |
+|  *Component*  |[TextInputComponent](#textinputcomponent)|[SelectMenuComponent](#selectmenucomponent)| The component to add in the Action Row. |
 
-> Returns: [APITextInputComponent](https://discord.com/developers/docs/interactions/message-components#text-inputs)
+> Returns: [APITextInputComponent](https://discord.com/developers/docs/interactions/message-components#text-inputs) | [APISelectMenuComponent](https://discord.com/developers/docs/interactions/message-components#select-menus-select-menu-example) 
 
 ```js
 .toJSON()
 ```
 Transforms the Modal Action Row to a plain object.
 
-> Returns: [APIModalActionRowComponent<APITextInputComponent>](https://discord.com/developers/docs/interactions/message-components#text-inputs)
-
+> Returns: APIModalActionRowComponent<APITextInputComponent|APISelectMenuComponent>
 
 ## ModalSubmitField
 Represents a Field of a Modal Submit Interaction.
@@ -376,6 +515,29 @@ The Custom Id of the Modal Submit Field.
 The Value of the Modal Submit Field.
 > Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
+## ModalSubmitSelectMenu
+Represents a Select Menu Component of a Modal Submit Interaction.
+
+| Properties |Methods|
+| ------------ | ------------ |
+|  `.type`  |  |
+|  `.customId`  |  |
+|  `.values`  |  |
+
+### Properties
+
+#### .type
+The type of the Select Menu Component (SELECT_MENU).
+> Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+#### .customId
+The Custom Id of the Select Menu Component.
+> Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+#### .values
+The Values of the Select Menu Component.
+> Returns: [Array<String>](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
 ## ModalSubmitInteraction
 > extends [Interaction](https://discord.js.org/#/docs/discord.js/stable/class/Interaction)
 
@@ -385,17 +547,18 @@ Represents a Modal Submit Interaction.
 | ------------ | ------------ |
 |  `.customId`  | `.getTextInputValue()` |
 |  `.components`  | `.getField()` |
-|  `.fields`  | `.deferReply()` |
-|  `.id`  | `.reply()` |
-|  `.applicationId`  | `.fetchReply()` |
-|  `.channelId`  | `.editReply()` |
-|  `.guildId`  | `.deleteReply()` |
-|  `.user`  | `.followUp()` |
-|  `.member`  | `.update()` |
-|  `.memberPermissions`  | `.isFromMessage()` |
-|  `.locale`  | `.isRepliable()` |
-|  `.guildLocale`  |  |
-|  `.message`  |  |  
+|  `.fields`  | `.getSelectMenuValues()` |
+|  `.selectMenus`  | `.getSelectMenu()` |
+|  `.id`  | `.deferReply()` |
+|  `.applicationId`  | `.reply()` |
+|  `.channelId`  | `.fetchReply()` |
+|  `.guildId`  | `.editReply()` |
+|  `.user`  | `.deleteReply()` |
+|  `.member`  | `.followUp()` |
+|  `.memberPermissions`  | `.update()` |
+|  `.locale`  | `.isFromMessage()` |
+|  `.guildLocale`  | `.isRepliable()` |  
+|  `.message`  |  | 
 |  `.version`  |  | 
 |  `.webhook`  |  | 
 |  `.type`  |  | 
@@ -412,6 +575,10 @@ The Action Rows of the modal with the Text Input Components.
 
 #### .fields
 The (Fields) Text Input Components of the Modal.
+> Returns: [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
+
+#### .selectMenus
+The Select Menu Components of the Modal.
 > Returns: [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
 
 #### .id
@@ -485,6 +652,28 @@ Gets a Modal Submit Field.
 |  *TextInputCustomId*  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Custom Id of the Text Input Component. |
 
 > Returns: [ModalSubmitField](#modalsubmitfield)
+
+```js
+.getSelectMenuValues('menu-customid')
+```
+Gets the values of a Select Menu Component.
+
+| Parameter |Type|Description|
+| ------------ | ------------ |------------ |
+|  *MenuCustomId*  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Custom Id of the Select Menu Component. |
+
+> Returns: [ModalSubmitSelectMenu#values](#modalsubmitselectmenu)
+
+```js
+.getSelectMenu('menu-customid')
+```
+Gets a Select Menu Component.
+
+| Parameter |Type|Description|
+| ------------ | ------------ |------------ |
+|  *MenuCustomId*  |[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)| The Custom Id of the Select Menu Component. |
+
+> Returns: [ModalSubmitSelectMenu](#modalsubmitselectmenu)
 
 ```js
 .isFromMessage()

@@ -5,6 +5,7 @@ const Interaction = require('./Interaction');
 const InteractionResponses = require('./interfaces/InteractionResponses');
 const BaseMessageComponent = require('../structures/BaseMessageComponent');
 const ModalActionRow = require('../structures/ModalActionRow');
+const ModalSubmitSelectMenu = require('../structures/ModalSubmitSelectMenu');
 const ModalSubmitField = require('../structures/ModalSubmitField');
 const { InteractionTypes } = require('../util/Constants');
 
@@ -36,36 +37,68 @@ class ModalSubmitInteraction extends Interaction {
      * @type {Message}
      */
 
-    this.message = data.message ? this.channel?.messages._add(data.message) ?? data.message : null;
+    this.message = data.message
+      ? this.channel?.messages._add(data.message) ?? data.message
+      : null;
 
     const modalFields = [];
     for (let i = 0; i < data.data.components.length; i++) {
-      const field = data.data.components[i].components[0];
-      modalFields.push(field);
+      if (data.data.components[i].components[0].type === 4) {
+        const field = data.data.components[i].components[0];
+        modalFields.push(field);
+      }
     }
 
     /**
      * The (Fields) Text Input Components of the Modal.
-     * @type {ModalSubmitField}
+     * @type {Array<ModalSubmitField>}
      */
 
     this.fields =
-      modalFields.map(f => new ModalSubmitField(f)) ??
-      data.data.components?.map(c => BaseMessageComponent.create(c, this.client)) ??
+      modalFields.map((f) => new ModalSubmitField(f)) ??
+      data.data.components?.map((c) =>
+        BaseMessageComponent.create(c, this.client)
+      ) ??
+      [];
+
+    const modalSelectMenus = [];
+    for (let i = 0; i < data.data.components.length; i++) {
+      if (data.data.components[i].components[0].type === 3) {
+        const selectMenu = data.data.components[i].components[0];
+        modalSelectMenus.push(selectMenu);
+      }
+    }
+
+    /**
+     * The Select Menu Components of the Modal.
+     * @type {Array<ModalSubmitSelectMenu>}
+     */
+
+    this.selectMenus =
+      modalSelectMenus.map((s) => new ModalSubmitSelectMenu(s)) ??
+      data.data.components?.map((c) =>
+        BaseMessageComponent.create(c, this.client)
+      ) ??
       [];
 
     /**
      * The Action Rows of the modal with the Text Input Components.
      */
 
-    this.components = data.data.components?.map(component => new ModalActionRow(component));
+    this.components = data.data.components?.map(
+      (component) => new ModalActionRow(component)
+    );
 
     /**
      * An associated interaction webhook, can be used to further interact with this interaction
      * @type {InteractionWebhook}
      */
 
-    this.webhook = new InteractionWebhook(this.client, this.applicationId, this.token);
+    this.webhook = new InteractionWebhook(
+      this.client,
+      this.applicationId,
+      this.token
+    );
   }
 
   /**
@@ -75,7 +108,7 @@ class ModalSubmitInteraction extends Interaction {
    */
 
   getTextInputValue(customId) {
-    const fieldFound = this.fields.find(f => f.customId === customId);
+    const fieldFound = this.fields.find((f) => f.customId === customId);
 
     return fieldFound ? fieldFound.value : null;
   }
@@ -87,9 +120,37 @@ class ModalSubmitInteraction extends Interaction {
    */
 
   getField(customId) {
-    const fieldToGet = this.fields.find(f => f.customId === customId);
+    const fieldToGet = this.fields.find((f) => f.customId === customId);
 
     return fieldToGet ? fieldToGet : null;
+  }
+
+  /**
+   * Gets the values of a Select Menu Component.
+   * @param {string} customId The Custom Id of a Select Menu Component.
+   * @returns {Array<String>} The Values of a Select Menu Component.
+   */
+
+  getSelectMenuValues(customId) {
+    const selectMenuFound = this.selectMenus.find(
+      (s) => s.customId === customId
+    );
+
+    return selectMenuFound ? selectMenuFound.values : null;
+  }
+
+  /**
+   * Gets a Select Menu Component.
+   * @param {string} customId The Custom Id of a Select Menu Component.
+   * @returns {ModalSubmitSelectMenu} Select Menu Component of a Modal Submit Interaction.
+   */
+
+  getSelectMenu(customId) {
+    const selectMenuToGet = this.selectMenus.find(
+      (s) => s.customId === customId
+    );
+
+    return selectMenuToGet ? selectMenuToGet : null;
   }
 
   isFromMessage() {
@@ -105,6 +166,9 @@ class ModalSubmitInteraction extends Interaction {
   update() {}
 }
 
-InteractionResponses.applyToClass(ModalSubmitInteraction, ['deferUpdate', 'showModal']);
+InteractionResponses.applyToClass(ModalSubmitInteraction, [
+  'deferUpdate',
+  'showModal',
+]);
 
 module.exports = ModalSubmitInteraction;

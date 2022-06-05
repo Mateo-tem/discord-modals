@@ -16,7 +16,7 @@ class Modal {
    * const modal = new Modal() // Modal constructor
    * .setCustomId('modal-customid')
    * .setTitle('Test of Discord-Modals!')
-   * .addComponents(new TextInputComponent()); // Add a Text Input Component.
+   * .addComponents(new TextInputComponent(), new MessageSelectMenu()); // Add a Text Input Component and a Select Menu.
    */
 
   constructor(data = {}) {
@@ -44,7 +44,7 @@ class Modal {
 
   /**
    * Adds the Components of the Modal.
-   * @param {TextInputComponent} components The Text Input Components to add.
+   * @param {TextInputComponent|MessageSelectMenu} components The Text Input Components to add.
    * @returns {Modal} Modal.
    */
 
@@ -55,7 +55,7 @@ class Modal {
 
   /**
    * Sets the Components of the Modal.
-   * @param {TextInputComponent} components The Text Input Components to set.
+   * @param {TextInputComponent|MessageSelectMenu} components The Text Input Components to set.
    * @returns {Modal} Modal.
    */
 

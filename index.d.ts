@@ -1,10 +1,12 @@
 import {
   Snowflake,
   APITextInputComponent,
+  APISelectMenuComponent,
+  APISelectMenuOption,
   APIModalInteractionResponseCallbackData,
   APIModalSubmitInteraction,
   APIModalActionRowComponent,
-} from "discord-api-types/v9";
+} from 'discord-api-types/v9';
 import {
   Client,
   User,
@@ -18,7 +20,7 @@ import {
   InteractionReplyOptions,
   InteractionDeferReplyOptions,
   InteractionUpdateOptions,
-} from "discord.js";
+} from 'discord.js';
 
 export default function (client: Client): void;
 
@@ -71,10 +73,16 @@ export interface ModalSubmitFieldData {
   value?: string;
 }
 
+export interface ModalSubmitSelectMenuData {
+  type?: string;
+  custom_id?: string;
+  values?: string[];
+}
+
 export interface ModalData {
   title: string;
   custom_id: string;
-  components: APITextInputComponent[];
+  components: APITextInputComponent[] | APISelectMenuComponent[];
 }
 
 export class TextInputComponent extends BaseMessageComponent {
@@ -100,7 +108,28 @@ export class TextInputComponent extends BaseMessageComponent {
   toJSON(): APIModalActionRowComponent;
 }
 
-export type TextInputStyle = "SHORT" | "LONG";
+export type TextInputStyle = 'SHORT' | 'LONG';
+
+export class SelectMenuComponent extends BaseMessageComponent {
+  constructor(data?: APISelectMenuComponent);
+
+  customId: string;
+  placeholder: string;
+  minValues: number;
+  maxValues: number;
+  options: APISelectMenuOption[];
+  disabled: boolean;
+
+  setCustomId(id: string): SelectMenuComponent;  
+  setPlaceholder(placeholder: string): SelectMenuComponent;
+  setMinValues(minValues: number): SelectMenuComponent;  
+  setMaxValues(maxValues: number): SelectMenuComponent;    
+  addOptions(...options: APISelectMenuOption[]): SelectMenuComponent;
+  setOptions(...options: APISelectMenuOption[]): SelectMenuComponent;
+  spliceOptions(): SelectMenuComponent;
+  setDisabled(required: boolean): SelectMenuComponent;
+  toJSON(): APIModalActionRowComponent;
+}
 
 export class Modal {
   constructor(data?: ModalData);
@@ -111,8 +140,8 @@ export class Modal {
 
   setTitle(title: string): Modal;
   setCustomId(id: string): Modal;
-  addComponents(...components: TextInputComponent[]): Modal;
-  setComponents(...components: TextInputComponent[]): Modal;
+  addComponents(...components: TextInputComponent[] | SelectMenuComponent[]): Modal;
+  setComponents(...components: TextInputComponent[] | SelectMenuComponent[]): Modal;
   spliceComponents(): Modal;
   toJSON(): APIModalInteractionResponseCallbackData;
 }
@@ -125,14 +154,22 @@ export class ModalSubmitField {
   value: string;
 }
 
+export class ModalSubmitSelectMenu {
+  constructor(data?: ModalSubmitSelectMenuData);
+
+  type: string;
+  customId: string;
+  values: string[];
+}
+
 export class ModalActionRow {
   constructor();
 
   type: 'ACTION_ROW';
-  components: APITextInputComponent[];
+  components: APITextInputComponent[] | APISelectMenuComponent[];
 
-  addComponent(component: TextInputComponent): ModalActionRow;
-  componentToJSON(component: TextInputComponent): APITextInputComponent;
+  addComponent(component: TextInputComponent | SelectMenuComponent): ModalActionRow;
+  componentToJSON(component: TextInputComponent | SelectMenuComponent): APITextInputComponent | APISelectMenuComponent;
   toJSON(): APIModalActionRowComponent;
 }
 
@@ -141,6 +178,7 @@ export class ModalSubmitInteraction extends Interaction {
 
   customId: string;
   fields: ModalSubmitField[];
+  selectMenus: ModalSubmitSelectMenu[];
   deferred: boolean;
   ephemeral: boolean | null;
   replied: boolean;
@@ -157,6 +195,8 @@ export class ModalSubmitInteraction extends Interaction {
 
   getTextInputValue(customId: string): string;
   getField(customId: string): ModalSubmitField;
+  getSelectMenuValues(customId: string): string[];
+  getSelectMenu(customId: string): ModalSubmitSelectMenu;
   isFromMessage(): boolean;
   isRepliable(): boolean;
   inGuild(): boolean;
