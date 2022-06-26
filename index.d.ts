@@ -19,6 +19,7 @@ import {
   MessagePayload,
   InteractionReplyOptions,
   InteractionDeferReplyOptions,
+  InteractionEditReplyOptions,
   InteractionUpdateOptions,
 } from 'discord.js';
 
@@ -176,6 +177,10 @@ export class ModalActionRow {
 export class ModalSubmitInteraction extends Interaction {
   constructor(client?: Client, data?: APIModalSubmitInteraction);
 
+  components: ModalActionRow[];
+  guildId: Snowflake;
+  version: string;
+  type: InteractionTypes;
   customId: string;
   fields: ModalSubmitField[];
   selectMenus: ModalSubmitSelectMenu[];
@@ -206,6 +211,7 @@ export class ModalSubmitInteraction extends Interaction {
   reply(
     options: string | MessagePayload | InteractionReplyOptions
   ): Promise<void>;
+  editReply(options: string | MessagePayload | InteractionEditReplyOptions): Promise<void>;
   fetchReply(): Promise<Message>;
   deleteReply(): Promise<void>;
   followUp(
