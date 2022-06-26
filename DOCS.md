@@ -557,11 +557,11 @@ Represents a Modal Submit Interaction.
 |  `.member`  | `.followUp()` |
 |  `.memberPermissions`  | `.update()` |
 |  `.locale`  | `.isFromMessage()` |
-|  `.guildLocale`  | `.isRepliable()` |  
-|  `.message`  |  | 
-|  `.version`  |  | 
-|  `.webhook`  |  | 
-|  `.type`  |  | 
+|  `.guildLocale`  | `.isRepliable()` |
+|  `.message`  |  |
+|  `.version`  |  |
+|  `.webhook`  |  |
+|  `.type`  |  |
 
 ### Properties
 
