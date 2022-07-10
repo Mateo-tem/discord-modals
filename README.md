@@ -120,7 +120,7 @@ const modal = new Modal() // We create a Modal
 - We are going to use the `showModal()` method to send the modal in an interaction.
 
 ```js
-const { Modal, TextInputComponent, SelectMenuComponent } = require('discord-modals'); // Import all
+const { Modal, TextInputComponent, SelectMenuComponent, showModal } = require('discord-modals'); // Import all
 
 const modal = new Modal() // We create a Modal
 .setCustomId('modal-customid')
