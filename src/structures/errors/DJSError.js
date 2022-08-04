@@ -1,5 +1,7 @@
 'use strict';
 
+// Credits to discord.js for the base of this code.
+
 // Heavily inspired by node's `internal/errors` module
 
 const kCode = Symbol('code');
@@ -11,21 +13,21 @@ const messages = new Map();
  * @returns {DiscordjsError}
  */
 function makeDiscordjsError(Base) {
-  return class DiscordjsError extends Base {
-    constructor(key, ...args) {
-      super(message(key, args));
-      this[kCode] = key;
-      if (Error.captureStackTrace) Error.captureStackTrace(this, DiscordjsError);
-    }
+	return class DiscordjsError extends Base {
+		constructor(key, ...args) {
+			super(message(key, args));
+			this[kCode] = key;
+			if (Error.captureStackTrace) Error.captureStackTrace(this, DiscordjsError);
+		}
 
-    get name() {
-      return `${super.name} [${this[kCode]}]`;
-    }
+		get name() {
+			return `${super.name} [${this[kCode]}]`;
+		}
 
-    get code() {
-      return this[kCode];
-    }
-  };
+		get code() {
+			return this[kCode];
+		}
+	};
 }
 
 /**
@@ -35,14 +37,14 @@ function makeDiscordjsError(Base) {
  * @returns {string} Formatted string
  */
 function message(key, args) {
-  if (typeof key !== 'string') throw new Error('Error message key must be a string');
-  const msg = messages.get(key);
-  if (!msg) throw new Error(`An invalid error message key was used: ${key}.`);
-  if (typeof msg === 'function') return msg(...args);
-  if (!args.length) return msg;
-  args.unshift(msg);
+	if (typeof key !== 'string') throw new Error('Error message key must be a string');
+	const msg = messages.get(key);
+	if (!msg) throw new Error(`An invalid error message key was used: ${key}.`);
+	if (typeof msg === 'function') return msg(...args);
+	if (!args.length) return msg;
+	args.unshift(msg);
 
-  return String(...args);
+	return String(...args);
 }
 
 /**
@@ -51,12 +53,12 @@ function message(key, args) {
  * @param {*} val Value of the error
  */
 function register(sym, val) {
-  messages.set(sym, typeof val === 'function' ? val : String(val));
+	messages.set(sym, typeof val === 'function' ? val : String(val));
 }
 
 module.exports = {
-  register,
-  Error: makeDiscordjsError(Error),
-  TypeError: makeDiscordjsError(TypeError),
-  RangeError: makeDiscordjsError(RangeError),
+	register,
+	Error: makeDiscordjsError(Error),
+	TypeError: makeDiscordjsError(TypeError),
+	RangeError: makeDiscordjsError(RangeError),
 };

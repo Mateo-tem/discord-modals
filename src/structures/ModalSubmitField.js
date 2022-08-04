@@ -5,39 +5,39 @@
  */
 
 class ModalSubmitField {
-  constructor(data = {}) {
-    /**
-     * The type of the Modal Submit Field.
-     * @type {String}
-     */
+	constructor(data = {}) {
+		/**
+		 * The type of the Modal Submit Field.
+		 * @type {String}
+		 */
 
-    this.type = 'TEXT_INPUT';
+		this.type = 'TEXT_INPUT';
 
-    this.setup(data);
-  }
+		this.setup(data);
+	}
 
-  setup(data) {
-    /**
-     * The Custom Id of the Modal Submit Field.
-     * @type {String}
-     */
+	setup(data) {
+		/**
+		 * The Custom Id of the Modal Submit Field.
+		 * @type {String}
+		 */
 
-    this.customId = data.custom_id ?? null;
+		this.customId = data.custom_id ?? null;
 
-    /**
-     * The Value of the Modal Submit Field.
-     * @type {String}
-     */
+		/**
+		 * The Value of the Modal Submit Field.
+		 * @type {String}
+		 */
 
-    switch (data.value.trim().length) {
-      case 0:
-        this.value = null;
-        break;
+		switch (data.value.trim().length) {
+			case 0:
+				this.value = null;
+				break;
 
-      default:
-        this.value = data.value ?? null;
-    }
-  }
+			default:
+				this.value = data.value ?? null;
+		}
+	}
 }
 
 module.exports = ModalSubmitField;

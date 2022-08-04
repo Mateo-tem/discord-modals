@@ -2,11 +2,21 @@
 
 Hello! This is the Change log section of Discord-Modals. Here you can see what things have been changed in the different versions, to be informed. This will be updated every time there are new versions. I hope you enjoy this package :)
 
-# v1.3.7 (Stable)
+# v1.3.8 (Stable)
+
+Sometimes we have this proyect discontinued, many people ask if this package can be marked as deprecated, because of discord.js v13 and discord.js v14, which already have this modal feature. What do you think? 🤔
+
+- Use the discussion in our GitHub repository: [Discussion #52](https://github.com/Mateo-tem/discord-modals/discussions/92)
+
+- Fix: discord.js v14 util error at 'verifyString'.
+- Fix: "Cannot read properties of undefined (reading '0')" error inside modal structure.
+- Style: Improve style in files and docs.
+
+# v1.3.7
 
 **Surprise!** We are back.
 
-**Featured:** Discord Developers announced Select Menus in modals, they are about to finish to develop it, but you can use it now.
+**Featured:** Discord Developers announced Select Menus in modals, they are about to finish to develop it, but you can use it now (at your own risk).
 **So, now Discord-Modals supports Select Menus in modals!** 🎉
 
 - Chore: Support Select Menus in Modals.
@@ -44,6 +54,7 @@ Hello! This is the Change log section of Discord-Modals. Here you can see what t
 - Code cleanup.
 
 # v1.3.1
+
 - Fix: change `discord-api-types` enums from `v9` to `v10`.
 
 # v1.3.0
@@ -134,7 +145,7 @@ Hello! This is the Change log section of Discord-Modals. Here you can see what t
 - Fix `ModalSubmitInteraction#type` bug. Before returns 5, now returns 'MODAL_SUBMIT' type.
 - Fix `.toJSON()` method of `TextInputComponent` class. Previously did not return the value.
 - Fix `.getTextInputValue()` method of `ModalSubmitInteraction` class. Now if the customId is incorrect throws null.
-- A little bit of code cleanup & maintenance. 
+- A little bit of code cleanup & maintenance.
 
 ## v1.1.5
 
