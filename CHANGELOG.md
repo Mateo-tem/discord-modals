@@ -2,7 +2,12 @@
 
 Hello! This is the Change log section of Discord-Modals. Here you can see what things have been changed in the different versions, to be informed. This will be updated every time there are new versions. I hope you enjoy this package :)
 
-# v1.3.8 (Stable)
+# v1.3.9 (Stable)
+
+- Fix: Table issues in docs.
+- Fix: mistake exporting Interaction in v14.
+
+# v1.3.8
 
 Sometimes we have this proyect discontinued, many people ask if this package can be marked as deprecated, because of discord.js v13 and discord.js v14, which already have this modal feature. What do you think? 🤔
 
