@@ -49,7 +49,6 @@ if (discordjsVersion.includes('v13')) {
 	module.exports.ModalSubmitSelectMenu = require('./src/structures/ModalSubmitSelectMenu');
 	module.exports.ModalActionRow = require('./src/structures/ModalActionRow');
 	module.exports.showModal = require('./src/v14/ShowModal');
-	module.exports.Interaction = require('./src/v14/Interaction');
 	module.exports.InteractionResponses = require('./src/v14/interfaces/InteractionResponses');
 	module.exports.Constants = require('./src/util/Constants');
 	module.exports.SnowflakeUtil = require('./src/util/SnowflakeUtil');
