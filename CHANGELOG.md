@@ -6,7 +6,7 @@ Hello! This is the Change log section of Discord-Modals. Here you can see what t
 
 Sometimes we have this proyect discontinued, many people ask if this package can be marked as deprecated, because of discord.js v13 and discord.js v14, which already have this modal feature. What do you think? 🤔
 
-- Use the discussion in our GitHub repository: [Discussion #52](https://github.com/Mateo-tem/discord-modals/discussions/92)
+Use the discussion in our GitHub repository: [Discussion #52](https://github.com/Mateo-tem/discord-modals/discussions/92).
 
 - Fix: discord.js v14 util error at 'verifyString'.
 - Fix: "Cannot read properties of undefined (reading '0')" error inside modal structure.

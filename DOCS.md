@@ -533,8 +533,8 @@ The Text Input/Select Menu Component of this Action Row.
 
 Adds a Text Input/Select Menu Component.
 
-| Parameter   | Type                                      | Description                                 |
-| ----------- | ----------------------------------------- | ------------------------------------------- | --------------------------------------- |
+| Parameter   | Type                                                                                    | Description                             |
+| ----------- | --------------------------------------------------------------------------------------- | --------------------------------------- |
 | _Component_ | [TextInputComponent](#textinputcomponent) | [SelectMenuComponent](#selectmenucomponent) | The component to add in the Action Row. |
 
 > Returns: [ModalActionRow](#modalactionrow)
@@ -545,8 +545,8 @@ Adds a Text Input/Select Menu Component.
 
 Transforms a Text Input/Select Menu Component to a plain object.
 
-| Parameter   | Type                                      | Description                                 |
-| ----------- | ----------------------------------------- | ------------------------------------------- | --------------------------------------- |
+| Parameter   | Type                                                                                    | Description                             |
+| ----------- | --------------------------------------------------------------------------------------- | --------------------------------------- |
 | _Component_ | [TextInputComponent](#textinputcomponent) | [SelectMenuComponent](#selectmenucomponent) | The component to add in the Action Row. |
 
 > Returns: [APITextInputComponent](https://discord.com/developers/docs/interactions/message-components#text-inputs) | [APISelectMenuComponent](https://discord.com/developers/docs/interactions/message-components#select-menus-select-menu-example)
