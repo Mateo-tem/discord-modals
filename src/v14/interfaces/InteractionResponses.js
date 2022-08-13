@@ -48,7 +48,7 @@ class InteractionResponses {
       .resolveBody()
       .resolveFiles();
 
-    data.flags = options.ephemeral ? MessageFlags.FLAGS.EPHEMERAL : undefined;
+    data.flags = options.ephemeral ? MessageFlags.Ephemeral : undefined;
 
     await this.client.rest.post(
       Routes.interactionCallback(this.id, this.token),
